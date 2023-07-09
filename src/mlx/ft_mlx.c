@@ -6,11 +6,19 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:17:56 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/09 00:04:46 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/09 13:25:41 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../../headers/header.h"
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
 
 int	key_hook(int keycode, t_vars *data)
 {
@@ -37,19 +45,4 @@ void	ft_wait(t_vars *data)
 	mlx_hook(data->win, ON_DESTROY, 1L << 0, destroy, data);
 	mlx_key_hook(data->win, key_hook, data);
 	mlx_loop(data->mlx);
-}
-
-void	ft_initiate_window(t_vars *data)
-{
-	data->img.img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
-	data->img.addr = mlx_get_data_addr(data->img.img, \
-		&(data->img.bits_per_pixel), &(data->img.line_length), \
-		&(data->img.endian));
-}
-
-void	ft_init(t_vars *data)
-{
-	(void)data;
-	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_WIDTH, TITLE);
 }

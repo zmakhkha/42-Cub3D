@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *s1)
 	char	*res;
 
 	len = ft_strlen(s1);
-	res = (char *) malloc(len + 1);
+	res = (char *)malloc(len + 1);
 	if (!res)
 		return (NULL);
 	if (s1)

@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t		i;
-	char		*k;
+	size_t	i;
+	char	*k;
 
 	if (!s1 || !s2)
 		return (NULL);
-	k = (char *) malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	k = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!k)
 		return (NULL);
 	i = 0;
