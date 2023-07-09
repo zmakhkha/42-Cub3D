@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/09 15:12:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:43:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 
 enum
 {
+	ARROW_LEFT = 123,
+	ARROW_RIGHT = 124,
+	ARROW_DOWN = 125,
+	ARROW_UP = 126
+};
+
+enum
+{
 	RED = 0x990033,
 	GREEN = 0x009900,
 	BLUE = 0x3399ff,
@@ -28,6 +36,8 @@ enum
 
 enum
 {
+	KEY_PRESS = 2,
+	KEY_RELEASE = 3,
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
 	ON_MOUSEDOWN = 4,
@@ -77,6 +87,7 @@ typedef struct s_vars
 	void		*mlx;
 	void		*win;
 	t_shared	data;
+	t_player	player;
 }				t_vars;
 
 typedef struct s_rect

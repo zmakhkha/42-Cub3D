@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:08:13 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/09 16:00:39 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:50:01 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_validate(t_vars *data)
 
 void	ft_init_shared(t_vars *data)
 {
-	data->data.cub_size = 10;
+	data->data.cub_size = 32;
 	data->data.grid_rows = 10;
 	data->data.grid_cols = 10;
 	data->data.grid_width = data->data.cub_size * data->data.grid_cols;
@@ -45,7 +45,7 @@ void	ft_init(t_vars *data)
 void	ft_initiate_window(t_vars *data)
 {
 	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->img.addr = mlx_get_data_addr(data->img.img,
-		&(data->img.bits_per_pixel), &(data->img.line_length),
+	data->img.addr = mlx_get_data_addr(data->img.img, \
+		&(data->img.bits_per_pixel), &(data->img.line_length), \
 		&(data->img.endian));
 }

@@ -6,11 +6,16 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/09 14:25:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/09 18:40:40 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
+
+void	f(void)
+{
+	system("leaks cub3D");
+}
 
 int	main(int n, char **v)
 {
@@ -23,5 +28,6 @@ int	main(int n, char **v)
 		ft_exit("Allocation Error!!\n", 1);
 	ft_init(data);
 	ft_main_map(data);
+	ft_main_player(data);
 	ft_wait(data);
 }
