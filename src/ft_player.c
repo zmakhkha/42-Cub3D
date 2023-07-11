@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/09 18:46:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:50:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_init_player(t_vars *data)
 {
+	t_rect p;
+
 	data->player.x = data->data.grid_width / 2;
 	data->player.y = data->data.grid_height / 2;
 	data->player.move_speed = 2.0;
@@ -21,6 +23,12 @@ void	ft_init_player(t_vars *data)
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
 	data->player.rotation_speed = 2.0 * M_PI / 180;
+	p.x = data->player.x;
+	p.y = data->player.y;
+	p.len = 10;
+	p.fill = WHITE;
+	ft_rectangle(data, p);
+	
 }
 
 void	ft_update_player(t_vars *data)
