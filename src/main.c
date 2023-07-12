@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 15:19:19 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:40:02 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,11 @@ void	ft_line(t_vars *data, t_line l)
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
-void	ft_update(t_vars *data)
+void	ft_render(t_vars *data)
 {
-	ft_main_map(data);
-	ft_update_player(data);
 	mlx_clear_window(data->mlx, data->win);
-	ft_draw_player(data);
+	ft_render_map(data);
+	ft_render_player(data);
 }
 
 int	main(int n, char **v)
@@ -51,8 +50,7 @@ int	main(int n, char **v)
 	if (!data)
 		ft_exit("Allocation Error!!\n", 1);
 	ft_init(data);
-	ft_main_map(data);
-	ft_main_player(data);
+	ft_render(data);
 	ft_wait(data);
 	mlx_loop(data->mlx);
 }

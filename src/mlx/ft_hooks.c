@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 17:28:52 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 11:30:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:33:09 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	key_pressed(int keycode, t_vars *vars)
 	{
 		vars->player.walk_direction = -1;
 	}
-	ft_update(vars);
+	ft_render(vars);
 	return (0);
 }
 
@@ -56,6 +56,6 @@ int	key_released(int keycode, t_vars *vars)
 	{
 		vars->player.walk_direction = 0;
 	}
-	ft_update(vars);
+	ft_render(vars);
 	return (0);
 }

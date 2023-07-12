@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:08:13 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 14:35:02 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:26:57 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_init_shared(t_vars *data)
 	data->data.num_rays = data->data.grid_width / data->data.wall_stripe_width;
 }
 
+// init the mlx stuff
 void	ft_init(t_vars *data)
 {
 	ft_init_shared(data);
@@ -40,6 +41,8 @@ void	ft_init(t_vars *data)
 	ft_validate(data);
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, TITLE);
 	ft_initiate_window(data);
+	ft_init_map(data);
+	ft_init_player(data);
 }
 
 void	ft_initiate_window(t_vars *data)

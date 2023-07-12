@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:33:20 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 11:21:58 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:37:27 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 // src/mlx/ft_shapes.c
 void	ft_rectangle(t_vars *data, t_rect rect);
-void	ft_render(t_vars *data);
+void	ft_render_map(t_vars *data);
 
 // src/mlx/ft_hooks.c
 int		key_pressed(int keycode, t_vars *vars);
@@ -44,6 +44,7 @@ int		key_released(int keycode, t_vars *vars);
 // ======================================================================= //
 void	ft_update(t_vars *data);
 void	ft_line(t_vars *data, t_line l);
+void	ft_render(t_vars *data);
 
 // ===================================================================== //
 

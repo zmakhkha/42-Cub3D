@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:04:28 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 15:23:49 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:32:34 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_init_map(t_vars *data)
 	}
 }
 
-void	ft_rint_map(t_vars *data)
+void	ft_print_map(t_vars *data)
 {
 	int	i;
 	int	j;
@@ -52,9 +52,8 @@ void	ft_rint_map(t_vars *data)
 	}
 }
 
-void	ft_main_map(t_vars *data)
-{
-	ft_init_map(data);
-	ft_render(data);
-	ft_rint_map(data);
-}
+// void	ft_main_map(t_vars *data)
+// {
+// 	ft_render_map(data);
+// 	ft_print_map(data);
+// }

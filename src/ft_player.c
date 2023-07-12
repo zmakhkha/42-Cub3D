@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 15:20:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:32:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	its_wall(t_vars *data, double x, double y)
 	return (data->map[f_x][f_y] == 1);
 }
 
-void	ft_draw_player(t_vars *data)
+void	ft_player_line(t_vars *data)
 {
 	t_rect	p;
 	t_line	l;
@@ -53,7 +53,12 @@ void	ft_init_player(t_vars *data)
 	data->player.rotation_speed = data->player.move_speed * M_PI / 180;
 }
 
-void	ft_update_player(t_vars *data)
+// void	ft_update_player(t_vars *data)
+// {
+
+// }
+
+void	ft_render_player(t_vars *data)
 {
 	double	move_step;
 	double	new_x;
@@ -68,19 +73,13 @@ void	ft_update_player(t_vars *data)
 	{
 		data->player.x = new_x;
 		data->player.y = new_y;
+		ft_player_line(data);
 	}
 	else
 		printf("-----<%f>--<%f>-<%f>--\n", data->player.rotation_angle,
 			data->player.x, data->player.y);
 }
 
-void	ft_render_player(t_vars *data)
-{
-	ft_update_player(data);
-}
-
-void	ft_main_player(t_vars *data)
-{
-	ft_init_player(data);
-	ft_draw_player(data);
-}
+// void	ft_main_player(t_vars *data)
+// {
+// }

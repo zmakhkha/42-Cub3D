@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:11:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 12:22:10 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:28:28 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_rectangle(t_vars *data, t_rect rec)
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
-void	ft_render(t_vars *data)
+void	ft_render_map(t_vars *data)
 {
 	int		i;
 	int		j;
