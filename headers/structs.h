@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/11 16:51:44 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:34:50 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_data
 {
 	void		*img;
 	char		*addr;
+	int			notify;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
@@ -97,5 +98,20 @@ typedef struct s_rect
 	int			len;
 	int			fill;
 }				t_rect;
+typedef struct s_line
+{
+	double		ox;
+	double		oy;
+	double		dx;
+	double		dy;
+}				t_line;
+typedef struct s_dda
+{
+	double		dx;
+	double		dy;
+	double		step;
+	double		x_inc;
+	double		y_inc;
+}				t_dda;
 
 #endif

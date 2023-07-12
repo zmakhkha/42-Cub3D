@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:33:20 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/11 16:23:54 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 11:21:58 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,20 @@ void	ft_render(t_vars *data);
 int		key_pressed(int keycode, t_vars *vars);
 int		key_released(int keycode, t_vars *vars);
 
-// =================================================================== //
+// =======================> The shared stuff Stage <======================= //
+// ======================================================================= //
+void	ft_update(t_vars *data);
+void	ft_line(t_vars *data, t_line l);
+
+// ===================================================================== //
 
 // =======================> The Player Stage <======================= //
 // ================================================================= //
+void	ft_main_player(t_vars *data);
+void	ft_draw_player(t_vars *data);
+void	ft_init_player(t_vars *data);
+void	ft_update_player(t_vars *data);
+void	ft_render_player(t_vars *data);
 void	ft_main_player(t_vars *data);
 
 // ================================================================= //
