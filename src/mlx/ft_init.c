@@ -45,7 +45,7 @@ void	ft_init(t_vars *data)
 void	ft_initiate_window(t_vars *data)
 {
 	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->img.addr = mlx_get_data_addr(data->img.img, \
-		&(data->img.bits_per_pixel), &(data->img.line_length), \
+	data->img.addr = mlx_get_data_addr(data->img.img,
+		&(data->img.bits_per_pixel), &(data->img.line_length),
 		&(data->img.endian));
 }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:04:28 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/09 18:27:13 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:23:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_init_map(t_vars *data)
 		j = -1;
 		while (++j < cols)
 		{
-			if (i == j)
+			if (i == 0 || j == 0 || i == 9 || j == 9)
 				data->map[i][j] = 1;
 			else
 				data->map[i][j] = 0;
@@ -37,8 +37,24 @@ void	ft_init_map(t_vars *data)
 	}
 }
 
+void	ft_rint_map(t_vars *data)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < data->data.grid_cols)
+	{
+		j = -1;
+		while (++j < data->data.grid_rows)
+			printf("[%d]", data->map[i][j]);
+		puts("\n");
+	}
+}
+
 void	ft_main_map(t_vars *data)
 {
 	ft_init_map(data);
 	ft_render(data);
+	ft_rint_map(data);
 }

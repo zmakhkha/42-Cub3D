@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 14:34:50 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:22:32 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # define HEIGHT 1000
 
 enum
+{
+	NORTH = 0,
+	SOUTH = 1,
+	EST = 3,
+	WEST = 4
+} enum
 {
 	ARROW_LEFT = 123,
 	ARROW_RIGHT = 124,
@@ -62,6 +68,7 @@ typedef struct s_shared
 
 typedef struct s_player
 {
+	int			spawn;
 	double		x;
 	double		y;
 	double		rotation_angle;
