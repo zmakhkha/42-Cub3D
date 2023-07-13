@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 18:42:38 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:36:44 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@
 # define TITLE "cub3D"
 # define WIDTH 1000
 # define HEIGHT 1000
-# define FOV 60
+# define FOV (60 * M_PI / 180)
+
+# define MAP_NUM_ROWS 10
+# define MAP_NUM_COLS 10
+# define TILE_SIZE 30
+
 enum
 {
 	NORTH = 0,
@@ -38,7 +43,8 @@ enum
 	GREEN = 0x009900,
 	BLUE = 0x3399ff,
 	BLACK = 0x00000000,
-	WHITE = 0xffffff
+	WHITE = 0xffffff,
+	YELLOW = 0xccff00
 };
 
 enum
@@ -54,28 +60,14 @@ enum
 	ON_DESTROY = 17,
 	ON_ESC = 53
 };
-
-typedef struct s_shared
-{
-	int			cub_size;
-	int			grid_rows;
-	int			grid_cols;
-	int			grid_width;
-	int			grid_height;
-	int			fov_angle;
-	int			wall_stripe_width;
-	int			num_rays;
-	t_ray		*ray;
-}				t_shared;
-
 typedef struct s_player
 {
 	int			spawn;
-	double		x;
-	double		y;
-	double		rotation_angle;
-	double		move_speed;
-	double		rotation_speed;
+	float		x;
+	float		y;
+	float		rotation_angle;
+	float		move_speed;
+	float		rotation_speed;
 	int			turn_direction;
 	int			walk_direction;
 }				t_player;
@@ -90,15 +82,19 @@ typedef struct s_data
 	int			endian;
 }				t_data;
 
-typedef struct s_vars
+typedef struct s_ray
 {
-	t_data		img;
-	int			**map;
-	void		*mlx;
-	void		*win;
-	t_shared	data;
-	t_player	player;
-}				t_vars;
+	float		angle;
+	int			is_ver;
+	float		distance;
+	float		wall_hit_x;
+	float		wall_hit_y;
+	int			wall_content;
+	int			is_up;
+	int			is_down;
+	int			is_left;
+	int			is_right;
+}				t_ray;
 
 typedef struct s_rect
 {
@@ -109,47 +105,80 @@ typedef struct s_rect
 }				t_rect;
 typedef struct s_line
 {
-	double		ox;
-	double		oy;
-	double		dx;
-	double		dy;
+	float		ox;
+	float		oy;
+	float		dx;
+	float		dy;
 }				t_line;
 typedef struct s_dda
 {
-	double		dx;
-	double		dy;
-	double		step;
-	double		x_inc;
-	double		y_inc;
+	float		dx;
+	float		dy;
+	float		step;
+	float		x_inc;
+	float		y_inc;
 }				t_dda;
 
-typedef struct s_ray
+typedef struct s_cast
 {
-	double		angle;
-	double		wall_x;
-	double		wall_y;
-	double		distance;
-	int			is_hor_hit;
-	int			is_ver_hit;
+	float		angle;
+	float		hor_dist;
+	float		ver_dist;
+
 	int			is_up;
 	int			is_down;
 	int			is_left;
 	int			is_right;
-	int			h_wall_cont;
-	double		x_inter;
-	double		y_inter;
-	double		x_step;
-	double		y_step;
-	double		hor_wall_x;
-	double		hor_wall_y;
-	double		ver_wall_x;
-	double		ver_wall_y;
-	double		next_hx;
-	double		next_hy;
-	double		next_vx;
-	double		next_vy;
-	double		x_check;
-	double		y_check;
-}				t_ray;
+
+	float		x_inters;
+	float		y_inters;
+
+	float		x_step;
+	float		y_step;
+
+	float		next_touch_hor_x;
+	float		next_touch_hor_y;
+	float		hor_wall_hit_x;
+	float		hor_wall_hit_y;
+
+	float		x_check;
+	float		y_check;
+	int			hor_wall_cont;
+
+	int			found_hor_wall_hit;
+
+	float		next_touch_ver_x;
+	float		next_touch_ver_y;
+	float		ver_wall_hit_x;
+	float		ver_wall_hit_y;
+
+	int			ver_wall_cont;
+
+	int			found_ver_wall_hit;
+}				t_cast;
+
+typedef struct s_shared
+{
+	int			cub_size;
+	int			grid_rows;
+	int			grid_cols;
+	int			grid_width;
+	int			grid_height;
+	int			fov_angle;
+	int			wall_stripe_width;
+	int			num_rays;
+	t_ray		*ray;
+}				t_shared;
+
+typedef struct s_vars
+{
+	t_data		img;
+	int			**map;
+	void		*mlx;
+	void		*win;
+	t_shared	data;
+	t_ray		*rays;
+	t_player	player;
+}				t_vars;
 
 #endif

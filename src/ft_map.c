@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:04:28 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 15:32:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:07:51 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	ft_init_map(t_vars *data)
 		j = -1;
 		while (++j < cols)
 		{
-			if (i == 0 || j == 0 || i == 9 || j == 9)
+			if ((i > 5 && i == j) || i == 0 || j == 0 || i == rows - 1
+				|| j == cols - 1)
 				data->map[i][j] = 1;
 			else
 				data->map[i][j] = 0;

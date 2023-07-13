@@ -6,23 +6,23 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 15:32:03 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:18:58 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-int	its_wall(t_vars *data, double x, double y)
+int	its_wall(t_vars *data, float x, float y)
 {
 	int	f_x;
 	int	f_y;
 
-	if (x < 0 || y < 0 || x > WIDTH || y > HEIGHT)
+	if (x < 0 || y < 0 || x > data->data.grid_width
+		|| y > data->data.grid_height)
 		return (1);
 	f_x = floor(x / data->data.cub_size);
 	f_y = floor(y / data->data.cub_size);
-	printf("---+[%d][%d][%d]+---\n", f_x, f_y, data->map[f_x][f_y]);
-	return (data->map[f_x][f_y] == 1);
+	return (data->map[f_x][f_y] != 0);
 }
 
 void	ft_player_line(t_vars *data)
@@ -39,7 +39,7 @@ void	ft_player_line(t_vars *data)
 	l.dx = l.ox + cos(data->player.rotation_angle) * 20;
 	l.dy = l.oy + sin(data->player.rotation_angle) * 20;
 	// ft_rectangle(data, p);
-	ft_line(data, l);
+	ft_line(data, l, WHITE);
 }
 
 void	ft_init_player(t_vars *data)
@@ -60,9 +60,9 @@ void	ft_init_player(t_vars *data)
 
 void	ft_render_player(t_vars *data)
 {
-	double	move_step;
-	double	new_x;
-	double	new_y;
+	float	move_step;
+	float	new_x;
+	float	new_y;
 
 	data->player.rotation_angle += data->player.turn_direction
 		* data->player.rotation_speed;

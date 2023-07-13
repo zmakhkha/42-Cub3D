@@ -6,13 +6,13 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:51:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/12 18:27:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:29:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-double	ft_normalize(double ray_ang)
+float	ft_normalize(float ray_ang)
 {
 	ray_ang = remainder(ray_ang, 2 * M_PI);
 	if (ray_ang < 0)
@@ -20,128 +20,183 @@ double	ft_normalize(double ray_ang)
 	return (ray_ang);
 }
 
-double	ft_distance(int x1, int x2, int y1, int y2)
+float	ft_distance(float x1, float x2, float y1, float y2)
 {
-	return (sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2)));
+	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
 
-void	ft_cast_one_(void)
+void	ft_cast_one(t_vars *data, float angle, int id)
 {
-}
+	t_cast	r;
 
-void	ft_cast_one_vert(t_vars *data, double ray_ang, int i)
-{
-	t_ray	ray;
-
-	ray.angle = ft_normalize(ray_ang);
-	ray.is_down = ray.angle > 0 && ray.angle < M_PI;
-	ray.is_up = !ray.is_up;
-	ray.is_right = ray.angle < M_PI / 2 || ray.angle > 3 * M_PI / 2;
-	ray.is_left = !ray.is_right;
-	ray.is_ver_hit = 0;
-	ray.ver_wall_x = 0;
-	ray.ver_wall_y = 0;
-	ray.h_wall_cont = 0;
-	// find x
-	ray.x_inter = floor(data->player.x / data->data.cub_size)
+	r.angle = ft_normalize(angle);
+	// initialisation
+	r.is_down = r.angle > 0 && r.angle < M_PI;
+	r.is_up = !r.is_down;
+	r.is_right = r.angle < 0.5 * M_PI || r.angle > 1.5 * M_PI;
+	r.is_left = !r.is_right;
+	// Horizontal intersection
+	//////////////////////////
+	r.found_hor_wall_hit = 0;
+	r.hor_wall_hit_x = 0;
+	r.hor_wall_hit_y = 0;
+	r.hor_wall_cont = 0;
+	// Find the y-coordinate of the closest horizontal grid intersection
+	r.y_inters = floor(data->player.y / data->data.cub_size)
 		* data->data.cub_size;
-	if (ray.is_right)
-		ray.x_inter += ray.x_inter - data->player.y;
-	ray.y_inter = data->player.y + (ray.x_inter - data->player.x)
-		/ tan(ray_ang);
-	ray.x_step = data->data.cub_size;
-	if (ray.is_left)
-		ray.x_step *= -1;
-	ray.y_step = data->data.cub_size / tan(ray_ang);
-	if (ray.is_up && ray.x_step > 0)
-		ray.x_step *= -1;
-	if (ray.is_down && ray.x_step < 0)
-		ray.x_step *= -1;
-	ray.next_vx = ray.x_inter;
-	ray.next_vy = ray.y_inter;
-	while (ray.next_vx >= 0 && ray.next_vy <= WIDTH && ray.next_vy >= 0
-		&& ray.next_vx <= HEIGHT)
+	if (r.is_down)
+		r.y_inters += data->data.cub_size;
+	// Find the x-coordinate of the closest horizontal grid intersection
+	r.x_inters = data->player.x + (r.y_inters - data->player.y) / tan(r.angle);
+	// Calculate the increment xstep and ystep
+	r.y_step = data->data.cub_size;
+	if (r.is_up)
+		r.y_step *= -1;
+	r.x_step = data->data.cub_size / tan(r.angle);
+	if (r.is_left && r.x_step > 0)
+		r.x_step *= -1;
+	if (r.is_right && r.x_step < 0)
+		r.x_step *= -1;
+	// incrementing untill we found an horizontal intersection
+	r.next_touch_hor_x = r.x_inters;
+	r.next_touch_hor_y = r.y_inters;
+	while (r.next_touch_hor_x >= 0
+		&& r.next_touch_hor_x <= data->data.grid_width
+		&& r.next_touch_hor_y >= 0
+		&& r.next_touch_hor_y <= data->data.grid_height)
 	{
-		if (ray.is_left)
-			ray.x_check += -1;
-		ray.y_check += ray.next_vy;
-		if (its_wall(ray.x_check, ray.y_check))
+		r.x_check = r.next_touch_hor_x;
+		r.y_check = r.next_touch_hor_y;
+		if (r.is_up)
+			r.y_check += -1;
+		if (its_wall(data, r.x_check, r.y_check))
 		{
-			ray.ver_wall_x = ray.next_vx;
-			ray.ver_wall_y = ray.next_vy;
-			ray.h_wall_cont = data->map[(int)floor(ray.x_check
-				/ data->data.cub_size)][(int)floor(ray.y_check
+			r.hor_wall_hit_x = r.next_touch_hor_x;
+			r.hor_wall_hit_y = r.next_touch_hor_y;
+			r.hor_wall_cont = data->map[(int)floor(r.y_check
+				/ data->data.cub_size)][(int)floor(r.x_check
 				/ data->data.cub_size)];
-			ray.is_ver_hit = 1;
+			r.found_hor_wall_hit = 1;
 			break ;
 		}
 		else
 		{
-			ray.next_vx = ray.x_step;
-			ray.next_vy = ray.y_step;
+			r.next_touch_hor_x += r.x_step;
+			r.next_touch_hor_y += r.y_step;
 		}
 	}
-}
-void	ft_cast_one_hor(t_vars *data, double ray_ang, int i)
-{
-	t_ray	ray;
-
-	ray.angle = ft_normalize(ray_ang);
-	ray.is_down = ray.angle > 0 && ray.angle < M_PI;
-	ray.is_up = !ray.is_up;
-	ray.is_right = ray.angle < M_PI / 2 || ray.angle > 3 * M_PI / 2;
-	ray.is_left = !ray.is_right;
-	ray.is_hor_hit = 0;
-	ray.hor_wall_x = 0;
-	ray.hor_wall_y = 0;
-	ray.h_wall_cont = 0;
-	ray.y_inter = floor(data->player.y / data->data.cub_size)
-		* data->data.cub_size;
-	if (ray.is_down)
-		ray.y_inter += ray.y_inter - data->player.y;
-	ray.x_inter = data->player.x + (ray.y_inter - data->player.y)
-		/ tan(ray_ang);
-	ray.y_step = data->data.cub_size;
-	if (ray.is_up)
-		ray.y_step *= -1;
-	ray.x_step = data->data.cub_size / tan(ray_ang);
-	if (ray.is_left && ray.x_step > 0)
-		ray.x_step *= -1;
-	if (ray.is_right && ray.x_step < 0)
-		ray.x_step *= -1;
-	ray.next_hx = ray.x_inter;
-	ray.next_hy = ray.y_inter;
-	while (ray.next_hx >= 0 && ray.next_hy <= WIDTH && ray.next_hy >= 0
-		&& ray.next_hx <= HEIGHT)
+	// vertical intersection
+	//////////////////////////
+	r.found_ver_wall_hit = 0;
+	r.ver_wall_hit_x = 0;
+	r.ver_wall_hit_y = 0;
+	r.ver_wall_cont = 0;
+	// Find the x-coordinate of the closest horizontal grid intersection
+	r.x_inters = floor(data->player.x / data->data.cub_size)
+		/ data->data.cub_size;
+	if (r.is_right)
+		r.x_inters += data->data.cub_size;
+	// Find the y-coordinate of the closest horizontal grid intersection
+	r.y_inters = data->player.y + (r.x_inters - data->player.x) * tan(r.angle);
+	// Calculate the increment xstep and ystep
+	r.x_step = data->data.cub_size;
+	if (r.is_left)
+		r.x_step *= -1;
+	r.y_step = data->data.cub_size * tan(r.angle);
+	if (r.is_up && r.y_step > 0)
+		r.y_step *= -1;
+	if (r.is_down && r.y_step < 0)
+		r.y_step *= -1;
+	r.next_touch_ver_x = r.x_inters;
+	r.next_touch_ver_y = r.y_inters;
+	// looping until we find a wall
+	while (r.next_touch_ver_x >= 0
+		&& r.next_touch_ver_x <= data->data.grid_width
+		&& r.next_touch_ver_y >= 0
+		&& r.next_touch_ver_y <= data->data.grid_height)
 	{
-		ray.x_check = ray.next_hx;
-		if (ray.is_up)
-			ray.y_check += -1;
-		if (its_wall(ray.x_check, ray.y_check))
+		r.x_check = r.next_touch_ver_x;
+		if (r.is_left)
+			r.x_check += -1;
+		r.y_check = r.next_touch_ver_y;
+		if (its_wall(data, r.x_check, r.y_check))
 		{
-			ray.hor_wall_x = ray.next_hx;
-			ray.hor_wall_y = ray.next_hy;
-			ray.h_wall_cont = data->map[(int)floor(ray.x_check
-				/ data->data.cub_size)][(int)floor(ray.y_check
+			r.ver_wall_hit_x = r.next_touch_ver_x;
+			r.ver_wall_hit_y = r.next_touch_ver_y;
+			r.ver_wall_cont = data->map[(int)floor(r.y_check
+				/ data->data.cub_size)][(int)floor(r.x_check
 				/ data->data.cub_size)];
-			ray.is_hor_hit = 1;
+			r.found_ver_wall_hit = 1;
 			break ;
 		}
 		else
 		{
-			ray.next_hx = ray.x_step;
-			ray.next_hy = ray.y_step;
+			r.next_touch_ver_x += r.x_step;
+			r.next_touch_ver_y += r.y_step;
 		}
 	}
+	if (r.found_hor_wall_hit)
+		r.hor_dist = ft_distance(data->player.x, data->player.y,
+			r.hor_wall_hit_x, r.hor_wall_hit_y);
+	else
+		r.hor_dist = DBL_MAX;
+	if (r.found_ver_wall_hit)
+		r.ver_dist = ft_distance(data->player.x, data->player.y,
+			r.ver_wall_hit_x, r.ver_wall_hit_y);
+	else
+		r.ver_dist = DBL_MAX;
+	if (r.hor_dist < r.ver_dist)
+	{
+		data->rays[id].distance = r.hor_dist;
+		data->rays[id].wall_hit_x = r.hor_wall_hit_x;
+		data->rays[id].wall_hit_y = r.hor_wall_hit_y;
+		data->rays[id].wall_content = r.hor_wall_cont;
+		data->rays[id].is_ver = 0;
+	}
+	else
+	{
+		data->rays[id].distance = r.ver_dist;
+		data->rays[id].wall_hit_x = r.ver_wall_hit_x;
+		data->rays[id].wall_hit_y = r.ver_wall_hit_y;
+		data->rays[id].wall_content = r.ver_wall_cont;
+		data->rays[id].is_ver = 1;
+	}
+	data->rays[id].angle = r.angle;
+	data->rays[id].is_up = r.is_up;
+	data->rays[id].is_down = r.is_down;
+	data->rays[id].is_left = r.is_left;
+	data->rays[id].is_right = r.is_right;
 }
 
 void	ft_cast_all_rays(t_vars *data)
 {
-	int i;
-	double ray_angle;
+	int		i;
+	float	ray_angle;
 
-	ray_angle = data->player.rotation_angle - (FOV / 2);
+	ray_angle = data->player.rotation_angle - FOV / 2;
+	ray_angle = ft_normalize(ray_angle);
 	i = -1;
 	while (++i < data->data.num_rays)
-		ft_cast_one(ray_angle, i);
+	{
+		ft_cast_one(data, ray_angle, i);
+		ray_angle += (float)FOV / data->data.num_rays;
+		ray_angle = ft_normalize(ray_angle);
+	}
+}
+
+void	ft_render_rays(t_vars *data)
+{
+	t_line	tmp;
+	int		i;
+
+	i = -1;
+	ft_cast_all_rays(data);
+	while (++i < data->data.num_rays)
+	{
+		tmp.dx = data->rays[i].wall_hit_x;
+		tmp.dy = data->rays[i].wall_hit_y;
+		tmp.ox = data->player.x;
+		tmp.oy = data->player.y;
+		ft_line(data, tmp, YELLOW);
+	}
 }

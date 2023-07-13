@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/07/09 18:32:04 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/07/13 17:51:50 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ HEADERS =	headers/header.h\
 # Source files
 SRC_MN =	src/main.c	src/ft_map.c	src/ft_utils.c	src/ft_player.c \
 			src/mlx/ft_init.c			src/mlx/ft_mlx.c	src/mlx/ft_shapes.c\
-			src/mlx/ft_hooks.c
+			src/mlx/ft_hooks.c			src/ft_rays.c
 			
 		 
 #Objects
@@ -39,7 +39,7 @@ all: $(NAME)
 
 
 $(NAME) : $(OBJ) $(HEADERS) $(LBFT)
-	@$(CC) $(OBJ) $(LBFT) $(MLBX) -o $(NAME) #-fsanitize=address
+	@$(CC) $(OBJ) $(LBFT) $(MLBX) -o $(NAME) -fsanitize=address
 	@echo "$(NAME): $(GREEN)Successfully made. ✅$(RESET)"
 
 LIB_DIR:
