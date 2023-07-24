@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:51:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/13 18:29:17 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/24 11:07:39 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	ft_cast_one(t_vars *data, float angle, int id)
 	r.angle = ft_normalize(angle);
 	// initialisation
 	r.is_down = r.angle > 0 && r.angle < M_PI;
-	r.is_up = !r.is_down;
+	r.is_up = r.angle > M_PI && r.angle < 2 * M_PI;
 	r.is_right = r.angle < 0.5 * M_PI || r.angle > 1.5 * M_PI;
-	r.is_left = !r.is_right;
+	r.is_left = r.angle > 0.5 * M_PI && r.angle < 1.5 * M_PI;
 	// Horizontal intersection
 	//////////////////////////
 	r.found_hor_wall_hit = 0;
@@ -42,7 +42,7 @@ void	ft_cast_one(t_vars *data, float angle, int id)
 	r.hor_wall_hit_y = 0;
 	r.hor_wall_cont = 0;
 	// Find the y-coordinate of the closest horizontal grid intersection
-	r.y_inters = floor(data->player.y / data->data.cub_size)
+	r.y_inters = (int)floor(data->player.y / data->data.cub_size)
 		* data->data.cub_size;
 	if (r.is_down)
 		r.y_inters += data->data.cub_size;
@@ -91,12 +91,12 @@ void	ft_cast_one(t_vars *data, float angle, int id)
 	r.ver_wall_hit_x = 0;
 	r.ver_wall_hit_y = 0;
 	r.ver_wall_cont = 0;
-	// Find the x-coordinate of the closest horizontal grid intersection
+	// Find the x-coordinate of the closest vertical grid intersection
 	r.x_inters = floor(data->player.x / data->data.cub_size)
-		/ data->data.cub_size;
+		* data->data.cub_size;
 	if (r.is_right)
 		r.x_inters += data->data.cub_size;
-	// Find the y-coordinate of the closest horizontal grid intersection
+	// Find the y-coordinate of the closest vertical grid intersection
 	r.y_inters = data->player.y + (r.x_inters - data->player.x) * tan(r.angle);
 	// Calculate the increment xstep and ystep
 	r.x_step = data->data.cub_size;

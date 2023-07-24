@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/13 18:36:44 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/24 10:43:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define MAP_NUM_ROWS 10
 # define MAP_NUM_COLS 10
-# define TILE_SIZE 30
+# define TILE_SIZE 64
 
 enum
 {
