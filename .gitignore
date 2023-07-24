@@ -4,3 +4,4 @@ js_prototype
 .vscode
 myenv
 .o
+.DS_Store

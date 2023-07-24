@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:11:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/09 16:02:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:09:31 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	ft_rectangle(t_vars *data, t_rect rec)
 			my_mlx_pixel_put(&data->img, rec.x + i, rec.y + j, rec.fill);
 		}
 	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, rec.x, rec.y);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
-void	ft_render(t_vars *data)
+void	ft_render_map(t_vars *data)
 {
 	int		i;
 	int		j;
@@ -41,16 +41,14 @@ void	ft_render(t_vars *data)
 		j = -1;
 		while (++j < data->data.grid_cols)
 		{
-			if (data->map[i][j])
-				rec.fill = RED;
+			if (data->map[i][j] == 0)
+				rec.fill = BLUE;
 			else
-				rec.fill = WHITE;
+				rec.fill = RED;
 			rec.x = i * data->data.cub_size;
 			rec.y = j * data->data.cub_size;
 			rec.len = data->data.cub_size;
-			printf("[%d][%d] ", rec.x, rec.y);
 			ft_rectangle(data, rec);
 		}
-		printf("\n");
 	}
 }

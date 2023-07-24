@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:17:56 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/09 13:25:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:34:14 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	destroy(t_vars *vars)
 
 void	ft_wait(t_vars *data)
 {
+	mlx_hook(data->win, 2, 0, key_pressed, data);
+	mlx_hook(data->win, 3, 0, key_released, data);
 	mlx_hook(data->win, ON_DESTROY, 1L << 0, destroy, data);
-	mlx_key_hook(data->win, key_hook, data);
 	mlx_loop(data->mlx);
 }

@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/07/09 16:11:03 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/07/15 04:08:55 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RESET = \033[0m
 NAME = cub3D
 LBFT = libft/libft.a
 LIBFT_DIR = libft
-CFLAGS = -g -Wall -Werror -Wextra -g 
+CFLAGS = -g #-Wall -Werror -Wextra -g 
 MLBX = -lmlx -framework OpenGL -framework AppKit
 HEADERS =	headers/header.h\
 			headers/structs.h
@@ -26,7 +26,8 @@ HEADERS =	headers/header.h\
 
 # Source files
 SRC_MN =	src/main.c	src/ft_map.c	src/ft_utils.c	src/ft_player.c \
-			src/mlx/ft_init.c			src/mlx/ft_mlx.c	src/mlx/ft_shapes.c
+			src/mlx/ft_init.c			src/mlx/ft_mlx.c	src/mlx/ft_shapes.c\
+			src/mlx/ft_hooks.c			src/ft_rays.c
 			
 		 
 #Objects

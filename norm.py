@@ -1,6 +1,9 @@
 import os
 import subprocess
 
+# Install c_formatter_42
+subprocess.run(["pip", "install", "c_formatter_42"])
+
 # Needs the c_formatter_42 to be installed
 
 def get_c_files(directory):
@@ -22,3 +25,5 @@ c_files_ = get_c_files(directory_path_)
 
 for file in (c_files + c_files_):
     execute_script_on_file(file)
+
+# test co
