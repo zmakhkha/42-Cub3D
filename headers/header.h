@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:33:20 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/13 16:02:41 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/25 09:36:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_exit(char *str, int status);
 
 void	ft_main_map(t_vars *data);
 void	ft_init_map(t_vars *data);
-int		its_wall(t_vars *data, float x, float y);
+int		its_wall(t_vars *data, double x, double y);
 
 // ============================================================== //
 
@@ -80,9 +80,9 @@ int		its_wall(t_vars *data, float x, float y);
 // ================================================================ //
 
 void	ft_cast_all_rays(t_vars *data);
-void	ft_cast_one(t_vars *data, float angle, int id);
-float	ft_distance(float x1, float x2, float y1, float y2);
-float	ft_normalize(float ray_ang);
+void	ft_cast_one(t_vars *data, double angle, int id);
+double	ft_distance(double x1, double x2, double y1, double y2);
+double	ft_normalize(double ray_ang);
 void	ft_render_rays(t_vars *data);
 
 // ================================================================ //
