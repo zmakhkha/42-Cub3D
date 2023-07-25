@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:05:06 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/24 16:27:57 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:54:31 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../headers/cub3d.h"
 
 size_t	ft_strlen(const char *str)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:42:21 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/24 16:28:49 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:53:13 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "../../headers/get_next_line.h"
 
 char	*ft_line(char *lien)
 {
@@ -76,13 +76,13 @@ char	*get_next_line(int fd)
 	if (!bufer)
 		return (NULL);
 	byte = 1;
-	while (ft_strchr(line_str) && byte)
+	while (ft_strchr_(line_str) && byte)
 	{
 		byte = read (fd, bufer, BUFFER_SIZE);
 		if (byte == -1)
 			return (free (bufer), NULL);
 		bufer [byte] = '\0';
-		line_str = ft_strjoin (line_str, bufer);
+		line_str = ft_strjoin_(line_str, bufer);
 	}
 	free (bufer);
 	line = ft_line(line_str);

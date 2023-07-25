@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:33:20 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 09:36:53 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:06:30 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define HEADER_H
 
 # include "../libft/libft.h"
+# include "cub3d.h"
 # include "structs.h"
 # include <float.h>
 # include <math.h>
@@ -44,7 +45,7 @@ int		key_released(int keycode, t_vars *vars);
 // =======================> The shared stuff Stage <======================= //
 // ======================================================================= //
 void	ft_update(t_vars *data);
-void	ft_line(t_vars *data, t_line l, int color);
+void	ft_line_dda(t_vars *data, t_line l, int color);
 void	ft_render(t_vars *data);
 
 // ===================================================================== //
@@ -73,6 +74,8 @@ void	ft_exit(char *str, int status);
 void	ft_main_map(t_vars *data);
 void	ft_init_map(t_vars *data);
 int		its_wall(t_vars *data, double x, double y);
+void	ft_print_map(t_vars *data);
+int		ft_strlen2d(char **str);
 
 // ============================================================== //
 

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:57:25 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/25 13:09:00 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/07/25 16:25:45 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"cub3d.h"
+#include"../headers/header.h"
 
-void	ft_get_map_index(t_content	*content, char **lines)
+void	ft_get_map_index(t_parse	*content, char **lines)
 {
 	int	start;
 
@@ -23,7 +23,7 @@ void	ft_get_map_index(t_content	*content, char **lines)
 }
 
 
-int	ft_max_line(t_content	*content, char **lines)
+int	ft_max_line(t_parse	*content, char **lines)
 {
 	int	start;
 	int	max;
@@ -70,7 +70,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 }
 
 
-void	ft_copy_map(t_content	*content, char **lines)
+void	ft_copy_map(t_parse	*content, char **lines)
 {
 	int	start;
 	int	max;
@@ -93,7 +93,7 @@ void	ft_copy_map(t_content	*content, char **lines)
 	}
 }
 
-void	ft_map_is_valid(t_content *content)
+void	ft_map_is_valid(t_parse *content)
 {
 	int		i;
 	int		o;
@@ -115,7 +115,7 @@ void	ft_map_is_valid(t_content *content)
 	}
 }
 
-void	ft_check_player_exists(t_content *content)
+void	ft_check_player_exists(t_parse *content)
 {
 	int		i;
 	int		o;
@@ -140,7 +140,7 @@ void	ft_check_player_exists(t_content *content)
 		ft_error("should have only one player in  the map");
 }
 
-void	ft_is_valid_map(t_content *cont)
+void	ft_is_valid_map(t_parse *cont)
 {
 	int		cols;
 	int		rows;
@@ -171,10 +171,10 @@ void	ft_is_valid_map(t_content *cont)
 	}
 }
 
-t_content *parsing_main(int ac, char **av)
+t_parse *parsing_main(int ac, char **av)
 {
 	char **lines;
-	t_content	*content;
+	t_parse	*content;
 	int i = 0;
 
 	ft_args(ac, av);
@@ -185,13 +185,7 @@ t_content *parsing_main(int ac, char **av)
 	ft_map_is_valid(content);
 	ft_check_player_exists(content);
 	ft_is_valid_map(content);
-	// printf(">no = %s<\n", content->no);
-	// printf(">ea = %s<\n", content->ea);
-	// printf(">so = %s<\n", content->so);
-	// printf(">we = %s<\n", content->we);
-	// printf(">ff = %s<\n", content->ff);
-	// printf(">cc = %s<\n", content->cc);
-	while (content->map[i])
-		printf("%s<\n", content->map[i++]);
+	// while (content->map[i])
+	// 	printf("%s<\n", ft_strtrim(content->map[i++], " "));
 	return (content);
 }

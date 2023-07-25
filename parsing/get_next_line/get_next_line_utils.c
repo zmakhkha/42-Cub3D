@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 12:50:58 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/24 18:32:56 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:53:15 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "../../headers/get_next_line.h"
 
 
-int	ft_strchr(char *str)
+int	ft_strchr_(char *str)
 {
 	while ((str != NULL) && (*str != '\0'))
 	{
@@ -24,7 +24,7 @@ int	ft_strchr(char *str)
 	return (1);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_(char *s1, char *s2)
 {
 	char	*chr;
 	int		i;

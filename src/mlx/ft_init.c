@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:08:13 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 10:16:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/25 18:30:40 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_init(t_vars *data)
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, TITLE);
 	ft_initiate_window(data);
 	ft_init_map(data);
+	// ft_print_map(data);
 	ft_init_player(data);
 	data->rays = malloc(data->data.num_rays * sizeof(t_ray));
 	if (!data->rays)

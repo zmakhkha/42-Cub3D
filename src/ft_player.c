@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 10:19:18 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/25 17:42:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ int	its_wall(t_vars *data, double x, double y)
 	int	f_x;
 	int	f_y;
 
-	if (x < 0 || y < 0 || x > data->data.grid_width
-		|| y > data->data.grid_height)
+	if (x < 0 || y < 0)
 		return (1);
 	f_x = floor(x / data->data.cub_size);
 	f_y = floor(y / data->data.cub_size);
-	return (data->map[f_x][f_y] != 0);
+	if (data->map && data->map[f_x] && data->map[f_x][f_y])
+		return (data->map[f_x][f_y] != '0');
+	return (1);
 }
 
 void	ft_player_line(t_vars *data)
@@ -39,9 +40,24 @@ void	ft_player_line(t_vars *data)
 	l.dx = l.ox + cos(data->player.rotation_angle) * 20;
 	l.dy = l.oy + sin(data->player.rotation_angle) * 20;
 	// ft_rectangle(data, p);
-	ft_line(data, l, WHITE);
+	ft_line_dda(data, l, WHITE);
 }
 
+void	ft_spawn(t_vars *data)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	col = 0;
+	puts(data->map[row]);
+	while (data->map[row] && !ft_strchr(data->map[row], 'N')
+		&& !ft_strchr(data->map[row], 'S') && !ft_strchr(data->map[row], 'E')
+		&& !ft_strchr(data->map[row], 'W'))
+	{
+		row++;
+	}
+}
 void	ft_init_player(t_vars *data)
 {
 	data->player.x = data->data.grid_width / 2;
@@ -51,6 +67,7 @@ void	ft_init_player(t_vars *data)
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
 	data->player.rotation_speed = data->player.move_speed * M_PI / 180;
+	// ft_spawn(data);
 }
 
 void	ft_render_player(t_vars *data)

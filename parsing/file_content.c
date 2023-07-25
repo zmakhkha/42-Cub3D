@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   file_content.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 20:32:24 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/24 19:53:02 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:56:55 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"cub3d.h"
+#include"../headers/header.h"
 
 
 
@@ -64,7 +64,7 @@ char	*ft_get_type(char *line)
 
 
 
-void	ft_chech_duplication(t_content *content, int type)
+void	ft_chech_duplication(t_parse *content, int type)
 {
 	if (type == 1 && content->no)//no
 		ft_error("north texture is duplicated");
@@ -80,7 +80,7 @@ void	ft_chech_duplication(t_content *content, int type)
 		ft_error("ciel is duplicated");
 }
 
-void	ft_chech_missing(t_content *content)
+void	ft_chech_missing(t_parse *content)
 {
 	if (!content->no)//no
 		ft_error("north texture not found");
@@ -97,7 +97,7 @@ void	ft_chech_missing(t_content *content)
 }
 
 
-void	ft_set_type(t_content *content, char *line, int index)
+void	ft_set_type(t_parse *content, char *line, int index)
 {
 	int		type;
 	char	*path;
@@ -126,10 +126,10 @@ void	ft_set_type(t_content *content, char *line, int index)
 		content->start = index + 1;
 }
 
-t_content	*ft_get_all_content(char **lines)
+t_parse	*ft_get_all_content(char **lines)
 {
 	int	i;
-	static t_content	content;
+	static t_parse	content;
 
 	i = 0;
 	while (lines[i] && content.start == 0)

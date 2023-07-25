@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_f_and_c.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 18:40:09 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/24 19:59:05 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:56:55 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"cub3d.h"
+#include"../headers/header.h"
 
 
 int	ft_isdigit(int c)
@@ -158,7 +158,7 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void    check_f(char *line, t_content *content, int n)
+void    check_f(char *line, t_parse *content, int n)
 {
     int k = 0;
     int i = 0;

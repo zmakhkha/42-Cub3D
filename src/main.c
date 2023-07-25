@@ -6,13 +6,13 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/24 17:33:54 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/25 16:29:39 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-void	ft_line(t_vars *data, t_line l, int color)
+void	ft_line_dda(t_vars *data, t_line l, int color)
 {
 	t_dda	d;
 	int		i;
@@ -44,11 +44,10 @@ int	main(int n, char **v)
 {
 	t_vars	*data;
 
-	(void)n;
-	(void)v;
 	data = malloc(sizeof(t_vars));
 	if (!data)
 		ft_exit("Allocation Error!!\n", 1);
+	data->parse = parsing_main(n, v);
 	ft_init(data);
 	ft_render(data);
 	ft_wait(data);

@@ -6,12 +6,14 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 10:16:17 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/25 18:35:55 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+# include "cub3d.h"
 
 # define TITLE "cub3D"
 # define WIDTH 1000
@@ -20,7 +22,7 @@
 
 # define MAP_NUM_ROWS 12
 # define MAP_NUM_COLS 10
-# define TILE_SIZE 64
+# define TILE_SIZE 60
 
 # define HOR -1
 # define VER -2
@@ -175,12 +177,13 @@ typedef struct s_shared
 typedef struct s_vars
 {
 	t_data		img;
-	int			**map;
+	char		**map;
 	void		*mlx;
 	void		*win;
 	t_shared	data;
 	t_ray		*rays;
 	t_player	player;
+	t_parse		*parse;
 }				t_vars;
 
 #endif

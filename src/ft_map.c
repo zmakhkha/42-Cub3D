@@ -6,11 +6,23 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:04:28 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 09:49:52 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/25 18:25:55 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
+
+int	ft_strlen2d(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		i++;
+	}
+	return (i);
+}
 
 void	ft_init_map(t_vars *data)
 {
@@ -19,21 +31,16 @@ void	ft_init_map(t_vars *data)
 	int	rows;
 	int	cols;
 
-	rows = data->data.grid_rows;
-	cols = data->data.grid_cols;
-	data->map = malloc(rows * sizeof(int *));
+	rows = ft_strlen2d(data->parse->map);
+	data->map = ft_calloc(sizeof(char *), 1 + rows);
 	i = -1;
 	while (++i < rows)
 	{
-		data->map[i] = malloc(cols * sizeof(int));
+		cols = ft_strlen(ft_strtrim(data->parse->map[i], " "));
+		data->map[i] = ft_calloc(cols + 1, sizeof(char));
 		j = -1;
 		while (++j < cols)
-		{
-			if (i == 0 || j == 0 || i == rows - 1 || j == cols - 1 || i == j)
-				data->map[i][j] = 1;
-			else
-				data->map[i][j] = 0;
-		}
+			data->map[i][j] = data->parse->map[i][j];
 	}
 }
 
@@ -42,18 +49,15 @@ void	ft_print_map(t_vars *data)
 	int	i;
 	int	j;
 
+	(void)data;
 	i = -1;
-	while (++i < data->data.grid_cols)
+	while (++i < ft_strlen2d(data->map))
 	{
 		j = -1;
-		while (++j < data->data.grid_rows)
-			printf("[%d]", data->map[i][j]);
+		while (++j < ft_strlen(data->map[i]))
+		{
+			printf("[%c]", data->map[i][j]);
+		}
 		puts("\n");
 	}
 }
-
-// void	ft_main_map(t_vars *data)
-// {
-// 	ft_render_map(data);
-// 	ft_print_map(data);
-// }

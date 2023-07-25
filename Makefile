@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/07/25 08:57:29 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/07/25 16:34:50 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,13 @@ LIBFT_DIR = libft
 CFLAGS = -g #-Wall -Werror -Wextra -g 
 MLBX = -lmlx -framework OpenGL -framework AppKit
 HEADERS =	headers/header.h\
-			headers/structs.h
+			headers/structs.h \
+			headers/cub3d.h
 
+PARSING =	parsing/check_f_and_c.c parsing/main_parsing.c \
+			parsing/file_content.c  parsing/read_file.c \
+			parsing/get_next_line/get_next_line.c \
+			parsing/get_next_line/get_next_line_utils.c
 
 # Source files
 SRC_MN =	src/main.c	src/ft_map.c	src/ft_utils.c	src/ft_player.c \
@@ -31,7 +36,7 @@ SRC_MN =	src/main.c	src/ft_map.c	src/ft_utils.c	src/ft_player.c \
 			
 		 
 #Objects
-SRC = $(SRC_MN) 
+SRC = $(SRC_MN) $(PARSING)
 OBJ = $(addprefix objs/, $(SRC:.c=.o))
 
 
@@ -39,7 +44,7 @@ all: $(NAME)
 
 
 $(NAME) : $(OBJ) $(HEADERS) $(LBFT)
-	@$(CC) $(OBJ) $(LBFT) $(MLBX) -o $(NAME) -Ofast 
+	@$(CC) $(OBJ) $(LBFT) $(MLBX) -o $(NAME) -fsanitize=address
 	@echo "$(NAME): $(GREEN)Successfully made. ✅$(RESET)"
 
 LIB_DIR:
