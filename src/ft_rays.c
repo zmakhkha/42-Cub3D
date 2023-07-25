@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:51:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 10:33:01 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:32:19 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,16 @@ void	ft_intersection(t_vars *data, t_cast *r, int type)
 		r->y_inters = floor(data->player.y / data->data.cub_size)
 			* data->data.cub_size;
 		r->y_inters += r->is_down ? data->data.cub_size : 0;
-		r->x_inters = data->player.x + (r->y_inters - data->player.y)
-			/ tan(r->angle);
+		r->x_inters = abs (data->player.x + (r->y_inters - data->player.y)
+			/ tan(r->angle));
 	}
 	else if (type == VER)
 	{
 		r->x_inters = floor(data->player.x / data->data.cub_size)
 			* data->data.cub_size;
 		r->x_inters += r->is_right ? data->data.cub_size : 0;
-		r->y_inters = data->player.y + (r->x_inters - data->player.x)
-			* tan(r->angle);
+		r->y_inters = abs(data->player.y + (r->x_inters - data->player.x)
+			* tan(r->angle));
 	}
 }
 
@@ -149,7 +149,7 @@ void	ft_ver_loop(t_vars *data, t_cast *r)
 	}
 }
 
-void	ft_cast_one_(t_vars *data, double angle, int id)
+void	ft_cast_one(t_vars *data, double angle, int id)
 {
 	t_cast	r;
 
@@ -165,7 +165,7 @@ void	ft_cast_one_(t_vars *data, double angle, int id)
 	ft_store(data, &r, id);
 }
 
-void	ft_cast_one(t_vars *data, double angle, int id)
+void	ft_cast_one__(t_vars *data, double angle, int id)
 {
 	t_cast	r;
 
