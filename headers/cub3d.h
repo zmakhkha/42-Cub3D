@@ -6,17 +6,19 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:57:43 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/25 15:58:27 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:38:45 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
 # include "get_next_line.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
 typedef struct s_parse
 {
 	char	*no;

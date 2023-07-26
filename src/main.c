@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 14:29:37 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:50:24 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 void	ft_render(t_vars *data)
 {
 	mlx_clear_window(data->mlx, data->win);
-	// ft_render_map(data);
+	ft_render_map(data);
 	ft_render_player(data);
 	ft_render_rays(data);
 	ft_debug(data);
