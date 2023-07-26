@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 12:16:38 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 16:57:20 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	ft_spawn(t_vars *data)
 				break ;
 			}
 		}
-		printf("[%d][%d]\n",i, j );
 		data->player.x = i * data->data.cub_size + data->data.cub_size / 2;
 		data->player.y = j * data->data.cub_size + data->data.cub_size / 2;
 		ft_player_angle(data, data->map[i][j]);

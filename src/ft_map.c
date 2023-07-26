@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:04:28 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 11:57:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:55:27 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,16 @@ void	ft_init_map(t_vars *data)
 
 	cols = 0;
 	rows = ft_strlen2d(data->parse->map);
-	for (int i = 0; i < rows; i++)
+	i = -1;
+	while (++i < rows)
     {
         int curr_cols = ft_strlen(data->parse->map[i]);
         if (curr_cols > cols)
             cols = curr_cols;
     }
 	data->map = ft_calloc(cols + 1, sizeof(char *));
-    for (int i = 0; i < cols; i++)
+	i = -1;
+    while (++i < cols)
     {
         data->map[i] = ft_calloc((rows + 1), sizeof(char));
     }
@@ -48,7 +50,8 @@ void	ft_init_map(t_vars *data)
 	while (++i < rows)
 		{
 			int curr_cols = ft_strlen(data->parse->map[i]);
-			for (int j = 0; j < curr_cols; j++)
+			j = -1;
+			while (++j < curr_cols)
 				data->map[j][i] = data->parse->map[i][j];
 		}
 }

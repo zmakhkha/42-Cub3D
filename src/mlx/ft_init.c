@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:08:13 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 14:23:01 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:04:22 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	ft_init_shared(t_vars *data)
 	data->data.grid_width = data->data.cub_size * data->data.grid_cols;
 	data->data.grid_height = data->data.cub_size * data->data.grid_rows;
 	data->data.fov_angle = 60 * (M_PI / 180);
-	data->data.wall_stripe_width = 20;
+	printf("FOV : [%d]\n", data->data.fov_angle);
+	data->data.wall_stripe_width = 2;
 	data->data.num_rays = data->data.grid_width / data->data.wall_stripe_width;
 	// data->data.num_rays = 1;
 }
@@ -38,6 +39,9 @@ void	ft_init_shared(t_vars *data)
 void	ft_init(t_vars *data)
 {
 	ft_init_shared(data);
+	data->data.win_width = WIDTH;
+	data->data.win_height = HEIGHT;
+	data->data.fov_angle = (60 * M_PI / 180);
 	data->mlx = mlx_init();
 	ft_validate(data);
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, TITLE);

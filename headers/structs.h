@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 18:35:55 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 16:37:05 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ enum
 	ON_DESTROY = 17,
 	ON_ESC = 53
 };
+
+
 typedef struct s_player
 {
 	int			spawn;
@@ -171,8 +173,22 @@ typedef struct s_shared
 	int			fov_angle;
 	int			wall_stripe_width;
 	int			num_rays;
+	int			win_width;
+	int			win_height;
 	t_ray		*ray;
 }				t_shared;
+
+typedef struct s_wall
+{
+	t_line		line;
+	int			i;
+	int			j;
+	double		dst_proj_plan;
+	double		project_wall_height;
+	int			wall_height;
+	int			top_pixel;
+	int			bottom_pixel;
+}				t_wall;
 
 typedef struct s_vars
 {
@@ -184,6 +200,7 @@ typedef struct s_vars
 	t_ray		*rays;
 	t_player	player;
 	t_parse		*parse;
+	t_wall		wall;
 }				t_vars;
 
 #endif

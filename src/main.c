@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 14:50:24 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:05:44 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,38 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
+void	ft_render_walls(t_vars *data)
+{
+	data->wall.i = -1;
+	while (++data->wall.i < data->data.num_rays)
+	{
+		data->wall.dst_proj_plan = (data->data.win_width / 2) / tan(data->data.fov_angle / 2.0);
+		data->wall.project_wall_height = (data->data.cub_size / data->rays[data->wall.i].distance) * data->wall.dst_proj_plan;
+		data->wall.wall_height = (int) data->wall.project_wall_height;
+		data->wall.top_pixel = (data->data.win_height / 2) - (data->wall.project_wall_height / 2);
+		data->wall.bottom_pixel = (data->data.win_height / 2) + (data->wall.project_wall_height / 2);
+		if (data->wall.top_pixel < 0)
+			data->wall.top_pixel = 0;
+		
+		data->wall.line.ox = data->wall.i;
+		data->wall.line.oy = data->wall.top_pixel;
+		data->wall.line.dx = data->wall.i;
+		data->wall.line.dy = data->wall.bottom_pixel;
+		
+		// printf("oy : [%f] [%f]\n", data->wall.line.oy, data->wall.line.dy);
+
+		ft_line_dda(data, data->wall.line, WHITE);
+	}
+}
+
 void	ft_render(t_vars *data)
 {
 	mlx_clear_window(data->mlx, data->win);
 	ft_render_map(data);
-	ft_render_player(data);
-	ft_render_rays(data);
-	ft_debug(data);
+	// ft_render_player(data);
+	// ft_render_rays(data);
+	ft_render_walls(data);
+	// ft_debug(data);
 }
 
 int	main(int n, char **v)
