@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 20:20:23 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 20:40:05 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void ft_render_walls(t_vars *data)
 			data->wall.line.dy = data->wall.bottom_pixel;
 		}
 
-        ft_line_dda(data, data->wall.line, WHITE);
+        ft_line_dda(data, data->wall.line, PURPLE);
     }
 }
 
@@ -94,14 +94,22 @@ void	ft_bg(t_vars *data)
 	int	j;
 
 	i = -1;
-	while(++i < data->data.win_width)
+	while(++i < data->data.win_height / 2)
 	{
 		j = -1;
-		while (++j < data->data.win_height / 2)
+		while (++j < data->data.win_width)
 		{
-		my_mlx_pixel_put(&data->img, i, j, data->parse->cc);
-		}
-		
+		my_mlx_pixel_put(&data->img, j, i, data->parse->ff);
+		}	
+	}
+	i = data->data.win_height / 2;
+	while(++i < data->data.win_height)
+	{
+		j = -1;
+		while (++j < data->data.win_width)
+		{
+		my_mlx_pixel_put(&data->img, j, i, data->parse->cc);
+		}	
 	}
 }
 

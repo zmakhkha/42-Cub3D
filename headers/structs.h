@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 19:36:51 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 20:39:50 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ enum
 	BLUE = 0x3399ff,
 	BLACK = 0x00000000,
 	WHITE = 0xffffff,
-	YELLOW = 0xccff00
+	YELLOW = 0xccff00,
+	BROWN = 0xd4ccb5,
+	PURPLE = 0x9519b2
 };
 
 enum
