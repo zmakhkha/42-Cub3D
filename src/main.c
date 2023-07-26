@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 19:41:38 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 20:20:23 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	ft_bg(t_vars *data)
 		j = -1;
 		while (++j < data->data.win_height / 2)
 		{
-		my_mlx_pixel_put(&data->img, i, j, BLUE);
+		my_mlx_pixel_put(&data->img, i, j, data->parse->cc);
 		}
 		
 	}
