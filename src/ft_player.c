@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 16:57:20 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 19:00:20 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,6 @@ void	ft_render_player(t_vars *data)
 	{
 		data->player.x = new_x;
 		data->player.y = new_y;
-		ft_player_line(data);
+		// ft_player_line(data);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:11:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 12:08:49 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 18:59:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_render_map(t_vars *data)
 			rec.x = i * data->data.cub_size;
 			rec.y = j * data->data.cub_size;
 			rec.len = data->data.cub_size;
-			ft_rectangle(data, rec);
+			// ft_rectangle(data, rec);
 		}
 	}
 }

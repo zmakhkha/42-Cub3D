@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 16:37:05 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 19:36:51 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ typedef struct s_wall
 	int			wall_height;
 	int			top_pixel;
 	int			bottom_pixel;
+	double		cr_dist;
 }				t_wall;
 
 typedef struct s_vars

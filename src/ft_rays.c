@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:51:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 12:50:03 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 18:40:40 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,6 @@ void	ft_render_rays(t_vars *data)
 		tmp.dy = data->rays[i].wall_hit_y;
 		tmp.ox = data->player.x;
 		tmp.oy = data->player.y;
-		ft_line_dda(data, tmp, YELLOW);
+		// ft_line_dda(data, tmp, YELLOW);
 	}
 }

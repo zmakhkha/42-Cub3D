@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 17:05:44 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 19:41:38 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,41 +38,80 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 	{
 		l.ox = l.ox + d.x_inc;
 		l.oy = l.oy + d.y_inc;
-		my_mlx_pixel_put(&(data->img), round(l.ox), round(l.oy), color);
+		my_mlx_pixel_put(&data->img, round(l.ox), round(l.oy), color);
 	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	mlx_put_image_to_window(&(data->img), data->win, data->img.img, 0, 0);
+}
+// 11.wall projection
+void ft_render_walls(t_vars *data)
+{
+    data->wall.i = -1;
+	double strip_width = data->data.win_width / (double)data->data.num_rays;
+    while (++data->wall.i < data->data.num_rays)
+    {
+		data->wall.cr_dist = data->rays[data->wall.i].distance * cos(data->rays[data->wall.i].angle - data->player.rotation_angle);
+        data->wall.dst_proj_plan = (data->data.win_width / 2) / tan(data->data.fov_angle / 2.0);
+        data->wall.project_wall_height = (data->data.cub_size / data->wall.cr_dist) * data->wall.dst_proj_plan;
+        data->wall.wall_height = (int)data->wall.project_wall_height;
+        data->wall.top_pixel = (data->data.win_height / 2) - (data->wall.project_wall_height / 2);
+        data->wall.bottom_pixel = (data->data.win_height / 2) + (data->wall.project_wall_height / 2);
+        if (data->wall.top_pixel < 0)
+            data->wall.top_pixel = 0;
+        if (data->wall.bottom_pixel > data->data.win_height)
+            data->wall.bottom_pixel = data->data.win_height;
+        // Set up the line's coordinates for drawing the wall stripe
+		data->wall.j = -1;
+		double x = tan((double)FOV / data->data.num_rays) * data->rays[data->wall.i].distance;
+		// printf("--> : %f\n", data->rays[data->wall.i].angle);
+		while (++data->wall.j < x)
+		{
+			data->wall.line.ox = (data->wall.i + data->wall.j) * strip_width;
+			data->wall.line.oy = data->wall.top_pixel;
+			data->wall.line.dx = (data->wall.i  + data->wall.j) * strip_width;
+			data->wall.line.dy = data->wall.bottom_pixel;
+		}
+
+        ft_line_dda(data, data->wall.line, WHITE);
+    }
 }
 
-void	ft_render_walls(t_vars *data)
+void	my_mlx_clear_window(t_vars *data)
 {
-	data->wall.i = -1;
-	while (++data->wall.i < data->data.num_rays)
-	{
-		data->wall.dst_proj_plan = (data->data.win_width / 2) / tan(data->data.fov_angle / 2.0);
-		data->wall.project_wall_height = (data->data.cub_size / data->rays[data->wall.i].distance) * data->wall.dst_proj_plan;
-		data->wall.wall_height = (int) data->wall.project_wall_height;
-		data->wall.top_pixel = (data->data.win_height / 2) - (data->wall.project_wall_height / 2);
-		data->wall.bottom_pixel = (data->data.win_height / 2) + (data->wall.project_wall_height / 2);
-		if (data->wall.top_pixel < 0)
-			data->wall.top_pixel = 0;
-		
-		data->wall.line.ox = data->wall.i;
-		data->wall.line.oy = data->wall.top_pixel;
-		data->wall.line.dx = data->wall.i;
-		data->wall.line.dy = data->wall.bottom_pixel;
-		
-		// printf("oy : [%f] [%f]\n", data->wall.line.oy, data->wall.line.dy);
+	int	i;
+	int	j;
 
-		ft_line_dda(data, data->wall.line, WHITE);
+	i = -1;
+	while (++i < data->data.win_width)
+	{
+		j = -1;
+		while(++j < data->data.win_height)
+			my_mlx_pixel_put(&data->img, i, j, BLACK);
+	}
+}
+void	ft_bg(t_vars *data)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while(++i < data->data.win_width)
+	{
+		j = -1;
+		while (++j < data->data.win_height / 2)
+		{
+		my_mlx_pixel_put(&data->img, i, j, BLUE);
+		}
+		
 	}
 }
 
 void	ft_render(t_vars *data)
 {
-	mlx_clear_window(data->mlx, data->win);
+	my_mlx_clear_window(data);
 	ft_render_map(data);
-	// ft_render_player(data);
-	// ft_render_rays(data);
+	ft_render_player(data);
+	ft_render_rays(data);
+	ft_bg(data);
 	ft_render_walls(data);
 	// ft_debug(data);
 }
