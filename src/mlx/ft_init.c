@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:08:13 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 18:30:40 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:23:01 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_init_shared(t_vars *data)
 	data->data.fov_angle = 60 * (M_PI / 180);
 	data->data.wall_stripe_width = 20;
 	data->data.num_rays = data->data.grid_width / data->data.wall_stripe_width;
+	// data->data.num_rays = 1;
 }
 
 // init the mlx stuff

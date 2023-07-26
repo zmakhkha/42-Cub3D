@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 17:42:53 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 12:16:38 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	its_wall(t_vars *data, double x, double y)
 	f_x = floor(x / data->data.cub_size);
 	f_y = floor(y / data->data.cub_size);
 	if (data->map && data->map[f_x] && data->map[f_x][f_y])
-		return (data->map[f_x][f_y] != '0');
+		return (data->map[f_x][f_y] == '1');
 	return (1);
 }
 
@@ -43,31 +43,54 @@ void	ft_player_line(t_vars *data)
 	ft_line_dda(data, l, WHITE);
 }
 
+void	ft_player_angle(t_vars *data, char c)
+{
+	if (c == 'E')
+		data->player.rotation_angle = 0;
+	else if (c == 'S')
+		data->player.rotation_angle = M_PI / 2;
+	else if ( c == 'W')
+		data->player.rotation_angle = M_PI;
+	else if ( c == 'N')
+		data->player.rotation_angle = 1.5 * M_PI;
+		
+}
+
 void	ft_spawn(t_vars *data)
 {
-	int	row;
-	int	col;
+	int		rows;
+	int		cols;
+	int		i;
+	int		j;
+	char	c;
 
-	row = 0;
-	col = 0;
-	puts(data->map[row]);
-	while (data->map[row] && !ft_strchr(data->map[row], 'N')
-		&& !ft_strchr(data->map[row], 'S') && !ft_strchr(data->map[row], 'E')
-		&& !ft_strchr(data->map[row], 'W'))
-	{
-		row++;
-	}
+	c = 0;
+	rows = ft_strlen2d(data->parse->map);
+	i = -1;
+		while (++i < rows)
+		{
+			if (ft_strchr(data->map[i], 'S') || ft_strchr(data->map[i], 'N') || ft_strchr(data->map[i], 'E') || ft_strchr(data->map[i], 'W'))
+			{
+				j = 0;
+				while (!ft_isalpha(data->map[i][j]))
+					j++;
+				c = data->map[i][j];
+				break ;
+			}
+		}
+		printf("[%d][%d]\n",i, j );
+		data->player.x = i * data->data.cub_size + data->data.cub_size / 2;
+		data->player.y = j * data->data.cub_size + data->data.cub_size / 2;
+		ft_player_angle(data, data->map[i][j]);
 }
 void	ft_init_player(t_vars *data)
 {
-	data->player.x = data->data.grid_width / 2;
-	data->player.y = data->data.grid_height / 2;
+	ft_spawn(data);
+	// data->player.rotation_angle = M_PI / 2;
 	data->player.move_speed = 6.0;
-	data->player.rotation_angle = M_PI / 2;
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
 	data->player.rotation_speed = data->player.move_speed * M_PI / 180;
-	// ft_spawn(data);
 }
 
 void	ft_render_player(t_vars *data)

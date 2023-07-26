@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:11:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 18:19:53 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 12:08:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ void	ft_render_map(t_vars *data)
 		j = -1;
 		while (++j < ft_strlen(data->map[i]))
 		{
-			if (data->map[i][j] == '0')
-				rec.fill = BLUE;
-			else
+			if (data->map[i][j] == ' ')
+				continue ;
+			if (data->map[i][j] == '1')
 				rec.fill = RED;
+			else
+				rec.fill = BLUE;
 			rec.x = i * data->data.cub_size;
 			rec.y = j * data->data.cub_size;
 			rec.len = data->data.cub_size;

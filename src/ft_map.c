@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:04:28 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 18:25:55 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:57:32 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,33 @@ void	ft_init_map(t_vars *data)
 	int	rows;
 	int	cols;
 
+	cols = 0;
 	rows = ft_strlen2d(data->parse->map);
-	data->map = ft_calloc(sizeof(char *), 1 + rows);
+	for (int i = 0; i < rows; i++)
+    {
+        int curr_cols = ft_strlen(data->parse->map[i]);
+        if (curr_cols > cols)
+            cols = curr_cols;
+    }
+	data->map = ft_calloc(cols + 1, sizeof(char *));
+    for (int i = 0; i < cols; i++)
+    {
+        data->map[i] = ft_calloc((rows + 1), sizeof(char));
+    }
 	i = -1;
 	while (++i < rows)
-	{
-		cols = ft_strlen(ft_strtrim(data->parse->map[i], " "));
-		data->map[i] = ft_calloc(cols + 1, sizeof(char));
-		j = -1;
-		while (++j < cols)
-			data->map[i][j] = data->parse->map[i][j];
-	}
+		{
+			int curr_cols = ft_strlen(data->parse->map[i]);
+			for (int j = 0; j < curr_cols; j++)
+				data->map[j][i] = data->parse->map[i][j];
+		}
 }
-
 void	ft_print_map(t_vars *data)
 {
 	int	i;
 	int	j;
 
-	(void)data;
+	puts("Printing the map");
 	i = -1;
 	while (++i < ft_strlen2d(data->map))
 	{
@@ -60,4 +68,5 @@ void	ft_print_map(t_vars *data)
 		}
 		puts("\n");
 	}
+	puts("################");
 }
