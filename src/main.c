@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 09:14:20 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:10:54 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,7 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 // 11.wall projection
 void	ft_render_walls(t_vars *data)
 {
-	double	strip_width;
-	double	x;
-
 	data->wall.i = -1;
-	strip_width = data->data.win_width / (double)data->data.num_rays;
 	while (++data->wall.i < data->data.num_rays)
 	{
 		data->wall.cr_dist = data->rays[data->wall.i].distance
@@ -71,19 +67,12 @@ void	ft_render_walls(t_vars *data)
 			data->wall.top_pixel = 0;
 		if (data->wall.bottom_pixel > data->data.win_height)
 			data->wall.bottom_pixel = data->data.win_height;
-		// Set up the line's coordinates for drawing the wall stripe
-		data->wall.j = -1;
-		x = tan(data->data.fov_angle / data->data.num_rays)
-			* data->rays[data->wall.i].distance;
-		// printf("--> : %f\n", data->rays[data->wall.i].angle);
-		while (++data->wall.j < x)
-		{
-			data->wall.line.ox = (data->wall.i + data->wall.j) * strip_width;
-			data->wall.line.oy = data->wall.top_pixel;
-			data->wall.line.dx = (data->wall.i + data->wall.j) * strip_width;
-			data->wall.line.dy = data->wall.bottom_pixel;
-		}
-		ft_line_dda(data, data->wall.line, PURPLE);
+
+		data->wall.line.ox = data->wall.i;
+		data->wall.line.oy = data->wall.top_pixel;
+		data->wall.line.dx = data->wall.i;
+		data->wall.line.dy = data->wall.bottom_pixel;
+		ft_line_dda(data, data->wall.line, RED);
 	}
 }
 
