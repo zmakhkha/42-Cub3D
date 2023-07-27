@@ -46,7 +46,7 @@ int		key_released(int keycode, t_vars *vars);
 // ======================================================================= //
 void	ft_update(t_vars *data);
 void	ft_line_dda(t_vars *data, t_line l, int color);
-int 	ft_render(t_vars *data);
+int		ft_render(t_vars *data);
 
 // ===================================================================== //
 

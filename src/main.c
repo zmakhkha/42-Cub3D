@@ -16,10 +16,14 @@ void	ft_debug(t_vars *data)
 {
 	puts("---- Deboguing ----");
 	puts("Player info");
-	printf("x : [%f] y : [%f]\n", data->player.x / data->data.cub_size, data->player.y / data->data.cub_size);
+	printf("x : [%f] y : [%f]\n", data->player.x / data->data.cub_size,
+		data->player.y / data->data.cub_size);
 	puts("Ray info");
-	printf("Angle : [%f], Distance : [%f], Type  :[%d]\n", data->rays[0].angle, data->rays[0].distance, data->rays[0].is_ver);
-	printf("Left : [%d], Right : [%d], Up : [%d], Down : [%d]\n", data->rays[0].is_left, data->rays[0].is_right,  data->rays[0].is_up, data->rays[0].is_down);
+	printf("Angle : [%f], Distance : [%f], Type  :[%d]\n", data->rays[0].angle,
+		data->rays[0].distance, data->rays[0].is_ver);
+	printf("Left : [%d], Right : [%d], Up : [%d], Down : [%d]\n",
+		data->rays[0].is_left, data->rays[0].is_right, data->rays[0].is_up,
+		data->rays[0].is_down);
 	puts("----------");
 }
 
@@ -42,36 +46,44 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 	}
 }
 // 11.wall projection
-void ft_render_walls(t_vars *data)
+void	ft_render_walls(t_vars *data)
 {
-    data->wall.i = -1;
-	double strip_width = data->data.win_width / (double)data->data.num_rays;
-    while (++data->wall.i < data->data.num_rays)
-    {
-		data->wall.cr_dist = data->rays[data->wall.i].distance * cos(data->rays[data->wall.i].angle - data->player.rotation_angle);
-        data->wall.dst_proj_plan = (data->data.win_width / 2) / tan(data->data.fov_angle / 2.0);
-        data->wall.project_wall_height = (data->data.cub_size / data->wall.cr_dist) * data->wall.dst_proj_plan;
-        data->wall.wall_height = (int)data->wall.project_wall_height;
-        data->wall.top_pixel = (data->data.win_height / 2) - (data->wall.project_wall_height / 2);
-        data->wall.bottom_pixel = (data->data.win_height / 2) + (data->wall.project_wall_height / 2);
-        if (data->wall.top_pixel < 0)
-            data->wall.top_pixel = 0;
-        if (data->wall.bottom_pixel > data->data.win_height)
-            data->wall.bottom_pixel = data->data.win_height;
-        // Set up the line's coordinates for drawing the wall stripe
+	double	strip_width;
+	double	x;
+
+	data->wall.i = -1;
+	strip_width = data->data.win_width / (double)data->data.num_rays;
+	while (++data->wall.i < data->data.num_rays)
+	{
+		data->wall.cr_dist = data->rays[data->wall.i].distance
+			* cos(data->rays[data->wall.i].angle - data->player.rotation_angle);
+		data->wall.dst_proj_plan = (data->data.win_width / 2)
+			/ tan(data->data.fov_angle / 2.0);
+		data->wall.project_wall_height = (data->data.cub_size
+			/ data->wall.cr_dist) * data->wall.dst_proj_plan;
+		data->wall.wall_height = (int)data->wall.project_wall_height;
+		data->wall.top_pixel = (data->data.win_height / 2)
+			- (data->wall.project_wall_height / 2);
+		data->wall.bottom_pixel = (data->data.win_height / 2)
+			+ (data->wall.project_wall_height / 2);
+		if (data->wall.top_pixel < 0)
+			data->wall.top_pixel = 0;
+		if (data->wall.bottom_pixel > data->data.win_height)
+			data->wall.bottom_pixel = data->data.win_height;
+		// Set up the line's coordinates for drawing the wall stripe
 		data->wall.j = -1;
-		double x = tan(data->data.fov_angle / data->data.num_rays) * data->rays[data->wall.i].distance;
+		x = tan(data->data.fov_angle / data->data.num_rays)
+			* data->rays[data->wall.i].distance;
 		// printf("--> : %f\n", data->rays[data->wall.i].angle);
 		while (++data->wall.j < x)
 		{
 			data->wall.line.ox = (data->wall.i + data->wall.j) * strip_width;
 			data->wall.line.oy = data->wall.top_pixel;
-			data->wall.line.dx = (data->wall.i  + data->wall.j) * strip_width;
+			data->wall.line.dx = (data->wall.i + data->wall.j) * strip_width;
 			data->wall.line.dy = data->wall.bottom_pixel;
 		}
-
-        ft_line_dda(data, data->wall.line, PURPLE);
-    }
+		ft_line_dda(data, data->wall.line, PURPLE);
+	}
 }
 
 void	my_mlx_clear_window(t_vars *data)
@@ -83,7 +95,7 @@ void	my_mlx_clear_window(t_vars *data)
 	while (++i < data->data.win_width)
 	{
 		j = -1;
-		while(++j < data->data.win_height)
+		while (++j < data->data.win_height)
 			my_mlx_pixel_put(&data->img, i, j, BLACK);
 	}
 }
@@ -93,22 +105,22 @@ void	ft_bg(t_vars *data)
 	int	j;
 
 	i = -1;
-	while(++i < data->data.win_height / 2)
+	while (++i < data->data.win_height / 2)
 	{
 		j = -1;
 		while (++j < data->data.win_width)
 		{
-		my_mlx_pixel_put(&data->img, j, i, data->parse->ff);
-		}	
+			my_mlx_pixel_put(&data->img, j, i, data->parse->ff);
+		}
 	}
 	i = data->data.win_height / 2;
-	while(++i < data->data.win_height)
+	while (++i < data->data.win_height)
 	{
 		j = -1;
 		while (++j < data->data.win_width)
 		{
-		my_mlx_pixel_put(&data->img, j, i, data->parse->cc);
-		}	
+			my_mlx_pixel_put(&data->img, j, i, data->parse->cc);
+		}
 	}
 }
 
@@ -122,9 +134,8 @@ int	ft_render(t_vars *data)
 	ft_bg(data);
 	ft_render_walls(data);
 	mlx_put_image_to_window(&(data->img), data->win, data->img.img, 0, 0);
-
 	// ft_debug(data);
-	return(0);
+	return (0);
 }
 
 int	main(int n, char **v)

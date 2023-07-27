@@ -19,11 +19,9 @@ def execute_script_on_file(file):
 
 directory_path = "src"
 directory_path_ = "headers"
-directory_path__ = "parsing"
 
 c_files = get_c_files(directory_path)
 c_files_ = get_c_files(directory_path_)
-c_files__ = get_c_files(directory_path__)
 
-for file in (c_files + c_files_ + c_files__):
+for file in (c_files + c_files_):
     execute_script_on_file(file)

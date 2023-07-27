@@ -30,30 +30,32 @@ void	ft_init_map(t_vars *data)
 	int	j;
 	int	rows;
 	int	cols;
+	int	curr_cols;
+	int	curr_cols;
 
 	cols = 0;
 	rows = ft_strlen2d(data->parse->map);
 	i = -1;
 	while (++i < rows)
-    {
-        int curr_cols = ft_strlen(data->parse->map[i]);
-        if (curr_cols > cols)
-            cols = curr_cols;
-    }
+	{
+		curr_cols = ft_strlen(data->parse->map[i]);
+		if (curr_cols > cols)
+			cols = curr_cols;
+	}
 	data->map = ft_calloc(cols + 1, sizeof(char *));
 	i = -1;
-    while (++i < cols)
-    {
-        data->map[i] = ft_calloc((rows + 1), sizeof(char));
-    }
+	while (++i < cols)
+	{
+		data->map[i] = ft_calloc((rows + 1), sizeof(char));
+	}
 	i = -1;
 	while (++i < rows)
-		{
-			int curr_cols = ft_strlen(data->parse->map[i]);
-			j = -1;
-			while (++j < curr_cols)
-				data->map[j][i] = data->parse->map[i][j];
-		}
+	{
+		curr_cols = ft_strlen(data->parse->map[i]);
+		j = -1;
+		while (++j < curr_cols)
+			data->map[j][i] = data->parse->map[i][j];
+	}
 }
 void	ft_print_map(t_vars *data)
 {

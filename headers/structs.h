@@ -68,7 +68,6 @@ enum
 	ON_ESC = 53
 };
 
-
 typedef struct s_player
 {
 	int			spawn;

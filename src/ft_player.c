@@ -49,11 +49,10 @@ void	ft_player_angle(t_vars *data, char c)
 		data->player.rotation_angle = 0;
 	else if (c == 'S')
 		data->player.rotation_angle = M_PI / 2;
-	else if ( c == 'W')
+	else if (c == 'W')
 		data->player.rotation_angle = M_PI;
-	else if ( c == 'N')
+	else if (c == 'N')
 		data->player.rotation_angle = 1.5 * M_PI;
-		
 }
 
 void	ft_spawn(t_vars *data)
@@ -67,20 +66,21 @@ void	ft_spawn(t_vars *data)
 	c = 0;
 	rows = ft_strlen2d(data->parse->map);
 	i = -1;
-		while (++i < rows)
+	while (++i < rows)
+	{
+		if (ft_strchr(data->map[i], 'S') || ft_strchr(data->map[i], 'N')
+			|| ft_strchr(data->map[i], 'E') || ft_strchr(data->map[i], 'W'))
 		{
-			if (ft_strchr(data->map[i], 'S') || ft_strchr(data->map[i], 'N') || ft_strchr(data->map[i], 'E') || ft_strchr(data->map[i], 'W'))
-			{
-				j = 0;
-				while (!ft_isalpha(data->map[i][j]))
-					j++;
-				c = data->map[i][j];
-				break ;
-			}
+			j = 0;
+			while (!ft_isalpha(data->map[i][j]))
+				j++;
+			c = data->map[i][j];
+			break ;
 		}
-		data->player.x = i * data->data.cub_size + data->data.cub_size / 2;
-		data->player.y = j * data->data.cub_size + data->data.cub_size / 2;
-		ft_player_angle(data, data->map[i][j]);
+	}
+	data->player.x = i * data->data.cub_size + data->data.cub_size / 2;
+	data->player.y = j * data->data.cub_size + data->data.cub_size / 2;
+	ft_player_angle(data, data->map[i][j]);
 }
 void	ft_init_player(t_vars *data)
 {

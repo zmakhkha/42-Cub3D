@@ -39,7 +39,6 @@ void	ft_init_shared(t_vars *data)
 // init the mlx stuff
 void	ft_init(t_vars *data)
 {
-
 	ft_init_shared(data);
 	data->mlx = mlx_init();
 	ft_validate(data);
