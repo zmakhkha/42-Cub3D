@@ -17,11 +17,11 @@ def get_c_files(directory):
 def execute_script_on_file(file):
     subprocess.run(["c_formatter_42", file])
 
-directory_path = "src"
-directory_path_ = "headers"
+directory_path = "headers"
+# directory_path_ = "src"
 
 c_files = get_c_files(directory_path)
-c_files_ = get_c_files(directory_path_)
+# c_files_ = get_c_files(directory_path_)
 
 for file in (c_files + c_files_):
     execute_script_on_file(file)

@@ -31,7 +31,6 @@ void	ft_init_map(t_vars *data)
 	int	rows;
 	int	cols;
 	int	curr_cols;
-	int	curr_cols;
 
 	cols = 0;
 	rows = ft_strlen2d(data->parse->map);
