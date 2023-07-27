@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 08:57:52 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:14:20 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 		my_mlx_pixel_put(&data->img, round(l.ox), round(l.oy), color);
 	}
 }
+
 // 11.wall projection
 void	ft_render_walls(t_vars *data)
 {
@@ -86,19 +87,6 @@ void	ft_render_walls(t_vars *data)
 	}
 }
 
-void	my_mlx_clear_window(t_vars *data)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < data->data.win_width)
-	{
-		j = -1;
-		while (++j < data->data.win_height)
-			my_mlx_pixel_put(&data->img, i, j, BLACK);
-	}
-}
 void	ft_bg(t_vars *data)
 {
 	int	i;
@@ -127,14 +115,11 @@ void	ft_bg(t_vars *data)
 int	ft_render(t_vars *data)
 {
 	my_mlx_clear_window(data);
-	// mlx_clear_window(data->mlx, data->win);
-	// ft_render_map(data);
 	ft_render_player(data);
 	ft_render_rays(data);
 	ft_bg(data);
 	ft_render_walls(data);
 	mlx_put_image_to_window(&(data->img), data->win, data->img.img, 0, 0);
-	// ft_debug(data);
 	return (0);
 }
 

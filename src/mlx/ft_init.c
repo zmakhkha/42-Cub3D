@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:08:13 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 08:35:06 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:13:46 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_init(t_vars *data)
 void	ft_initiate_window(t_vars *data)
 {
 	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->img.addr = mlx_get_data_addr(data->img.img,
-		&(data->img.bits_per_pixel), &(data->img.line_length),
+	data->img.addr = mlx_get_data_addr(data->img.img, \
+		&(data->img.bits_per_pixel), &(data->img.line_length), \
 		&(data->img.endian));
 }

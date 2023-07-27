@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:04:28 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 14:55:27 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:10:59 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,22 @@ void	ft_init_map(t_vars *data)
 			data->map[j][i] = data->parse->map[i][j];
 	}
 }
-void	ft_print_map(t_vars *data)
-{
-	int	i;
-	int	j;
 
-	puts("Printing the map");
-	i = -1;
-	while (++i < ft_strlen2d(data->map))
-	{
-		j = -1;
-		while (++j < ft_strlen(data->map[i]))
-		{
-			printf("[%c]", data->map[i][j]);
-		}
-		puts("\n");
-	}
-	puts("################");
-}
+// void	ft_print_map(t_vars *data)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	puts("Printing the map");
+// 	i = -1;
+// 	while (++i < ft_strlen2d(data->map))
+// 	{
+// 		j = -1;
+// 		while (++j < ft_strlen(data->map[i]))
+// 		{
+// 			printf("[%c]", data->map[i][j]);
+// 		}
+// 		puts("\n");
+// 	}
+// 	puts("################");
+// }

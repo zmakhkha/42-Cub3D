@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 08:38:28 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:03:29 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # define TITLE "cub3D"
 # define WIDTH 1000
 # define HEIGHT 1000
-// # define FOV (60 * M_PI / 180)
 # define FOV_DEG 60
 
 # define MAP_NUM_ROWS 12
@@ -27,6 +26,7 @@
 
 # define HOR -1
 # define VER -2
+
 enum
 {
 	NORTH = 0,

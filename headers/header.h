@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:33:20 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 08:50:08 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:15:29 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../libft/libft.h"
 # include "cub3d.h"
 # include "structs.h"
-# include <float.h>
 # include <math.h>
 # include <mlx.h>
 # include <stdio.h>
@@ -33,6 +32,8 @@ void	ft_initiate_window(t_vars *data);
 void	ft_wait(t_vars *data);
 int		destroy(t_vars *vars);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_clear_window(t_vars *data);
+
 
 // src/mlx/ft_shapes.c
 void	ft_rectangle(t_vars *data, t_rect rect);
