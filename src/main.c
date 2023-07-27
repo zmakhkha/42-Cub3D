@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 20:40:05 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:57:52 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 		l.oy = l.oy + d.y_inc;
 		my_mlx_pixel_put(&data->img, round(l.ox), round(l.oy), color);
 	}
-	mlx_put_image_to_window(&(data->img), data->win, data->img.img, 0, 0);
 }
 // 11.wall projection
 void ft_render_walls(t_vars *data)
@@ -61,7 +60,7 @@ void ft_render_walls(t_vars *data)
             data->wall.bottom_pixel = data->data.win_height;
         // Set up the line's coordinates for drawing the wall stripe
 		data->wall.j = -1;
-		double x = tan((double)FOV / data->data.num_rays) * data->rays[data->wall.i].distance;
+		double x = tan(data->data.fov_angle / data->data.num_rays) * data->rays[data->wall.i].distance;
 		// printf("--> : %f\n", data->rays[data->wall.i].angle);
 		while (++data->wall.j < x)
 		{
@@ -113,15 +112,19 @@ void	ft_bg(t_vars *data)
 	}
 }
 
-void	ft_render(t_vars *data)
+int	ft_render(t_vars *data)
 {
 	my_mlx_clear_window(data);
-	ft_render_map(data);
+	// mlx_clear_window(data->mlx, data->win);
+	// ft_render_map(data);
 	ft_render_player(data);
 	ft_render_rays(data);
 	ft_bg(data);
 	ft_render_walls(data);
+	mlx_put_image_to_window(&(data->img), data->win, data->img.img, 0, 0);
+
 	// ft_debug(data);
+	return(0);
 }
 
 int	main(int n, char **v)

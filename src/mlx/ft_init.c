@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:08:13 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 19:03:39 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:35:06 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,29 @@ void	ft_validate(t_vars *data)
 
 void	ft_init_shared(t_vars *data)
 {
+	data->data.win_width = WIDTH;
+	data->data.win_height = HEIGHT;
 	data->data.cub_size = TILE_SIZE;
 	data->data.grid_rows = MAP_NUM_ROWS;
 	data->data.grid_cols = MAP_NUM_COLS;
 	data->data.grid_width = data->data.cub_size * data->data.grid_cols;
 	data->data.grid_height = data->data.cub_size * data->data.grid_rows;
-	data->data.fov_angle = 60 * (M_PI / 180);
-	printf("FOV : [%d]\n", data->data.fov_angle);
+	data->data.fov_angle = FOV_DEG * (M_PI / 180);
+	data->data.half_fov = data->data.fov_angle / 2;
 	data->data.wall_stripe_width = 1;
 	data->data.num_rays = data->data.win_width / data->data.wall_stripe_width;
-	// data->data.num_rays = 1;
 }
 
 // init the mlx stuff
 void	ft_init(t_vars *data)
 {
-	data->data.win_width = WIDTH;
-	data->data.win_height = HEIGHT;
+
 	ft_init_shared(data);
-	data->data.fov_angle = (60 * M_PI / 180);
 	data->mlx = mlx_init();
 	ft_validate(data);
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, TITLE);
 	ft_initiate_window(data);
 	ft_init_map(data);
-	// ft_print_map(data);
 	ft_init_player(data);
 	data->rays = malloc(data->data.num_rays * sizeof(t_ray));
 	if (!data->rays)

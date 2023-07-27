@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:51:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 18:40:40 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:37:22 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,14 +170,14 @@ void	ft_cast_all_rays(t_vars *data)
 	int		i;
 	double	ray_angle;
 
-	ray_angle = data->player.rotation_angle - FOV / 2;
+	ray_angle = data->player.rotation_angle - data->data.half_fov;
 	ray_angle = ft_normalize(ray_angle);
 	i = -1;
 	// puts("--------");
 	while (++i < data->data.num_rays)
 	{
 		ft_cast_one(data, ray_angle, i);
-		ray_angle += (double)FOV / data->data.num_rays;
+		ray_angle += data->data.fov_angle / data->data.num_rays;
 		ray_angle = ft_normalize(ray_angle);
 	}
 }

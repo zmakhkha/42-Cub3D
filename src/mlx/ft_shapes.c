@@ -6,28 +6,28 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:11:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 18:59:16 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:53:44 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/header.h"
 
-void	ft_rectangle(t_vars *data, t_rect rec)
-{
-	int	i;
-	int	j;
+// void	ft_rectangle(t_vars *data, t_rect rec)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = -1;
-	while (++i < rec.len)
-	{
-		j = -1;
-		while (++j < rec.len)
-		{
-			my_mlx_pixel_put(&data->img, rec.x + i, rec.y + j, rec.fill);
-		}
-	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-}
+// 	i = -1;
+// 	while (++i < rec.len)
+// 	{
+// 		j = -1;
+// 		while (++j < rec.len)
+// 		{
+// 			my_mlx_pixel_put(&data->img, rec.x + i, rec.y + j, rec.fill);
+// 		}
+// 	}
+// 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+// }
 
 void	ft_render_map(t_vars *data)
 {

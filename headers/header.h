@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:33:20 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/25 17:06:30 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:50:08 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		key_released(int keycode, t_vars *vars);
 // ======================================================================= //
 void	ft_update(t_vars *data);
 void	ft_line_dda(t_vars *data, t_line l, int color);
-void	ft_render(t_vars *data);
+int 	ft_render(t_vars *data);
 
 // ===================================================================== //
 

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 19:00:20 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:56:06 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_player_line(t_vars *data)
 	l.dx = l.ox + cos(data->player.rotation_angle) * 20;
 	l.dy = l.oy + sin(data->player.rotation_angle) * 20;
 	// ft_rectangle(data, p);
-	ft_line_dda(data, l, WHITE);
+	// ft_line_dda(data, l, WHITE);
 }
 
 void	ft_player_angle(t_vars *data, char c)
@@ -86,7 +86,7 @@ void	ft_init_player(t_vars *data)
 {
 	ft_spawn(data);
 	// data->player.rotation_angle = M_PI / 2;
-	data->player.move_speed = 6.0;
+	data->player.move_speed = 1.5;
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
 	data->player.rotation_speed = data->player.move_speed * M_PI / 180;

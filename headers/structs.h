@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/26 20:39:50 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:38:28 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # define TITLE "cub3D"
 # define WIDTH 1000
 # define HEIGHT 1000
-# define FOV (60 * M_PI / 180)
+// # define FOV (60 * M_PI / 180)
+# define FOV_DEG 60
 
 # define MAP_NUM_ROWS 12
 # define MAP_NUM_COLS 10
-# define TILE_SIZE 60
+# define TILE_SIZE 32
 
 # define HOR -1
 # define VER -2
@@ -172,7 +173,8 @@ typedef struct s_shared
 	int			grid_cols;
 	int			grid_width;
 	int			grid_height;
-	int			fov_angle;
+	double		fov_angle;
+	double		half_fov;
 	int			wall_stripe_width;
 	int			num_rays;
 	int			win_width;
