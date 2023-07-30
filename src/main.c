@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 11:10:54 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/28 20:11:59 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 void	ft_render_walls(t_vars *data)
 {
 	data->wall.i = -1;
+	int w;
+	void *xpm = mlx_xpm_file_to_image(data->mlx, "./texture/image.xpm", &w, &w);
+	int *coller_buffer = (int *)mlx_get_data_addr(xpm, &w, &w, &w);
+
 	while (++data->wall.i < data->data.num_rays)
 	{
 		data->wall.cr_dist = data->rays[data->wall.i].distance
@@ -69,10 +73,26 @@ void	ft_render_walls(t_vars *data)
 			data->wall.bottom_pixel = data->data.win_height;
 
 		data->wall.line.ox = data->wall.i;
-		data->wall.line.oy = data->wall.top_pixel;
+		data->wall.line.oy = data->wall.top_pixel; 
 		data->wall.line.dx = data->wall.i;
 		data->wall.line.dy = data->wall.bottom_pixel;
-		ft_line_dda(data, data->wall.line, RED);
+
+
+		int j = 0;
+		int xp;
+
+		if (!data->rays[data->wall.i].is_ver)
+			xp = fmod(data->rays[data->wall.i].wall_hit_x, 64);
+		else
+			xp = fmod(data->rays[data->wall.i].wall_hit_y, 64);
+		
+		while (j < data->wall.project_wall_height)
+		{
+			int yp = (j * 64) / data->wall.project_wall_height;
+			my_mlx_pixel_put(&data->img, data->wall.line.ox, j + (HEIGHT / 2) - (data->wall.project_wall_height / 2), coller_buffer[(yp * 64) +  xp]);
+			j++;
+		}
+
 	}
 }
 
@@ -121,6 +141,6 @@ int	main(int n, char **v)
 		ft_exit("Allocation Error!!\n", 1);
 	data->parse = parsing_main(n, v);
 	ft_init(data);
-	ft_render(data);
+	// ft_render(data);
 	ft_wait(data);
 }
