@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:08:13 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/13 17:56:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:13:46 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,17 @@ void	ft_validate(t_vars *data)
 
 void	ft_init_shared(t_vars *data)
 {
+	data->data.win_width = WIDTH;
+	data->data.win_height = HEIGHT;
 	data->data.cub_size = TILE_SIZE;
 	data->data.grid_rows = MAP_NUM_ROWS;
 	data->data.grid_cols = MAP_NUM_COLS;
 	data->data.grid_width = data->data.cub_size * data->data.grid_cols;
 	data->data.grid_height = data->data.cub_size * data->data.grid_rows;
-	data->data.fov_angle = 60 * (M_PI / 180);
-	data->data.wall_stripe_width = 20;
-	data->data.num_rays = data->data.grid_width / data->data.wall_stripe_width;
+	data->data.fov_angle = FOV_DEG * (M_PI / 180);
+	data->data.half_fov = data->data.fov_angle / 2;
+	data->data.wall_stripe_width = 1;
+	data->data.num_rays = data->data.win_width / data->data.wall_stripe_width;
 }
 
 // init the mlx stuff
@@ -51,7 +54,7 @@ void	ft_init(t_vars *data)
 void	ft_initiate_window(t_vars *data)
 {
 	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
-	data->img.addr = mlx_get_data_addr(data->img.img,
-		&(data->img.bits_per_pixel), &(data->img.line_length),
+	data->img.addr = mlx_get_data_addr(data->img.img, \
+		&(data->img.bits_per_pixel), &(data->img.line_length), \
 		&(data->img.endian));
 }

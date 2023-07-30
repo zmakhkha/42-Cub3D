@@ -6,28 +6,28 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:11:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/13 18:09:31 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:14:40 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/header.h"
 
-void	ft_rectangle(t_vars *data, t_rect rec)
-{
-	int	i;
-	int	j;
+// void	ft_rectangle(t_vars *data, t_rect rec)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = -1;
-	while (++i < rec.len)
-	{
-		j = -1;
-		while (++j < rec.len)
-		{
-			my_mlx_pixel_put(&data->img, rec.x + i, rec.y + j, rec.fill);
-		}
-	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-}
+// 	i = -1;
+// 	while (++i < rec.len)
+// 	{
+// 		j = -1;
+// 		while (++j < rec.len)
+// 		{
+// 			my_mlx_pixel_put(&data->img, rec.x + i, rec.y + j, rec.fill);
+// 		}
+// 	}
+// 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+// }
 
 void	ft_render_map(t_vars *data)
 {
@@ -36,19 +36,21 @@ void	ft_render_map(t_vars *data)
 	t_rect	rec;
 
 	i = -1;
-	while (++i < data->data.grid_rows)
+	while (++i < ft_strlen2d(data->map))
 	{
 		j = -1;
-		while (++j < data->data.grid_cols)
+		while (++j < ft_strlen(data->map[i]))
 		{
-			if (data->map[i][j] == 0)
-				rec.fill = BLUE;
-			else
+			if (data->map[i][j] == ' ')
+				continue ;
+			if (data->map[i][j] == '1')
 				rec.fill = RED;
+			else
+				rec.fill = BLUE;
 			rec.x = i * data->data.cub_size;
 			rec.y = j * data->data.cub_size;
 			rec.len = data->data.cub_size;
-			ft_rectangle(data, rec);
+			// ft_rectangle(data, rec);
 		}
 	}
 }

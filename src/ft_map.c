@@ -6,11 +6,23 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:04:28 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/15 03:58:27 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:10:59 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
+
+int	ft_strlen2d(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		i++;
+	}
+	return (i);
+}
 
 void	ft_init_map(t_vars *data)
 {
@@ -18,43 +30,48 @@ void	ft_init_map(t_vars *data)
 	int	j;
 	int	rows;
 	int	cols;
+	int	curr_cols;
 
-	rows = data->data.grid_rows;
-	cols = data->data.grid_cols;
-	data->map = malloc(rows * sizeof(int *));
+	cols = 0;
+	rows = ft_strlen2d(data->parse->map);
 	i = -1;
 	while (++i < rows)
 	{
-		data->map[i] = malloc(cols * sizeof(int));
-		j = -1;
-		while (++j < cols)
-		{
-			if ( i == 0 || j == 0 || i == rows - 1
-				|| j == cols - 1)
-				data->map[i][j] = 1;
-			else
-				data->map[i][j] = 0;
-		}
+		curr_cols = ft_strlen(data->parse->map[i]);
+		if (curr_cols > cols)
+			cols = curr_cols;
 	}
-}
-
-void	ft_print_map(t_vars *data)
-{
-	int	i;
-	int	j;
-
+	data->map = ft_calloc(cols + 1, sizeof(char *));
 	i = -1;
-	while (++i < data->data.grid_cols)
+	while (++i < cols)
 	{
+		data->map[i] = ft_calloc((rows + 1), sizeof(char));
+	}
+	i = -1;
+	while (++i < rows)
+	{
+		curr_cols = ft_strlen(data->parse->map[i]);
 		j = -1;
-		while (++j < data->data.grid_rows)
-			printf("[%d]", data->map[i][j]);
-		puts("\n");
+		while (++j < curr_cols)
+			data->map[j][i] = data->parse->map[i][j];
 	}
 }
 
-// void	ft_main_map(t_vars *data)
+// void	ft_print_map(t_vars *data)
 // {
-// 	ft_render_map(data);
-// 	ft_print_map(data);
+// 	int	i;
+// 	int	j;
+
+// 	puts("Printing the map");
+// 	i = -1;
+// 	while (++i < ft_strlen2d(data->map))
+// 	{
+// 		j = -1;
+// 		while (++j < ft_strlen(data->map[i]))
+// 		{
+// 			printf("[%c]", data->map[i][j]);
+// 		}
+// 		puts("\n");
+// 	}
+// 	puts("################");
 // }
