@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:08:13 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 09:13:46 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/07/31 18:17:11 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,37 @@ void	ft_validate(t_vars *data)
 	}
 }
 
+int	ft_map_size(char **map, int i)
+{
+	int a;
+	int b;
+	int max;
+	int len;
+
+	max = 0;
+	a = ft_strlen2d(map);
+	if (i == ROWS)
+		return(a);
+	else if (i == COLS)
+	{
+		b = -1;
+		while(++b < a)
+		{
+			if ((int)ft_strlen(map[b]) > max)
+				max = ft_strlen(map[b]);
+		}
+		return(max);
+	}
+	return (-1);
+}
+
 void	ft_init_shared(t_vars *data)
 {
 	data->data.win_width = WIDTH;
 	data->data.win_height = HEIGHT;
 	data->data.cub_size = TILE_SIZE;
-	data->data.grid_rows = MAP_NUM_ROWS;
-	data->data.grid_cols = MAP_NUM_COLS;
+	data->data.grid_rows = ft_map_size(data->parse->map, ROWS);
+	data->data.grid_cols = ft_map_size(data->parse->map, COLS);
 	data->data.grid_width = data->data.cub_size * data->data.grid_cols;
 	data->data.grid_height = data->data.cub_size * data->data.grid_rows;
 	data->data.fov_angle = FOV_DEG * (M_PI / 180);
