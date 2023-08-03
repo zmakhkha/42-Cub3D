@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/31 18:14:29 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/03 13:16:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 # define HOR -1
 # define VER -2
+
+# define MINI_CUB 10
 
 enum
 {
@@ -211,5 +213,19 @@ typedef struct s_vars
 	t_parse		*parse;
 	t_wall		wall;
 }				t_vars;
+
+typedef struct s_mini
+{
+	int			i;
+	int			j;
+	int			x_player;
+	int			y_player;
+	int			x_start;
+	int			y_start;
+	int			x_end;
+	int			y_end;
+	t_line		l;
+}				t_mini;
+
 
 #endif
