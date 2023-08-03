@@ -25,5 +25,3 @@ c_files = get_c_files(directory_path)
 
 for file in (c_files):
     execute_script_on_file(file)
-
-# test co

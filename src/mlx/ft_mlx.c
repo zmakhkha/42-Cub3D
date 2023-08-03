@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:17:56 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/28 19:55:33 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/07/27 09:13:26 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ void	my_mlx_clear_window(t_vars *data)
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-
-	if (x < 0 || x > WIDTH || y < 0 || y > HEIGHT)
-		return;
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
