@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:11:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/03 12:58:40 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:11:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_rectangle(t_vars *data, t_rect rec)
 	int	j;
 
 	i = -1;
+	j = -1;
 	if ((rec.x + i > -1) && (rec.y + j > -1))
 	{
 		while (++i < rec.len)
@@ -38,10 +39,11 @@ void	ft_render_map(t_vars *data)
 	t_rect	rec;
 
 	i = -1;
+	j = -1;
 	while (++i < ft_strlen2d(data->map))
 	{
 		j = -1;
-		while (++j < ft_strlen(data->map[i]))
+		while (++j < (int)ft_strlen(data->map[i]))
 		{
 			if (data->map[i][j] == ' ')
 				continue ;

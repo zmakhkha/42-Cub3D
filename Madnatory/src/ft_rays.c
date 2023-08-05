@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:51:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 08:37:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:12:16 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ double	ft_distance(double x1, double y1, double x2, double y2)
 
 void	ft_init_ray(t_vars *data, t_cast *r)
 {
+	(void)data;
 	r->is_down = r->angle > 0 && r->angle < M_PI;
 	r->is_up = !r->is_down;
 	r->is_left = r->angle > M_PI / 2 && r->angle < 1.5 * M_PI;

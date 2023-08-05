@@ -6,14 +6,14 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:33:20 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 09:15:29 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:05:41 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 # include "cub3d.h"
 # include "structs.h"
 # include <math.h>

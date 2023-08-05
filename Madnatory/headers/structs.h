@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/03 13:16:49 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:26:24 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define TITLE "cub3D"
 # define WIDTH 1000
-# define HEIGHT 1000
+# define HEIGHT 500
 # define FOV_DEG 60
 
 # define MAP_NUM_ROWS 12

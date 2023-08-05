@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:57:25 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/25 16:25:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:12:36 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_max_line(t_parse	*content, char **lines)
 	max = 0;
 	while (lines[start])
 	{
-		if (ft_strlen(lines[start]) > max)
+		if ((int)ft_strlen(lines[start]) > max)
 			max = ft_strlen(lines[start]);
 		++start;
 	}
@@ -175,7 +175,6 @@ t_parse *parsing_main(int ac, char **av)
 {
 	char **lines;
 	t_parse	*content;
-	int i = 0;
 
 	ft_args(ac, av);
 	lines = ft_read_file(av[1]);

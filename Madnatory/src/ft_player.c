@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/03 12:52:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:10:29 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	ft_player_angle(t_vars *data, char c)
 void	ft_spawn(t_vars *data)
 {
 	int		rows;
-	int		cols;
 	int		i;
 	int		j;
 	char	c;
@@ -64,6 +63,7 @@ void	ft_spawn(t_vars *data)
 	c = 0;
 	rows = ft_strlen2d(data->parse->map);
 	i = -1;
+	j = 0;
 	while (++i < rows)
 	{
 		if (ft_strchr(data->map[i], 'S') || ft_strchr(data->map[i], 'N')

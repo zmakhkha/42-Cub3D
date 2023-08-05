@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:08:13 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/31 18:17:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:32:54 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_map_size(char **map, int i)
 	int len;
 
 	max = 0;
+	len = 0;
 	a = ft_strlen2d(map);
 	if (i == ROWS)
 		return(a);

@@ -6,96 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/03 13:20:58 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:34:40 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
-
-void	ft_mouse(t_vars *data, int x, int y)
-{
-	
-}
-
-void	ft_mini_grid(t_vars *data) // to protect with small window size
-{
-	t_mini	mini;
-	t_rect	rec;
-
-	mini.i = -1;
-	mini.j = -1;
-	puts("hahaha");
-	while (++mini.i < 20)
-	{
-		while(++mini.j < 20)
-		{
-			rec.x = (int)floor(mini.i / MINI_CUB) * MINI_CUB;
-			rec.y = (int)floor(mini.j / MINI_CUB) * MINI_CUB;
-			if (rec.x == 0 || rec.y == 0)
-			{
-				rec.len = 10;
-				rec.fill = RED;
-				ft_rectangle(data, rec);
-			}			
-		}
-	}
-}
-
-void	ft_minimap(t_vars *data)
-{
-	t_mini	mini;
-	ft_mini_grid(data);
-	// mini.x_player = (int)floor(data->player.x /data->data.cub_size);
-	// mini.y_player = (int)floor(data->player.y /data->data.cub_size);
-	// mini.x_start = mini.x_player - 1;
-	// mini.x_end = mini.x_player + 1;
-	// mini.y_start = mini.y_player - 1;
-	// mini.y_end = mini.y_player + 1;
-	// mini.l.ox = (mini.x_start + 100);
-	// mini.l.oy = (mini.y_start +100);
-	// mini.l.dx = (mini.x_start + 100) + 20 * cos(data->player.rotation_angle);
-	// mini.l.dy = (mini.y_start +100) + 20 * sin(data->player.rotation_angle);
-	
-	// int		i;
-	// int		j;
-	// t_rect	rec;
-
-	// i = mini.y_start - 1;
-	// while (++i <= mini.y_end)
-	// {
-	// 	j = mini.x_start - 1;
-	// 	while (++j <= mini.x_end)
-	// 	{
-	// 		if (data->map[i][j] == ' ')
-	// 			continue ;
-	// 		if (data->map[i][j] == '1')
-	// 			rec.fill = BLACK;
-	// 		else
-	// 			rec.fill = WHITE;
-	// 		rec.len = 100;
-	// 		rec.x = (j - mini.x_start) * rec.len;
-	// 		rec.y = (i - mini.y_start) * rec.len;
-	// 		ft_rectangle(data, rec);
-	// 	}
-	// }
-	// ft_line_dda(data, mini.l, RED);
-}
-
-
-void	ft_debug(t_vars *data)
-{
-	puts("---- Deboguing ----");
-	puts("Player info");
-	printf("x : [%f] y : [%f]\n", data->player.x / data->data.cub_size,
-		data->player.y / data->data.cub_size);
-	puts("Ray info");
-	printf("Angle : [%f], Distance : [%f], Type  :[%d]\n", data->rays[0].angle,
-		data->rays[0].distance, data->rays[0].is_ver);
-	printf("Left : [%d], Right : [%d], Up : [%d], Down : [%d]\n",
-		data->rays[0].is_left, data->rays[0].is_right, data->rays[0].is_up,
-		data->rays[0].is_down);
-	puts("----------");
-}
 
 void	ft_line_dda(t_vars *data, t_line l, int color)
 {
@@ -112,7 +27,8 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 	{
 		l.ox = l.ox + d.x_inc;
 		l.oy = l.oy + d.y_inc;
-		my_mlx_pixel_put(&data->img, round(l.ox), round(l.oy), color);
+		if (l.ox >= 0 && l.ox <= WIDTH && l.oy >=0 && l.oy <= HEIGHT)
+			my_mlx_pixel_put(&data->img, round(l.ox), round(l.oy), color);
 	}
 }
 
@@ -178,15 +94,24 @@ int	ft_render(t_vars *data)
 	ft_render_rays(data);
 	ft_bg(data);
 	ft_render_walls(data);
-	ft_minimap(data);
 	mlx_put_image_to_window(&(data->img), data->win, data->img.img, 0, 0);
 	return (0);
+}
+
+void	ft_resolution()
+{
+		if ((WIDTH < 250 || WIDTH > 5000) || (HEIGHT < 250 || HEIGHT > 2500))
+		{
+			printf("Resolution error !!");
+			exit(1);
+		}
 }
 
 int	main(int n, char **v)
 {
 	t_vars	*data;
 
+	// ft_resolution();
 	data = malloc(sizeof(t_vars));
 	if (!data)
 		ft_exit("Allocation Error!!\n", 1);
