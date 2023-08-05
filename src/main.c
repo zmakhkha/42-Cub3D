@@ -6,7 +6,7 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/03 14:13:44 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/03 22:27:01 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_mini_grid(t_vars *data) // to protect with small window size
 
 	mini.i = -1;
 	mini.j = -1;
-	puts("hahaha");
 	while (++mini.i < 20)
 	{
 		while(++mini.j < 20)
@@ -121,7 +120,7 @@ void	ft_render_walls(t_vars *data)
 {
 	data->wall.i = -1;
 	int w;
-	void *xpm = mlx_xpm_file_to_image(data->mlx, "texture/image.xpm", &w, &w);
+	void *xpm = mlx_xpm_file_to_image(data->mlx, "texture/image2.xpm", &w, &w);
 	int *coller_buffer = (int *)mlx_get_data_addr(xpm, &w, &w, &w);
 
 	while (++data->wall.i < data->data.num_rays)
@@ -152,9 +151,9 @@ void	ft_render_walls(t_vars *data)
 		int xp;
 
 		if (!data->rays[data->wall.i].is_ver)
-			xp = fmod(data->rays[data->wall.i].wall_hit_x, 64);
+			xp = fmod(data->rays[data->wall.i].wall_hit_x, data->data.cub_size);
 		else
-			xp = fmod(data->rays[data->wall.i].wall_hit_y, 64);
+			xp = fmod(data->rays[data->wall.i].wall_hit_y, data->data.cub_size);
 		
 		while (j < data->wall.project_wall_height)
 		{
