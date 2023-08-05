@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/08/05 08:22:29 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/08/05 08:53:06 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,23 @@ SRC_MN =	Madnatory/src/main.c \
 			Madnatory/src/mlx/ft_shapes.c \
 			Madnatory/src/mlx/ft_hooks.c \
 			Madnatory/src/ft_rays.c \
+			
+SRC_BN =	Bonus/src/main.c \
+			Bonus/src/ft_map.c \
+			Bonus/src/ft_utils.c \
+			Bonus/src/ft_player.c \
+			Bonus/src/mlx/ft_init.c \
+			Bonus/src/mlx/ft_mlx.c \
+			Bonus/src/mlx/ft_shapes.c \
+			Bonus/src/mlx/ft_hooks.c \
+			Bonus/src/ft_rays.c \
 
 #Objects
 SRC_M = $(SRC_MN) $(PARSING)
 OBJ_M = $(addprefix objs/, $(SRC_M:.c=.o))
+
+SRC_B = $(SRC_BN) $(PARSING)
+OBJ_B = $(addprefix objs/, $(SRC_B:.c=.o))
 
 
 all: $(NAME)
@@ -71,6 +84,9 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo "$(NAME): $(RED)Executable removed successfully 🗑️$(RESET)"
 
+bonus: $(OBJ_B) $(HEADERS) $(LBFT)
+	@$(CC) $(OBJ_B) $(LBFT) $(MLBX) -o $(NAME) -fsanitize=address
+	@echo "$(NAME): $(GREEN)Successfully made. ✅$(RESET)"
 re: fclean all
 
 .PHONY: all re fclean clean

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/05 08:26:24 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/05 11:10:51 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define TITLE "cub3D"
 # define WIDTH 1000
-# define HEIGHT 500
+# define HEIGHT 800
 # define FOV_DEG 60
 
 # define MAP_NUM_ROWS 12
@@ -53,7 +53,8 @@ enum
 	WHITE = 0xffffff,
 	YELLOW = 0xccff00,
 	BROWN = 0xd4ccb5,
-	PURPLE = 0x9519b2
+	PURPLE = 0x9519b2,
+	BLUE_TR = 0x0000ff80
 };
 
 enum
@@ -67,6 +68,7 @@ enum
 	ON_MOUSEMOVE = 6,
 	ON_EXPOSE = 12,
 	ON_DESTROY = 17,
+	M_NOTIFY = 6,
 	ON_ESC = 53
 };
 enum
@@ -214,10 +216,13 @@ typedef struct s_vars
 	t_wall		wall;
 }				t_vars;
 
+# include "../../Madnatory/headers/header.h"
 typedef struct s_mini
 {
 	int			i;
 	int			j;
+	int			dst_x;
+	int			dst_y;
 	int			x_player;
 	int			y_player;
 	int			x_start;
@@ -225,7 +230,9 @@ typedef struct s_mini
 	int			x_end;
 	int			y_end;
 	t_line		l;
+    t_rect      rec;
+	int			posx;
+	int			posy;
 }				t_mini;
-
 
 #endif
