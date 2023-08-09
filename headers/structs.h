@@ -6,7 +6,7 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/03 15:05:07 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/09 20:27:54 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,11 @@ typedef struct s_vars
 	t_player	player;
 	t_parse		*parse;
 	t_wall		wall;
+	t_cast		*cast;
+	int		*texture_so;
+	int		*texture_ea;
+	int		*texture_we;
+	int		*texture_no;
 }				t_vars;
 
 typedef struct s_mini

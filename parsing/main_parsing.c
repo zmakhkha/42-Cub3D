@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:57:25 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/25 16:25:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:44:49 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,5 @@ t_parse *parsing_main(int ac, char **av)
 	ft_map_is_valid(content);
 	ft_check_player_exists(content);
 	ft_is_valid_map(content);
-	// while (content->map[i])
-	// 	printf("%s<\n", ft_strtrim(content->map[i++], " "));
 	return (content);
 }

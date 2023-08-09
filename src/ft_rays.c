@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rays.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:51:10 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 08:37:22 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/09 12:40:09 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void	ft_cast_one(t_vars *data, double angle, int id)
 	ft_steps(data, &r, VER);
 	ft_ver_loop(data, &r);
 	ft_store(data, &r, id);
+	data->cast = &r;
 }
 
 void	ft_cast_all_rays(t_vars *data)

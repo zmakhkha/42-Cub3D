@@ -6,7 +6,7 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/03 22:27:01 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/09 21:29:07 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,46 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 	}
 }
 
+void select_image(t_vars *data)
+{
+	// if (data->cast->is_up && data->cast->found_hor_wall_hit)
+	// {
+	// 	data->texture = "textures/11.xpm";
+	// }
+	// else if (data->cast->is_down && data->cast->found_hor_wall_hit)
+	// {
+	// 	data->texture = "textures/22.xpm";
+	// }
+	// else if (data->cast->is_right && !data->cast->found_hor_wall_hit)
+	// {
+	// 	data->texture =  "textures/55.xpm";
+	// }
+	// else if (data->cast->is_left && !data->cast->found_hor_wall_hit)
+	// {
+	// 	data->texture =  "textures/66.xpm";
+	// }
+
+	int w;
+	void *xpm = mlx_xpm_file_to_image(data->mlx, "textures/p1.xpm", &w, &w);
+	data->texture_we = (int *)mlx_get_data_addr(xpm, &w, &w, &w);
+
+	xpm = mlx_xpm_file_to_image(data->mlx, "textures/p2.xpm", &w, &w);
+	data->texture_ea = (int *)mlx_get_data_addr(xpm, &w, &w, &w);
+
+	xpm = mlx_xpm_file_to_image(data->mlx, "textures/p3.xpm", &w, &w);
+	data->texture_so = (int *)mlx_get_data_addr(xpm, &w, &w, &w);
+
+	xpm = mlx_xpm_file_to_image(data->mlx, "textures/p4.xpm", &w, &w);
+	data->texture_no = (int *)mlx_get_data_addr(xpm, &w, &w, &w);
+}
+
 // 11.wall projection
 void	ft_render_walls(t_vars *data)
 {
 	data->wall.i = -1;
-	int w;
-	void *xpm = mlx_xpm_file_to_image(data->mlx, "texture/image2.xpm", &w, &w);
-	int *coller_buffer = (int *)mlx_get_data_addr(xpm, &w, &w, &w);
+
+	select_image(data);
+
 
 	while (++data->wall.i < data->data.num_rays)
 	{
@@ -146,6 +179,17 @@ void	ft_render_walls(t_vars *data)
 		data->wall.line.dx = data->wall.i;
 		data->wall.line.dy = data->wall.bottom_pixel;
 
+	int *buffer;
+
+	if (data->rays[data->wall.i].is_up && !data->rays[data->wall.i].is_ver)
+		buffer = data->texture_no;
+	else if (data->rays[data->wall.i].is_down && !data->rays[data->wall.i].is_ver)
+		buffer = data->texture_we;
+	else if (data->rays[data->wall.i].is_left && data->rays[data->wall.i].is_ver)
+		buffer = data->texture_ea;
+	else if (data->rays[data->wall.i].is_right && data->rays[data->wall.i].is_ver)
+		buffer = data->texture_so;
+
 
 		int j = 0;
 		int xp;
@@ -158,7 +202,7 @@ void	ft_render_walls(t_vars *data)
 		while (j < data->wall.project_wall_height)
 		{
 			int yp = (j * data->data.cub_size) / data->wall.project_wall_height;
-			my_mlx_pixel_put(&data->img, data->wall.line.ox, j + (HEIGHT / 2) - (data->wall.project_wall_height / 2), coller_buffer[(yp * data->data.cub_size) +  xp]);
+			my_mlx_pixel_put(&data->img, data->wall.line.ox, j + (HEIGHT / 2) - (data->wall.project_wall_height / 2), buffer[(yp * data->data.cub_size) +  xp]);
 			j++;
 		}
 
