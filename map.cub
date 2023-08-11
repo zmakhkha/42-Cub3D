@@ -1,15 +1,9 @@
-NO             path/NORTH     
-EA             NORTH
+NO              textures/1a.xpm
+EA             textures/1b.xpm
 
 
-SO     SOU     TH       
-WE     WE   ST
-
-
-
-
-
-
+SO     textures/1c.xpm
+WE     textures/1d.xpm
 
 
 

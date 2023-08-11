@@ -6,7 +6,7 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/03 22:33:21 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/11 19:41:00 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_spawn(t_vars *data)
 void	ft_init_player(t_vars *data)
 {
 	ft_spawn(data);
-	data->player.move_speed = 3;
+	data->player.move_speed = 15;
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
 	data->player.rotation_speed = data->player.move_speed * M_PI / 180;

@@ -6,7 +6,7 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/09 20:27:54 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/11 23:36:59 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define MAP_NUM_ROWS 12
 # define MAP_NUM_COLS 10
-# define TILE_SIZE 100
+# define TILE_SIZE 500
 
 # define HOR -1
 # define VER -2
@@ -214,9 +214,18 @@ typedef struct s_vars
 	t_wall		wall;
 	t_cast		*cast;
 	int		*texture_so;
+	int hight_so;
+	int width_so;
 	int		*texture_ea;
+	int hight_ea;
+	int width_ea;
 	int		*texture_we;
+	int hight_we;
+	int width_we;
 	int		*texture_no;
+	int hight_no;
+	int width_no;
+	t_parse *v;
 }				t_vars;
 
 typedef struct s_mini
