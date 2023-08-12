@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/08/05 08:22:29 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/08/12 14:17:07 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RESET = \033[0m
 NAME = cub3D
 LBFT = libft/libft.a
 LIBFT_DIR = libft
-CFLAGS = -g -Wall -Werror -Wextra -g 
+CFLAGS = -g #-Wall -Werror -Wextra -g 
 MLBX = -lmlx -framework OpenGL -framework AppKit
 
 HEADERS =	Madnatory/headers/header.h\

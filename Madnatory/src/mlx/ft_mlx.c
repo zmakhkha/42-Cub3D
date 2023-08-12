@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:17:56 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 09:13:26 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/12 14:30:48 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ int	key_hook(int keycode, t_vars *data)
 {
 	if (keycode == ON_ESC)
 	{
-		mlx_destroy_window(data->mlx, data->win);
-		free(data);
-		data = NULL;
-		ft_exit("Destroyed successfully !!", 0);
+		return(destroy(data));
 	}
 	return (0);
 }
@@ -49,6 +46,7 @@ int	key_hook(int keycode, t_vars *data)
 int	destroy(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
+	free(vars->rays);
 	free(vars);
 	ft_exit("Destroyed successfully !!", 0);
 	return (0);
