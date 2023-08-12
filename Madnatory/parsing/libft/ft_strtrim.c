@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 14:59:01 by edraidry          #+#    #+#             */
-/*   Updated: 2022/10/28 19:28:20 by edraidry         ###   ########.fr       */
+/*   Created: 2022/10/18 16:50:34 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/08/12 16:26:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		len;
-	char	*trimed;
+	int		l1;
+	int		index;
 
-	if (!s1 || !set)
-		return (NULL);
-	i = 0;
-	len = ft_strlen(s1);
-	while (s1[i] && ft_strchr(set, s1[i]) != NULL)
-		i++;
-	while (ft_strchr(set, s1[len - 1]) != NULL && len)
-		len--;
-	if ((len - i) < 0 || ft_strlen(s1) == 0)
-		return (ft_strdup(""));
-	trimed = ft_substr(s1, i, (len - i));
-	return (trimed);
+	if (s1 && set)
+	{
+		index = 0;
+		while (s1[index] && ft_strchr(set, s1[index]))
+			index++;
+		l1 = ft_strlen((char *)s1);
+		if (index == l1)
+			return (ft_substr(s1, index, 1));
+		while (ft_strchr(set, s1[l1]) && l1)
+			l1--;
+		return (ft_substr(s1, index, l1 - index + 1));
+	}
+	return (NULL);
 }

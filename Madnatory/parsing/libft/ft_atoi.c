@@ -3,39 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 15:15:24 by edraidry          #+#    #+#             */
-/*   Updated: 2022/10/23 16:20:22 by edraidry         ###   ########.fr       */
+/*   Created: 2022/10/16 14:21:30 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/08/12 16:26:17 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
+
+static	int	ret_nbr(char *tmp)
+{
+	int	i;
+	int	res;
+
+	i = 0;
+	res = 0;
+	while (ft_isdigit(tmp[i]))
+	{
+		res += tmp[i] - 48 ;
+		if (ft_isdigit(tmp[i + 1]))
+			res = res * 10;
+		if (!ft_isdigit(tmp[i + 1]))
+			return (res);
+		i++;
+	}
+	return (res);
+}
 
 int	ft_atoi(const char *str)
 {
-	long	res;
-	long	sing;
-	long	i;
+	char	*tmp;
+	int		i;
 
-	res = 0;
-	sing = 1;
+	tmp = (char *) str;
 	i = 0;
-	if (*str == '\0')
-		return (0);
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+	while ((tmp[i] >= 9 && tmp[i] <= 13) || tmp[i] == 32)
 		i++;
-	if (str[i] == '-')
-		sing = -1;
-	if (str[i] == '+' || str[i] == '-')
-			i++;
-	while (str[i] != '\0' )
+	if (ft_isdigit(tmp[i]))
+		return (ret_nbr(tmp + i));
+	if (((tmp[i] == '+') || (tmp[i] == '-')) && ft_isdigit(tmp[i +1]))
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-			res = res * 10 + str[i] - '0';
+		if (tmp[i] == '-' && ft_isdigit(tmp[i + 1]))
+			return (-1 * ret_nbr(tmp + i + 1));
+		else if (tmp[i] == '+')
+			return (ret_nbr(tmp + i + 1));
 		else
-			break ;
-		i++;
+			return (0);
 	}
-	return (sing * res);
+	return (0);
 }

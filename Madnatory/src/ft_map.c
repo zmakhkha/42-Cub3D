@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:04:28 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/07/27 09:10:59 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:08:43 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,52 +26,29 @@ int	ft_strlen2d(char **str)
 
 void	ft_init_map(t_vars *data)
 {
-	int	i;
-	int	j;
-	int	rows;
-	int	cols;
-	int	curr_cols;
+	t_mini	mini;
 
-	cols = 0;
-	rows = ft_strlen2d(data->parse->map);
-	i = -1;
-	while (++i < rows)
+	mini.cols = 0;
+	mini.rows = ft_strlen2d(data->parse->map);
+	mini.i = -1;
+	while (++mini.i < mini.rows)
 	{
-		curr_cols = ft_strlen(data->parse->map[i]);
-		if (curr_cols > cols)
-			cols = curr_cols;
+		mini.curr_cols = ft_strlen(data->parse->map[mini.i]);
+		if (mini.curr_cols > mini.cols)
+			mini.cols = mini.curr_cols;
 	}
-	data->map = ft_calloc(cols + 1, sizeof(char *));
-	i = -1;
-	while (++i < cols)
+	data->map = ft_calloc(mini.cols + 1, sizeof(char *));
+	mini.i = -1;
+	while (++mini.i < mini.cols)
 	{
-		data->map[i] = ft_calloc((rows + 1), sizeof(char));
+		data->map[mini.i] = ft_calloc((mini.rows + 1), sizeof(char));
 	}
-	i = -1;
-	while (++i < rows)
+	mini.i = -1;
+	while (++mini.i < mini.rows)
 	{
-		curr_cols = ft_strlen(data->parse->map[i]);
-		j = -1;
-		while (++j < curr_cols)
-			data->map[j][i] = data->parse->map[i][j];
+		mini.curr_cols = ft_strlen(data->parse->map[mini.i]);
+		mini.j = -1;
+		while (++mini.j < mini.curr_cols)
+			data->map[mini.j][mini.i] = data->parse->map[mini.i][mini.j];
 	}
 }
-
-// void	ft_print_map(t_vars *data)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	puts("Printing the map");
-// 	i = -1;
-// 	while (++i < ft_strlen2d(data->map))
-// 	{
-// 		j = -1;
-// 		while (++j < ft_strlen(data->map[i]))
-// 		{
-// 			printf("[%c]", data->map[i][j]);
-// 		}
-// 		puts("\n");
-// 	}
-// 	puts("################");
-// }

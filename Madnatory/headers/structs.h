@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/05 08:26:24 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/12 17:24:50 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@
 # include "cub3d.h"
 
 # define TITLE "cub3D"
-# define WIDTH 1000
-# define HEIGHT 500
+# define WIDTH 800
+# define HEIGHT 800
 # define FOV_DEG 60
 
-# define MAP_NUM_ROWS 12
-# define MAP_NUM_COLS 10
 # define TILE_SIZE 32
 
 # define HOR -1
@@ -199,6 +197,22 @@ typedef struct s_wall
 	int			top_pixel;
 	int			bottom_pixel;
 	double		cr_dist;
+	int		*texture_so;
+	int		*texture_ea;
+	int		*texture_we;
+	int		*texture_no;
+	int 	hight_we;
+	int 	width_we;
+	int 	hight_no;
+	int 	width_no;
+	int 	hight_so;
+	int 	width_so;
+	int 	hight_ea;
+	int 	width_ea;
+
+	int 	*buffer;
+	int 	hight;
+	int 	width;
 }				t_wall;
 
 typedef struct s_vars
@@ -216,8 +230,6 @@ typedef struct s_vars
 
 typedef struct s_mini
 {
-	int			i;
-	int			j;
 	int			x_player;
 	int			y_player;
 	int			x_start;
@@ -225,7 +237,12 @@ typedef struct s_mini
 	int			x_end;
 	int			y_end;
 	t_line		l;
-}				t_mini;
 
+	int			i;
+	int			j;
+	int			rows;
+	int			cols;
+	int			curr_cols;
+}				t_mini;
 
 #endif

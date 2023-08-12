@@ -6,25 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/05 08:10:29 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/12 15:54:43 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
-
-int	its_wall(t_vars *data, double x, double y)
-{
-	int	f_x;
-	int	f_y;
-
-	if (x < 0 || y < 0)
-		return (1);
-	f_x = floor(x / data->data.cub_size);
-	f_y = floor(y / data->data.cub_size);
-	if (data->map && data->map[f_x] && data->map[f_x][f_y])
-		return (data->map[f_x][f_y] == '1');
-	return (1);
-}
 
 void	ft_player_line(t_vars *data)
 {
@@ -80,6 +66,7 @@ void	ft_spawn(t_vars *data)
 	data->player.y = j * data->data.cub_size + data->data.cub_size / 2;
 	ft_player_angle(data, data->map[i][j]);
 }
+
 void	ft_init_player(t_vars *data)
 {
 	ft_spawn(data);
@@ -94,6 +81,7 @@ void	ft_render_player(t_vars *data)
 	double	move_step;
 	double	new_x;
 	double	new_y;
+
 	data->player.rotation_angle += data->player.turn_direction
 		* data->player.rotation_speed;
 	move_step = data->player.walk_direction * data->player.move_speed;

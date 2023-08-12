@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 19:59:22 by edraidry          #+#    #+#             */
-/*   Updated: 2022/10/27 14:29:16 by edraidry         ###   ########.fr       */
+/*   Created: 2022/10/23 22:57:46 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/08/12 16:26:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-	if (!lst)
-		return (NULL);
-	while (lst)
+	t_list	*pos;
+	int		i;
+
+	if (lst)
 	{
-		if (lst->next == NULL)
-			return (lst);
-		lst = lst->next;
+		i = 1;
+		pos = lst;
+		while (pos->next)
+		{
+			pos = pos->next;
+			i++;
+		}
+		return (i);
 	}
-	return (lst);
+	return (0);
 }

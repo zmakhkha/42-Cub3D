@@ -3,58 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 08:57:30 by edraidry          #+#    #+#             */
-/*   Updated: 2022/10/27 11:33:07 by edraidry         ###   ########.fr       */
+/*   Created: 2022/10/21 07:23:04 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/08/12 16:26:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-static	int	return_len(long n1)
+static	int	get_size(int n)
 {
-	int	len;
+	int	i;
 
-	len = 0;
-	if (n1 < 0)
+	i = 0;
+	if (n < 0)
+		i++;
+	n *= -1;
+	while (n != 0)
 	{
-	n1 = n1 *(-1);
-	len = 1;
+		n /= 10;
+		i++;
 	}
-	while (n1 > 0)
-	{
-	n1 = n1 / 10;
-	len++;
-	}
-	return (len);
+	return (i);
+}
+
+char	*get_limits(int n)
+{
+	if (n == 2147483647)
+		return (ft_strdup("2147483647"));
+	else if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	else if (n == 0)
+		return (ft_strdup("0"));
+	return (NULL);
 }
 
 char	*ft_itoa(int n)
 {
-	long	len;
-	long	nbr;
+	int		i;
+	int		j;
 	char	*res;
 
-	nbr = n;
-	len = return_len(n);
-	if (n == 0)
-		return (ft_strdup("0"));
-	res = (char *) malloc(sizeof(char) * (len + 1));
-	if (!res)
-		return (0);
-	res[len] = '\0';
-	len--;
-	if (nbr < 0)
+	res = get_limits(n);
+	if (res == NULL)
 	{
-		nbr = nbr *(-1);
-		res[0] = '-';
-	}
-	while (nbr != 0)
-	{
-		res[len] = (nbr % 10) + '0';
-		nbr = nbr / 10;
-		len--;
+		i = get_size(n);
+		res = (char *)malloc((i + 1) * sizeof(char));
+		if (!res)
+			return (NULL);
+		j = i - 1;
+		if (n < 0)
+		{
+			res[0] = '-';
+			n = n * -1;
+		}
+		while (n > 0)
+		{
+			res[j--] = '0' + (int)n % 10;
+			n /= 10;
+		}
+		res[i] = 0;
 	}
 	return (res);
 }

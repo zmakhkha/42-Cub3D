@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 18:40:09 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/25 15:56:55 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/12 18:21:49 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ int check_dot(char *line)
     int count = 0;
     while(line[i])
     {
-        if(line[i] == '.')
+        if(line[i] == ',')
         {
             count++;
         }
@@ -166,8 +166,8 @@ void    check_f(char *line, t_parse *content, int n)
     char **str;
     k = check_dot(line);
     if(k != 2)
-        ft_error("found not corrcot dot '.'");
-    str = ft_split(line,'.');
+        ft_error("found not corrcot dot ','");
+    str = ft_split(line,',');
     while(str[i])
     {
 		j = 0;

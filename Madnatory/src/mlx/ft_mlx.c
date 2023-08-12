@@ -38,7 +38,7 @@ int	key_hook(int keycode, t_vars *data)
 {
 	if (keycode == ON_ESC)
 	{
-		return(destroy(data));
+		return (destroy(data));
 	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 10:45:55 by edraidry          #+#    #+#             */
-/*   Updated: 2022/10/26 15:59:09 by edraidry         ###   ########.fr       */
+/*   Created: 2022/10/18 16:11:22 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/08/12 16:26:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*chr;
-	int		i;
-	int		j;
+	size_t		i;
+	char		*k;
 
 	if (!s1 || !s2)
 		return (NULL);
-	i = 0;
-	chr = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!chr)
+	k = (char *) malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!k)
 		return (NULL);
-	while (s1[i])
+	i = 0;
+	while (i < ft_strlen(s1))
 	{
-		chr[i] = s1[i];
+		k[i] = s1[i];
 		i++;
 	}
-	j = 0;
-	while (s2[j])
-		chr[i++] = s2[j++];
-	chr[i] = '\0';
-	return (chr);
+	while (i < ft_strlen(s1) + ft_strlen(s2))
+	{
+		k[i] = s2[i - ft_strlen(s1)];
+		i++;
+	}
+	k[i] = '\0';
+	return (k);
 }

@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/08/12 14:17:07 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/08/12 18:26:50 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,10 @@ SRC_MN =	Madnatory/src/main.c \
 			Madnatory/src/mlx/ft_shapes.c \
 			Madnatory/src/mlx/ft_hooks.c \
 			Madnatory/src/ft_rays.c \
+			Madnatory/src/ft__rays.c \
+			Madnatory/src/ft___rays.c \
+			Madnatory/src/ft_walls.c \
+			Madnatory/src/ft__walls.c \
 
 #Objects
 SRC_M = $(SRC_MN) $(PARSING)
@@ -52,7 +56,7 @@ all: $(NAME)
 
 
 $(NAME) : $(OBJ_M) $(HEADERS) $(LBFT)
-	@$(CC) $(OBJ_M) $(LBFT) $(MLBX) -o $(NAME) -fsanitize=address
+	@$(CC) $(OBJ_M) $(LBFT) $(MLBX) -o $(NAME) #-fsanitize=address
 	@echo "$(NAME): $(GREEN)Successfully made. ✅$(RESET)"
 
 LIB_DIR:
