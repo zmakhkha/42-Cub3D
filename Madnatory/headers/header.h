@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:33:20 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 18:14:07 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/12 19:18:13 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,13 @@ void	    ft_select_texture(t_vars *data);
 void	    ft_draw_wall(t_vars *data);
 void		ft_render_walls(t_vars *data);
 void		ft_bg(t_vars *data);
-
 // Madnatory/src/ft__walls.c
 int         load_images(t_vars *data);
-
+// ================================================================== //
+// =======================> The bonus Stage <======================= //
 // ================================================================ //
+
+// Bonus/src/ft_utils_bonus.c
+int			ft_render_bonus(t_vars *data);
 
 #endif

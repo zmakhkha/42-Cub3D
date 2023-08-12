@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 17:24:50 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/12 19:47:14 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define VER -2
 
 # define MINI_CUB 10
+
+# define M_NOTIFY 6
 
 enum
 {
