@@ -6,16 +6,11 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/11 23:50:19 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/12 16:05:27 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
-
-void	ft_mouse(t_vars *data, int x, int y)
-{
-	
-}
 
 void	ft_mini_grid(t_vars *data) // to protect with small window size
 {
@@ -38,46 +33,6 @@ void	ft_mini_grid(t_vars *data) // to protect with small window size
 			}			
 		}
 	}
-}
-
-void	ft_minimap(t_vars *data)
-{
-	t_mini	mini;
-	ft_mini_grid(data);
-	// mini.x_player = (int)floor(data->player.x /data->data.cub_size);
-	// mini.y_player = (int)floor(data->player.y /data->data.cub_size);
-	// mini.x_start = mini.x_player - 1;
-	// mini.x_end = mini.x_player + 1;
-	// mini.y_start = mini.y_player - 1;
-	// mini.y_end = mini.y_player + 1;
-	// mini.l.ox = (mini.x_start + 100);
-	// mini.l.oy = (mini.y_start +100);
-	// mini.l.dx = (mini.x_start + 100) + 20 * cos(data->player.rotation_angle);
-	// mini.l.dy = (mini.y_start +100) + 20 * sin(data->player.rotation_angle);
-	
-	// int		i;
-	// int		j;
-	// t_rect	rec;
-
-	// i = mini.y_start - 1;
-	// while (++i <= mini.y_end)
-	// {
-	// 	j = mini.x_start - 1;
-	// 	while (++j <= mini.x_end)
-	// 	{
-	// 		if (data->map[i][j] == ' ')
-	// 			continue ;
-	// 		if (data->map[i][j] == '1')
-	// 			rec.fill = BLACK;
-	// 		else
-	// 			rec.fill = WHITE;
-	// 		rec.len = 100;
-	// 		rec.x = (j - mini.x_start) * rec.len;
-	// 		rec.y = (i - mini.y_start) * rec.len;
-	// 		ft_rectangle(data, rec);
-	// 	}
-	// }
-	// ft_line_dda(data, mini.l, RED);
 }
 
 
@@ -117,24 +72,6 @@ void	ft_line_dda(t_vars *data, t_line l, int color)
 
 void select_image(t_vars *data)
 {
-
-	// if (data->cast->is_up && data->cast->found_hor_wall_hit)
-	// {
-	// 	data->texture = "textures/11.xpm";
-	// }
-	// else if (data->cast->is_down && data->cast->found_hor_wall_hit)
-	// {
-	// 	data->texture = "textures/22.xpm";
-	// }
-	// else if (data->cast->is_right && !data->cast->found_hor_wall_hit)
-	// {
-	// 	data->texture =  "textures/55.xpm";
-	// }
-	// else if (data->cast->is_left && !data->cast->found_hor_wall_hit)
-	// {
-	// 	data->texture =  "textures/66.xpm";
-	// }
-
 	int w;
 	int h;
 	void *xpm = mlx_xpm_file_to_image(data->mlx, data->parse->ea, &data->width_we, &data->hight_we);
@@ -153,12 +90,10 @@ void select_image(t_vars *data)
 	
 }
 
-// 11.wall projection
 void	ft_render_walls(t_vars *data)
 {
 	data->wall.i = -1;
 
-	select_image(data);
 
 
 	while (++data->wall.i < data->data.num_rays)
@@ -226,6 +161,11 @@ void	ft_render_walls(t_vars *data)
 		// 	xp = fmod(data->rays[data->wall.i].wall_hit_x, width);
 		// else
 		// 	xp = fmod(data->rays[data->wall.i].wall_hit_y, width);
+		// if(data->wall.project_wall_height >= HEIGHT)
+		// {
+		// 	float scale = 1000 / data->wall.project_wall_height;
+    	// 	xp = (int)(xp * scale);
+		// }		
 		while (j < data->wall.project_wall_height)
 		{
 			int yp = (j * hight) / data->wall.project_wall_height;
@@ -268,7 +208,8 @@ int	ft_render(t_vars *data)
 	ft_render_rays(data);
 	ft_bg(data);
 	ft_render_walls(data);
-	ft_minimap(data);
+	// printf("[%f]\n", data->rays[]->distance);
+	//ft_minimap(data);
 	mlx_put_image_to_window(&(data->img), data->win, data->img.img, 0, 0);
 	return (0);
 }
@@ -281,6 +222,7 @@ int	main(int n, char **v)
 		ft_exit("Allocation Error!!\n", 1);
 	data->parse = parsing_main(n, v);
 	ft_init(data);
+	select_image(data);
 	ft_render(data);
 	ft_wait(data);
 }
