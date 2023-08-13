@@ -25,5 +25,5 @@ c_files = get_c_files(directory_path)
 
 # for file in (c_files):
 #     execute_script_on_file(file)
-execute_script_on_file("Madnatory/src/ft__walls.c")
+execute_script_on_file("Madnatory/src/ft_player.c")
 
