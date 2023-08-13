@@ -6,7 +6,7 @@
 #    By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/08/13 20:15:09 by edraidry         ###   ########.fr        #
+#    Updated: 2023/08/13 21:30:57 by edraidry         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ all: $(NAME)
 
 
 $(NAME) : $(OBJ_M) $(HEADERS) $(LBFT)
-	@$(CC) $(OBJ_M) $(LBFT) $(MLBX) -o $(NAME)  -fsanitize=address
+	@$(CC) $(OBJ_M) $(LBFT) $(MLBX) -o $(NAME)  #-fsanitize=address
 	@echo "$(NAME): $(GREEN)Successfully made. ✅$(RESET)"
 
 LIB_DIR:
