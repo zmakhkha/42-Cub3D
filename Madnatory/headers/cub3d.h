@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:57:43 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/26 14:38:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 19:13:52 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char		**ft_realloc(char **old, char *new);
 char		**ft_read_file(char *file);
 t_parse		*ft_get_all_content(char **lines);
 t_parse		*parsing_main(int ac, char **av);
+char		**free_byte(char **a);
 
 char		*ft_strdup(const char *src);
 #endif

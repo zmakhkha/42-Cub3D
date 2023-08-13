@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:17:56 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 14:30:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 20:16:07 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,26 @@ int	key_hook(int keycode, t_vars *data)
 	}
 	return (0);
 }
+char	**free_byte(char **a)
+{
+	int	i;
+
+	i = 0;
+	while (a[i])
+	{
+		free(a[i]);
+		i++;
+	}
+	free(a);
+	return (NULL);
+}
+
 
 int	destroy(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	free(vars->rays);
+	free_byte(vars->map);
 	free(vars);
 	ft_exit("Destroyed successfully !!", 0);
 	return (0);

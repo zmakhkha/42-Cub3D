@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_f_and_c.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 18:40:09 by edraidry          #+#    #+#             */
-/*   Updated: 2023/08/12 18:21:49 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 19:58:55 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ void    check_f(char *line, t_parse *content, int n)
     if(k != 2)
         ft_error("found not corrcot dot ','");
     str = ft_split(line,',');
+	free(line);
     while(str[i])
     {
 		j = 0;
@@ -191,4 +192,5 @@ void    check_f(char *line, t_parse *content, int n)
 		content->ff = create_trgb(0, ft_atoi(str[0]), ft_atoi(str[1]), ft_atoi(str[2]));
 	if(n == 6)
 		content->cc = create_trgb(0, ft_atoi(str[0]), ft_atoi(str[1]), ft_atoi(str[2]));
+	free_byte(str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/13 10:42:25 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 20:08:45 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ int	main(int n, char **v)
 	data = malloc(sizeof(t_vars));
 	if (!data)
 		ft_exit("Allocation Error!!\n", 1);
-	data->parse = parsing_main(n, v);
+	data->parse = parsing_main(n, v);	
 	ft_init(data);
 	load_images(data);
 	ft_render(data);
 	ft_wait(data);
+	// free_byte(data->parse->map);
+	// free(content->ea);
+	// free(content->so);
+	// free(content->no);
+	// free(content->we);	
 }

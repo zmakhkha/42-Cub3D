@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
+#    By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/08/13 15:11:42 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/08/13 20:15:09 by edraidry         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME = cub3D
 NAME_B = cub3D_bonus
 LBFT = libft/libft.a
 LIBFT_DIR = libft
-CFLAGS = -g #-Wall -Werror -Wextra -g 
+CFLAGS = -Wall -Werror -Wextra -g 
 MLBX = -lmlx -framework OpenGL -framework AppKit
 
 HEADERS =	Madnatory/headers/header.h\
@@ -65,7 +65,7 @@ all: $(NAME)
 
 
 $(NAME) : $(OBJ_M) $(HEADERS) $(LBFT)
-	@$(CC) $(OBJ_M) $(LBFT) $(MLBX) -o $(NAME) -fsanitize=address
+	@$(CC) $(OBJ_M) $(LBFT) $(MLBX) -o $(NAME)  -fsanitize=address
 	@echo "$(NAME): $(GREEN)Successfully made. ✅$(RESET)"
 
 LIB_DIR:

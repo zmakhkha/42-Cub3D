@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_content.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 20:32:24 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/25 15:56:55 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 19:55:37 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,6 @@ t_parse	*ft_get_all_content(char **lines)
 		++i;
 	}
 	ft_chech_missing(&content);
+	// free_byte(lines);
 	return (&content);
 }

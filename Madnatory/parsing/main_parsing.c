@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:57:25 by edraidry          #+#    #+#             */
-/*   Updated: 2023/08/12 14:37:45 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 20:10:17 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,36 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 }
 
 
+// void	ft_copy_map(t_parse	*content, char **lines)
+// {
+// 	int	start;
+// 	int	max;
+// 	char	*str;
+
+// 	max = ft_max_line(content, lines);
+// 	start = content->start;
+// 	while (lines[start])
+// 	{
+// 		if (lines[start][0] == '\0')
+// 			ft_error("empty line found in the map");
+// 		str = malloc(max + 1);
+// 		if (!str)
+// 			ft_error("malloc fail");
+// 		ft_memset(str, ' ', max);
+// 		str[max] = '\0';
+// 		ft_memcpy(str, lines[start], ft_strlen(lines[start]));
+// 		content->map = ft_realloc(content->map, str);
+// 		++start;
+// 	}
+// }
+
 void	ft_copy_map(t_parse	*content, char **lines)
 {
 	int	start;
 	int	max;
 	char	*str;
+	//int i = 0;
+	char **tmp;
 
 	max = ft_max_line(content, lines);
 	start = content->start;
@@ -88,11 +113,14 @@ void	ft_copy_map(t_parse	*content, char **lines)
 		ft_memset(str, ' ', max);
 		str[max] = '\0';
 		ft_memcpy(str, lines[start], ft_strlen(lines[start]));
-		content->map = ft_realloc(content->map, str);
+		tmp = ft_realloc(content->map, str);
+		// free(str);
+		free(content->map);
+		content->map = tmp;
 		++start;
 	}
+	
 }
-
 void	ft_map_is_valid(t_parse *content)
 {
 	int		i;
@@ -184,7 +212,7 @@ t_parse *parsing_main(int ac, char **av)
 	ft_map_is_valid(content);
 	ft_check_player_exists(content);
 	ft_is_valid_map(content);
-	// while (content->map[i])
-	// 	printf("%s<\n", ft_strtrim(content->map[i++], " "));
+	free_byte(lines);
+	// exit(1);
 	return (content);
 }

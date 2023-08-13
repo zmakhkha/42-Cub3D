@@ -14,7 +14,7 @@ OBJ1 = $(BNS:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wextra -Wall -Werror
+CFLAGS = -Wextra -Wall -Werror -fsanitize=address -g
 
 all: $(NAME) 
 
