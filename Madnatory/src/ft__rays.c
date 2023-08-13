@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 15:45:07 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 15:46:11 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 22:35:43 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_intersection(t_vars *data, t_cast *r, int type)
 {
 	if (type == HOR)
 	{
-		r->y_inters = floor(data->player.y / data->data.cub_size)
+		r->y_inters = floor(data->player.y / data->data.cub_size) \
 			* data->data.cub_size;
 		if (r->is_down)
 			r->y_inters += data->data.cub_size;
@@ -56,7 +56,7 @@ void	ft_intersection(t_vars *data, t_cast *r, int type)
 	}
 	else if (type == VER)
 	{
-		r->x_inters = floor(data->player.x / data->data.cub_size)
+		r->x_inters = floor(data->player.x / data->data.cub_size) \
 			* data->data.cub_size;
 		if (r->is_right)
 			r->x_inters += data->data.cub_size;

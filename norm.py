@@ -17,13 +17,13 @@ def get_c_files(directory):
 def execute_script_on_file(file):
     subprocess.run(["c_formatter_42", file])
 
-directory_path = "Madnatory/headers"
-# directory_path_ = "src"
+directory_path = "Madnatory/parsing"
+directory_path_ = "src"
 
 c_files = get_c_files(directory_path)
-# c_files_ = get_c_files(directory_path_)
+c_files_ = get_c_files(directory_path_)
 
-# for file in (c_files):
-#     execute_script_on_file(file)
-execute_script_on_file("Madnatory/src/ft_player.c")
+for file in (c_files):
+    execute_script_on_file(file)
+# execute_script_on_file("Madnatory/src/ft_player.c")
 

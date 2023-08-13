@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../headers/header.h"
+#include "../headers/header.h"
 
-void	ft_get_map_index(t_parse	*content, char **lines)
+void	ft_get_map_index(t_parse *content, char **lines)
 {
 	int	start;
 
@@ -22,8 +22,7 @@ void	ft_get_map_index(t_parse	*content, char **lines)
 	content->start = start;
 }
 
-
-int	ft_max_line(t_parse	*content, char **lines)
+int	ft_max_line(t_parse *content, char **lines)
 {
 	int	start;
 	int	max;
@@ -46,7 +45,7 @@ void	*ft_memset(void *str, int ch, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		((unsigned char *) str)[i] = (unsigned char)ch;
+		((unsigned char *)str)[i] = (unsigned char)ch;
 		i++;
 	}
 	return (str);
@@ -61,14 +60,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		((unsigned char *) dest)[i] = ((unsigned char *) src)[i];
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
 	return (dest);
-
-	
 }
-
 
 // void	ft_copy_map(t_parse	*content, char **lines)
 // {
@@ -93,14 +89,14 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 // 	}
 // }
 
-void	ft_copy_map(t_parse	*content, char **lines)
+void	ft_copy_map(t_parse *content, char **lines)
 {
-	int	start;
-	int	max;
+	int		start;
+	int		max;
 	char	*str;
-	//int i = 0;
-	char **tmp;
+	char	**tmp;
 
+	// int i = 0;
 	max = ft_max_line(content, lines);
 	start = content->start;
 	while (lines[start])
@@ -119,7 +115,6 @@ void	ft_copy_map(t_parse	*content, char **lines)
 		content->map = tmp;
 		++start;
 	}
-	
 }
 void	ft_map_is_valid(t_parse *content)
 {
@@ -134,8 +129,8 @@ void	ft_map_is_valid(t_parse *content)
 		str = content->map[i];
 		while (str[o])
 		{
-			if (str[o] != '0' && str[o] != '1' && str[o] != ' '
-				&& str[o] != 'N' && str[o] != 'E' && str[o] != 'S' && str[o] != 'W')
+			if (str[o] != '0' && str[o] != '1' && str[o] != ' ' && str[o] != 'N'
+				&& str[o] != 'E' && str[o] != 'S' && str[o] != 'W')
 				ft_error("invalid character found in the map");
 			++o;
 		}
@@ -158,13 +153,14 @@ void	ft_check_player_exists(t_parse *content)
 		str = content->map[i];
 		while (str[o])
 		{
-			if (str[o] == 'N' || str[o] == 'E' || str[o] == 'S' || str[o] == 'W')
+			if (str[o] == 'N' || str[o] == 'E' || str[o] == 'S'
+				|| str[o] == 'W')
 				++count;
 			++o;
 		}
 		++i;
 	}
-	if(count != 1)
+	if (count != 1)
 		ft_error("should have only one player in  the map");
 }
 
@@ -181,16 +177,19 @@ void	ft_is_valid_map(t_parse *cont)
 		str = cont->map[rows];
 		while (str[cols])
 		{
-			if (rows == 0 || !cont->map[rows + 1] || cols == 0 || str[cols + 1] == 0)
+			if (rows == 0 || !cont->map[rows + 1] || cols == 0 || str[cols
+				+ 1] == 0)
 			{
 				if (str[cols] == '0')
 					ft_error("invalid map");
 			}
-			else if (str[cols] == '0' || str[cols] == 'N' || str[cols] == 'E' || str[cols] == 'W' || str[cols] == 'S')
+			else if (str[cols] == '0' || str[cols] == 'N' || str[cols] == 'E'
+				|| str[cols] == 'W' || str[cols] == 'S')
 			{
 				if (str[cols + 1] == ' ' || str[cols - 1] == ' ')
 					ft_error("invalid map");
-				if (cont->map[rows + 1][cols] == ' ' || cont->map[rows - 1][cols] == ' ')
+				if (cont->map[rows + 1][cols] == ' ' || cont->map[rows
+					- 1][cols] == ' ')
 					ft_error("invalid map");
 			}
 			++cols;
@@ -199,10 +198,10 @@ void	ft_is_valid_map(t_parse *cont)
 	}
 }
 
-t_parse *parsing_main(int ac, char **av)
+t_parse	*parsing_main(int ac, char **av)
 {
 	char **lines;
-	t_parse	*content;
+	t_parse *content;
 
 	ft_args(ac, av);
 	lines = ft_read_file(av[1]);

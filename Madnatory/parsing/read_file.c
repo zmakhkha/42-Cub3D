@@ -94,7 +94,7 @@ void	ft_args(int ac, char **av)
 // 	return (arr);
 // }
 
-char **ft_realloc(char **old, char *new)
+char	**ft_realloc(char **old, char *new)
 {
 	int		i;
 	char	**arr;
@@ -102,7 +102,7 @@ char **ft_realloc(char **old, char *new)
 	i = 0;
 	while (old && old[i])
 		++i;
-	arr = malloc(sizeof(char*) * (i + 2));
+	arr = malloc(sizeof(char *) * (i + 2));
 	if (!arr)
 		ft_error("malloc fail");
 	i = 0;
@@ -163,4 +163,3 @@ char	**ft_read_file(char *file)
 		ft_error("empty file");
 	return (arr);
 }
-

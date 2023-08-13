@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/13 21:40:52 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/13 22:38:13 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
 
-void	f()
+void	f(void)
 {
 	system("leaks cub3D");
 }
@@ -21,12 +21,11 @@ int	_main(int n, char **v)
 {
 	t_vars	*data;
 
-	 atexit(f);
+	atexit(f);
 	data = malloc(sizeof(t_vars));
 	if (!data)
 		ft_exit("Allocation Error!!\n", 1);
-	data->parse = parsing_main(n, v);	
-	// printf("--------->[%p]\n", data);
+	data->parse = parsing_main(n, v);
 	ft_init(data);
 	load_images(data);
 	ft_render(data);
@@ -34,7 +33,7 @@ int	_main(int n, char **v)
 	return (0);
 }
 
-int main(int n, char **v)
+int	main(int n, char **v)
 {
-	_main( n, v);
+	_main(n, v);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mlx.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:17:56 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/13 20:16:07 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/13 22:38:48 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	key_hook(int keycode, t_vars *data)
 	}
 	return (0);
 }
+
 char	**free_byte(char **a)
 {
 	int	i;
@@ -55,7 +56,6 @@ char	**free_byte(char **a)
 	free(a);
 	return (NULL);
 }
-
 
 int	destroy(t_vars *vars)
 {

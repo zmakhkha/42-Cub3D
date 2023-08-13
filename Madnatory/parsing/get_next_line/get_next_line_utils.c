@@ -12,7 +12,6 @@
 
 #include "../../headers/get_next_line.h"
 
-
 int	ft_strchr_(char *str)
 {
 	while ((str != NULL) && (*str != '\0'))

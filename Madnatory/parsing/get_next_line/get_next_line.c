@@ -33,7 +33,7 @@ char	*ft_line(char *lien)
 	}
 	if (lien[i] == '\n')
 		str[i++] = '\n';
-	str [i] = '\0';
+	str[i] = '\0';
 	return (str);
 }
 
@@ -78,14 +78,14 @@ char	*get_next_line(int fd)
 	byte = 1;
 	while (ft_strchr_(line_str) && byte)
 	{
-		byte = read (fd, bufer, BUFFER_SIZE);
+		byte = read(fd, bufer, BUFFER_SIZE);
 		if (byte == -1)
-			return (free (bufer), NULL);
-		bufer [byte] = '\0';
+			return (free(bufer), NULL);
+		bufer[byte] = '\0';
 		line_str = ft_strjoin_(line_str, bufer);
 	}
-	free (bufer);
+	free(bufer);
 	line = ft_line(line_str);
-	line_str = ft_n_line (line_str);
+	line_str = ft_n_line(line_str);
 	return (line);
 }
