@@ -1,0 +1,146 @@
+Path:            /Volumes/VOLUME/*/cub3D
+Load Address:    0x102d9d000
+Identifier:      cub3D
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [56970]
+
+Date/Time:       2023-08-13 18:26:26.571 +0100
+Launch Time:     2023-08-13 18:26:23.573 +0100
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         374.6M
+Physical footprint (peak):  380.4M
+----
+
+leaks Report Version: 4.0
+Process 66079: 21165 nodes malloced for 370567 KB
+Process 66079: 90 leaks for 2896 total leaked bytes.
+
+    90 (2.83K) << TOTAL >>
+
+      54 (1.66K) ROOT LEAK: 0x7fb574507190 [432]
+         1 (32 bytes) 0x7fb574506860 [32]  length: 28  "NO              textures/a11"
+         1 (32 bytes) 0x7fb5745068c0 [32]  length: 19  "SO     textures/c11"
+         1 (32 bytes) 0x7fb5745068e0 [32]  length: 27  "EA             textures/b11"
+         1 (32 bytes) 0x7fb574506b80 [32]  length: 19  "WE     textures/d11"
+         1 (32 bytes) 0x7fb574506bb0 [32]  length: 24  "101010001111100000101011"
+         1 (32 bytes) 0x7fb574506bd0 [32]  length: 24  "101010000111110000101011"
+         1 (32 bytes) 0x7fb574506bf0 [32]  length: 24  "101010001111100000000011"
+         1 (32 bytes) 0x7fb574506c10 [32]  length: 24  "101010000000000111111111"
+         1 (32 bytes) 0x7fb574506c30 [32]  length: 24  "101010001111100000101011"
+         1 (32 bytes) 0x7fb574506c60 [32]  length: 17  "F     171,197,242"
+         1 (32 bytes) 0x7fb574506ce0 [32]  length: 16  "C    212,204,181"
+         1 (32 bytes) 0x7fb574506d00 [32]  length: 24  "101011000011111101111101"
+         1 (32 bytes) 0x7fb574506d20 [32]  length: 25  "1010001000000000000000011"
+         1 (32 bytes) 0x7fb574506d40 [32]  length: 24  "101010000011111100000001"
+         1 (32 bytes) 0x7fb574506d60 [32]  length: 24  "101010000011111111111101"
+         1 (32 bytes) 0x7fb574506d80 [32]  length: 24  "101010000000000000000001"
+         1 (32 bytes) 0x7fb574506dc0 [32]  length: 24  "111111111111111111111111"
+         1 (32 bytes) 0x7fb574506e30 [32]  length: 24  "101000000111111111111111"
+         1 (32 bytes) 0x7fb574506e60 [32]  length: 24  "101010000000000000100011"
+         1 (32 bytes) 0x7fb574506ec0 [32]  length: 24  "101010000111110000101011"
+         1 (32 bytes) 0x7fb574506ee0 [32]  length: 24  "101010000111110000101011"
+         1 (32 bytes) 0x7fb574506f00 [32]  length: 24  "101010000000000000101011"
+         1 (32 bytes) 0x7fb574506f20 [32]  length: 24  "101010000011111101111101"
+         1 (32 bytes) 0x7fb574506f40 [32]  length: 24  "101010000000000000010001"
+         1 (32 bytes) 0x7fb574506f60 [32]  length: 25  "10100S0100101010101010101"
+         1 (32 bytes) 0x7fb574506f80 [32]  length: 25  "1010001000111111000000011"
+         1 (16 bytes) 0x7fb574505290 [16]
+         1 (16 bytes) 0x7fb574506880 [16]
+         1 (16 bytes) 0x7fb574506890 [16]
+         1 (16 bytes) 0x7fb5745068a0 [16]
+         1 (16 bytes) 0x7fb5745068b0 [16]
+         1 (16 bytes) 0x7fb574506b20 [16]
+         1 (16 bytes) 0x7fb574506b30 [16]
+         1 (16 bytes) 0x7fb574506b40 [16]
+         1 (16 bytes) 0x7fb574506b50 [16]
+         1 (16 bytes) 0x7fb574506b60 [16]
+         1 (16 bytes) 0x7fb574506b70 [16]
+         1 (16 bytes) 0x7fb574506ba0 [16]
+         1 (16 bytes) 0x7fb574506c50 [16]
+         1 (16 bytes) 0x7fb574506c80 [16]
+         1 (16 bytes) 0x7fb574506c90 [16]
+         1 (16 bytes) 0x7fb574506ca0 [16]
+         1 (16 bytes) 0x7fb574506cb0 [16]
+         1 (16 bytes) 0x7fb574506cc0 [16]
+         1 (16 bytes) 0x7fb574506cd0 [16]
+         1 (16 bytes) 0x7fb574506e00 [16]  length: 11  "10000000001"
+         1 (16 bytes) 0x7fb574506e20 [16]  length: 10  "1000000101"
+         1 (16 bytes) 0x7fb574506e90 [16]
+         1 (16 bytes) 0x7fb574506ea0 [16]
+         1 (16 bytes) 0x7fb574506eb0 [16]
+         1 (16 bytes) 0x7fb574506fb0 [16]
+         1 (16 bytes) 0x7fb574506fc0 [16]  length: 11  "11111111111"
+         1 (16 bytes) 0x7fb574506fd0 [16]
+
+      26 (1008 bytes) ROOT LEAK: 0x7fb57453cc60 [208]
+         1 (32 bytes) 0x7fb57453bf70 [32]  length: 23  "11111111111111111111111"
+         1 (32 bytes) 0x7fb57453cd30 [32]  length: 23  "10000000000000000000001"
+         1 (32 bytes) 0x7fb57453cd50 [32]  length: 23  "10011111111111111111111"
+         1 (32 bytes) 0x7fb57453cd70 [32]  length: 23  "10000000000000000000001"
+         1 (32 bytes) 0x7fb57453cd90 [32]  length: 23  "10001111111111100011111"
+         1 (32 bytes) 0x7fb57453cdb0 [32]  length: 23  "1000000000000000S010001"
+         1 (32 bytes) 0x7fb57453cdd0 [32]  length: 23  "10000000000000010100001"
+         1 (32 bytes) 0x7fb57453cdf0 [32]  length: 23  "10100000000000001000001"
+         1 (32 bytes) 0x7fb57453ce10 [32]  length: 23  "10000010110000000000001"
+         1 (32 bytes) 0x7fb57453ce30 [32]  length: 23  "10110110111010000000001"
+         1 (32 bytes) 0x7fb57453ce50 [32]  length: 23  "11 10110111010111011101"
+         1 (32 bytes) 0x7fb57453ce70 [32]  length: 23  "   10110111010110011101"
+         1 (32 bytes) 0x7fb57453ce90 [32]  length: 23  "   10110111010111011101"
+         1 (32 bytes) 0x7fb57453ceb0 [32]  length: 23  "   10100001010110011101"
+         1 (32 bytes) 0x7fb57453ced0 [32]  length: 23  "   10000000000111011101"
+         1 (32 bytes) 0x7fb57453cef0 [32]  length: 23  "   10001000000110011101"
+         1 (32 bytes) 0x7fb57453cf10 [32]  length: 23  "   10001000000001000101"
+         1 (32 bytes) 0x7fb57453cf30 [32]  length: 23  "   10001000000100010101"
+         1 (32 bytes) 0x7fb57453cf50 [32]  length: 23  "   11111011110101010101"
+         1 (32 bytes) 0x7fb57453cf70 [32]  length: 23  "   10001000001100010101"
+         1 (32 bytes) 0x7fb57453cfa0 [32]  length: 23  "   10111011110101010101"
+         1 (32 bytes) 0x7fb57453cfc0 [32]  length: 23  "   10001000000100010101"
+         1 (32 bytes) 0x7fb57453cfe0 [32]  length: 23  "   11111111110001000001"
+         1 (32 bytes) 0x7fb57453d000 [32]  length: 23  "   11111111111110111111"
+         1 (32 bytes) 0x7fb57453d020 [32]  length: 23  "               111     "
+
+      4 (80 bytes) ROOT LEAK: 0x7fb574506de0 [32]
+         1 (16 bytes) 0x7fb574506db0 [16]  length: 3  "171"
+         1 (16 bytes) 0x7fb574506fe0 [16]  length: 3  "197"
+         1 (16 bytes) 0x7fb574506ff0 [16]  length: 3  "242"
+
+      4 (80 bytes) ROOT LEAK: 0x7fb574507010 [32]
+         1 (16 bytes) 0x7fb574507030 [16]  length: 3  "212"
+         1 (16 bytes) 0x7fb574507040 [16]  length: 3  "204"
+         1 (16 bytes) 0x7fb574507050 [16]  length: 3  "181"
+
+      1 (16 bytes) ROOT LEAK: 0x7fb574506da0 [16]  length: 11  "171,197,242"
+      1 (16 bytes) ROOT LEAK: 0x7fb574507000 [16]  length: 11  "212,204,181"
+
+y/src/mlx/ft_init.c
+FREE: 0x7fb57586b000, LINE = 76, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507060, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507090, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb5745070d0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb5745070b0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb5745070f0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507170, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507110, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507130, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507150, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507340, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb5745073c0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb5745073e0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507360, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb5745075a0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507380, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb5745073a0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507400, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507420, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb5745074e0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb5745075c0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb5745075e0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507600, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507500, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574507620, LINE = 69, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fb574506700, LINE = 78, FILE = Madnatory/src/mlx/ft_mlx.c

@@ -1,0 +1,247 @@
+MALC: 0x7fa75ae0e110, LINE = 25, FILE = Madnatory/src/main.c
+MALC: 0x7fa75ae0e710, LINE = 121, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fa75ae0e730, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fa75ae0e740, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fa75ae0e750, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fa75ae0e770, LINE = 121, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fa75ae0e9a0, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fa75ae0e9b0, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fa75ae0e9c0, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fa75ae0e9d0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ae0ea00, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ae0e9f0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ae0ea40, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ae0ea20, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ae0ea20, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ae0ea60, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ae0ea60, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ae0ea80, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ae0eab0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ae0ee70, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ae0ea80, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ae0eea0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ac04260, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ac04220, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ac040a0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ac04280, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ac04220, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ac040c0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ac04240, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ac042d0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ac04280, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ac04330, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ac040c0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ac04390, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ac040e0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ac042a0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ae0ee70, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ae0eee0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fa75ae0ee90, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fa75ae0ef60, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+╭─zmakhkha@e1r9p6.1337.ma ~/Desktop/cub3d  ‹master*› 
+╰─➤  make re && ./cub3D maps/map.cub
+cub3D: Objects removed successfully 🗑️
+cub3D: Executable removed successfully 🗑️
+make[1]: Nothing to be done for `all'.
+cub3D: Successfully made. ✅
+MALC: 0x7fbf10c0e2d0, LINE = 25, FILE = Madnatory/src/main.c
+MALC: 0x7fbf10c0e8d0, LINE = 121, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fbf10c0e8f0, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fbf10c0e900, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fbf10c0e910, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fbf10c0e930, LINE = 121, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fbf10c0eb60, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fbf10c0eb70, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fbf10c0eb80, LINE = 98, FILE = Madnatory/parsing/check_f_and_c.c
+MALC: 0x7fbf10c0eb90, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10c0ebc0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10c0ebb0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10c0ec00, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10c0ebe0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10c0ebe0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10c0ec20, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10c0ec20, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10c0ec40, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10c0ec70, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10c0f030, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10c0ec40, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10c0f060, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10c0f030, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10c0f0a0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d04080, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10c0f0e0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d040f0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d040a0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d04170, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d04110, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d040a0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d04190, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d040c0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d041f0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d04190, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d04260, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d04110, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d042d0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d04130, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d041b0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d04150, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d04230, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d041b0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d042c0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d041d0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d04350, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d04290, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d041f0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d042b0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d043f0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d04380, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d042d0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf10d041f0, LINE = 112, FILE = Madnatory/parsing/main_parsing.c
+FREE: 0x7fbf10d044a0, LINE = 119, FILE = Madnatory/parsing/main_parsing.c
+MALC: 0x7fbf1306b000, LINE = 74, FILE = Madnatory/src/mlx/ft_init.c
+FREE: 0x7fbf1306b000, LINE = 76, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10c0eb90, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10c0ebc0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10c0ec00, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10c0ebe0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10c0ec20, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10c0ec70, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10c0ec40, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10c0f030, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d04080, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d040f0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d04170, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d040a0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d040c0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d04190, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d04110, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d04130, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d04150, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d041b0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d041d0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d04290, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d042b0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d04380, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d041f0, LINE = 66, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10d043a0, LINE = 69, FILE = Madnatory/src/mlx/ft_mlx.c
+FREE: 0x7fbf10c0e2d0, LINE = 78, FILE = Madnatory/src/mlx/ft_mlx.c
+Destroyed successfully !!Process:         cub3D [64326]
+Path:            /Volumes/VOLUME/*/cub3D
+Load Address:    0x103647000
+Identifier:      cub3D
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [56970]
+
+Date/Time:       2023-08-13 18:23:13.141 +0100
+Launch Time:     2023-08-13 18:23:10.131 +0100
+OS Version:      Mac OS X 10.15.7 (19H2026)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.4 (12D4e)
+
+Physical footprint:         374.7M
+Physical footprint (peak):  380.5M
+----
+
+leaks Report Version: 4.0
+Process 64326: 21200 nodes malloced for 370573 KB
+Process 64326: 89 leaks for 2864 total leaked bytes.
+
+    89 (2.80K) << TOTAL >>
+
+      54 (1.66K) ROOT LEAK: 0x7fbf10c0ee80 [432]
+         1 (32 bytes) 0x7fbf10c0e430 [32]  length: 28  "NO              textures/a11"
+         1 (32 bytes) 0x7fbf10c0e450 [32]  length: 27  "EA             textures/b11"
+         1 (32 bytes) 0x7fbf10c0e490 [32]  length: 19  "SO     textures/c11"
+         1 (32 bytes) 0x7fbf10c0e4b0 [32]  length: 19  "WE     textures/d11"
+         1 (32 bytes) 0x7fbf10c0e730 [32]  length: 16  "C    212,204,181"
+         1 (32 bytes) 0x7fbf10c0e7f0 [32]  length: 17  "F     171,197,242"
+         1 (32 bytes) 0x7fbf10c0e830 [32]  length: 24  "101011000011111101111101"
+         1 (32 bytes) 0x7fbf10c0e850 [32]  length: 25  "1010001000000000000000011"
+         1 (32 bytes) 0x7fbf10c0e870 [32]  length: 24  "101010000000000000000001"
+         1 (32 bytes) 0x7fbf10c0e8b0 [32]  length: 24  "111111111111111111111111"
+         1 (32 bytes) 0x7fbf10c0e950 [32]  length: 24  "101010000000000000100011"
+         1 (32 bytes) 0x7fbf10c0e970 [32]  length: 24  "101010001111100000101011"
+         1 (32 bytes) 0x7fbf10c0e9a0 [32]  length: 24  "101010001111100000101011"
+         1 (32 bytes) 0x7fbf10c0e9c0 [32]  length: 24  "101010000000000111111111"
+         1 (32 bytes) 0x7fbf10c0e9e0 [32]  length: 24  "101010001111100000000011"
+         1 (32 bytes) 0x7fbf10c0ea30 [32]  length: 24  "101010000111110000101011"
+         1 (32 bytes) 0x7fbf10c0ea50 [32]  length: 24  "101010000111110000101011"
+         1 (32 bytes) 0x7fbf10c0ea80 [32]  length: 24  "101010000000000000101011"
+         1 (32 bytes) 0x7fbf10c0eaa0 [32]  length: 24  "101010000011111101111101"
+         1 (32 bytes) 0x7fbf10c0eac0 [32]  length: 24  "101010000000000000010001"
+         1 (32 bytes) 0x7fbf10c0eae0 [32]  length: 25  "10100S0100101010101010101"
+         1 (32 bytes) 0x7fbf10c0eb00 [32]  length: 25  "1010001000111111000000011"
+         1 (32 bytes) 0x7fbf10c0ec90 [32]  length: 24  "101000000111111111111111"
+         1 (32 bytes) 0x7fbf10c0ecb0 [32]  length: 24  "101010000111110000101011"
+         1 (32 bytes) 0x7fbf10c0f1a0 [32]  length: 24  "101010000011111100000001"
+         1 (32 bytes) 0x7fbf10c0f1c0 [32]  length: 24  "101010000011111111111101"
+         1 (16 bytes) 0x7fbf10c040e0 [16]
+         1 (16 bytes) 0x7fbf10c0a810 [16]
+         1 (16 bytes) 0x7fbf10c0ac70 [16]
+         1 (16 bytes) 0x7fbf10c0b290 [16]
+         1 (16 bytes) 0x7fbf10c0b600 [16]
+         1 (16 bytes) 0x7fbf10c0ba60 [16]
+         1 (16 bytes) 0x7fbf10c0d2b0 [16]
+         1 (16 bytes) 0x7fbf10c0e470 [16]
+         1 (16 bytes) 0x7fbf10c0e480 [16]
+         1 (16 bytes) 0x7fbf10c0e750 [16]
+         1 (16 bytes) 0x7fbf10c0e760 [16]
+         1 (16 bytes) 0x7fbf10c0e770 [16]
+         1 (16 bytes) 0x7fbf10c0e780 [16]
+         1 (16 bytes) 0x7fbf10c0e790 [16]
+         1 (16 bytes) 0x7fbf10c0e7a0 [16]
+         1 (16 bytes) 0x7fbf10c0e7b0 [16]
+         1 (16 bytes) 0x7fbf10c0e7c0 [16]
+         1 (16 bytes) 0x7fbf10c0e7d0 [16]
+         1 (16 bytes) 0x7fbf10c0e7e0 [16]
+         1 (16 bytes) 0x7fbf10c0e810 [16]
+         1 (16 bytes) 0x7fbf10c0e820 [16]  length: 11  "11111111111"
+         1 (16 bytes) 0x7fbf10c0ea00 [16]
+         1 (16 bytes) 0x7fbf10c0ea10 [16]
+         1 (16 bytes) 0x7fbf10c0ea20 [16]
+         1 (16 bytes) 0x7fbf10c0eb20 [16]
+         1 (16 bytes) 0x7fbf10c0eb40 [16]  length: 11  "10000000001"
+         1 (16 bytes) 0x7fbf10c0eb50 [16]  length: 10  "1000000101"
+
+      25 (976 bytes) ROOT LEAK: 0x7fbf10e25800 [208]
+         1 (32 bytes) 0x7fbf10e24c50 [32]  length: 23  "11111111111111111111111"
+         1 (32 bytes) 0x7fbf10e258d0 [32]  length: 23  "10011111111111111111111"
+         1 (32 bytes) 0x7fbf10e258f0 [32]  length: 23  "10000000000000000000001"
+         1 (32 bytes) 0x7fbf10e25910 [32]  length: 23  "10001111111111100011111"
+         1 (32 bytes) 0x7fbf10e25930 [32]  length: 23  "1000000000000000S010001"
+         1 (32 bytes) 0x7fbf10e25950 [32]  length: 23  "10000000000000010100001"
+         1 (32 bytes) 0x7fbf10e29210 [32]  length: 23  "10100000000000001000001"
+         1 (32 bytes) 0x7fbf10e29230 [32]  length: 23  "10000010110000000000001"
+         1 (32 bytes) 0x7fbf10e29250 [32]  length: 23  "10110110111010000000001"
+         1 (32 bytes) 0x7fbf10e29270 [32]  length: 23  "11 10110111010111011101"
+         1 (32 bytes) 0x7fbf10e29290 [32]  length: 23  "   10110111010110011101"
+         1 (32 bytes) 0x7fbf10e292b0 [32]  length: 23  "   10110111010111011101"
+         1 (32 bytes) 0x7fbf10e292d0 [32]  length: 23  "   10100001010110011101"
+         1 (32 bytes) 0x7fbf10e292f0 [32]  length: 23  "   10000000000111011101"
+         1 (32 bytes) 0x7fbf10e29310 [32]  length: 23  "   10001000000110011101"
+         1 (32 bytes) 0x7fbf10e29330 [32]  length: 23  "   10001000000001000101"
+         1 (32 bytes) 0x7fbf10e29350 [32]  length: 23  "   10001000000100010101"
+         1 (32 bytes) 0x7fbf10e29370 [32]  length: 23  "   11111011110101010101"
+         1 (32 bytes) 0x7fbf10e29390 [32]  length: 23  "   10001000001100010101"
+         1 (32 bytes) 0x7fbf10e293b0 [32]  length: 23  "   10111011110101010101"
+         1 (32 bytes) 0x7fbf10e293d0 [32]  length: 23  "   10001000000100010101"
+         1 (32 bytes) 0x7fbf10e293f0 [32]  length: 23  "   11111111110001000001"
+         1 (32 bytes) 0x7fbf10e29410 [32]  length: 23  "   11111111111110111111"
+         1 (32 bytes) 0x7fbf10e29430 [32]  length: 23  "               111     "
+
+      4 (80 bytes) ROOT LEAK: 0x7fbf10c0e8d0 [32]
+         1 (16 bytes) 0x7fbf10c0e8f0 [16]  length: 3  "171"
+         1 (16 bytes) 0x7fbf10c0e900 [16]  length: 3  "197"
+         1 (16 bytes) 0x7fbf10c0e910 [16]  length: 3  "242"
+
+      4 (80 bytes) ROOT LEAK: 0x7fbf10c0e930 [32]
+         1 (16 bytes) 0x7fbf10c0eb60 [16]  length: 3  "212"
+         1 (16 bytes) 0x7fbf10c0eb70 [16]  length: 3  "204"
+         1 (16 bytes) 0x7fbf10c0eb80 [16]  length: 3  "181"
+
+      1 (16 bytes) ROOT LEAK: 0x7fbf10c0e8a0 [16]  length: 11  "171,197,242"
+      1 (16 bytes) ROOT LEAK: 0x7fbf10c0e920 [16]  length: 11  "212,204,181"

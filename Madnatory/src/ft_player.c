@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/13 15:39:32 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 18:39:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,29 +81,18 @@ void	ft_render_player(t_vars *data)
 	double	move_step;
 	double	new_x;
 	double	new_y;
-	double	min_dst_wall;
-	int		check;
 
-	check = 0;
 	data->player.rotation_angle += data->player.turn_direction
 		* data->player.rotation_speed;
 	move_step = data->player.walk_direction * data->player.move_speed;
 	new_y = data->player.y + move_step * sin(data->player.rotation_angle);
 	new_x = data->player.x + move_step * cos(data->player.rotation_angle);
-	check = (((int)data->player.x % data->data.cub_size) > min_dst_wall
-		&& ((int)data->player.y % data->data.cub_size) > min_dst_wall);
-	min_dst_wall = data->data.cub_size / 4;
-	if (!its_wall(data, new_x, new_y))
+	if (!its_wall(data, new_x, new_y) && !its_wall(data, new_x +8, new_y+8) \
+	&& !its_wall(data, new_x -8, new_y-8)
+	)
 	{
-		// printf("[%f][%f], >[%d][%d]<\n", new_x, new_y, (int)new_x
-		// 	% data->data.cub_size, (int)new_y % data->data.cub_size);
-		if (((int)new_x % data->data.cub_size > 10) && ((int)new_x \
-				% data->data.cub_size < 22) && ((int)new_y \
-				% data->data.cub_size > 10) && ((int)new_y \
-				% data->data.cub_size < 22))
-		{
 			data->player.x = new_x;
 			data->player.y = new_y;
-		}
+		// }
 	}
 }
