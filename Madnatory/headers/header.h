@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 13:33:20 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 19:18:13 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 10:42:01 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@
 // allowed : open, close, read, write, printf,
 // allowed : malloc, free, perror, strerror, exit
 
-static void	*_malloc(size_t c, char *file, int line)
-{
-	void	*p;
+// static void	*_malloc(size_t c, char *file, int line)
+// {
+// 	void	*p;
 
-	p = malloc(c);
-	printf("MALC: %p, LINE = %i, FILE = %s\n", p, line, file);
-	return (p);
-}
+// 	p = malloc(c);
+// 	printf("MALC: %p, LINE = %i, FILE = %s\n", p, line, file);
+// 	return (p);
+// }
 
-static void	_free(void *c, char *file, int line)
-{
-	printf("FREE: %p, LINE = %i, FILE = %s\n", c, line, file);
-	return (free(c));
-}
+// static void	_free(void *c, char *file, int line)
+// {
+// 	printf("FREE: %p, LINE = %i, FILE = %s\n", c, line, file);
+// 	return (free(c));
+// }
 
-# define malloc(c) _malloc(c, __FILE__, __LINE__)
-# define free(c) _free(c, __FILE__, __LINE__)
+// # define malloc(c) _malloc(c, __FILE__, __LINE__)
+// # define free(c) _free(c, __FILE__, __LINE__)
 
 // ===================================================================== //
 // =======================> The minilibx Stage <======================= //

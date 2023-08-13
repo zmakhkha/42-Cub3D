@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:02:30 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 18:27:21 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 10:42:25 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int n, char **v)
 {
 	t_vars	*data;
 
-	atexit(f);
+	// atexit(f);
 	data = malloc(sizeof(t_vars));
 	if (!data)
 		ft_exit("Allocation Error!!\n", 1);
