@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 15:54:43 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 14:06:23 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,20 +76,25 @@ void	ft_init_player(t_vars *data)
 	data->player.rotation_speed = data->player.move_speed * M_PI / 180;
 }
 
-void	ft_render_player(t_vars *data)
+void ft_render_player(t_vars *data)
 {
-	double	move_step;
-	double	new_x;
-	double	new_y;
+    double move_step;
+    double new_x;
+    double new_y;
+	double min_distance_to_wall;
 
-	data->player.rotation_angle += data->player.turn_direction
-		* data->player.rotation_speed;
-	move_step = data->player.walk_direction * data->player.move_speed;
-	new_y = data->player.y + move_step * sin(data->player.rotation_angle);
-	new_x = data->player.x + move_step * cos(data->player.rotation_angle);
-	if (!its_wall(data, new_x, new_y))
-	{
-		data->player.x = new_x;
-		data->player.y = new_y;
-	}
+    data->player.rotation_angle += data->player.turn_direction * data->player.rotation_speed;
+    move_step = data->player.walk_direction * data->player.move_speed;
+    new_y = data->player.y + move_step * sin(data->player.rotation_angle);
+    new_x = data->player.x + move_step * cos(data->player.rotation_angle);
+
+    min_distance_to_wall = data->data.cub_size / 4;
+
+    if (!its_wall(data, new_x, new_y) && \
+	ft_distance(new_x, new_y, data->rays[data->data.num_rays / 2].wall_hit_x, \
+	data->rays[data->data.num_rays / 2].wall_hit_y) >= min_distance_to_wall)
+    {
+        data->player.x = new_x;
+        data->player.y = new_y;
+    }
 }

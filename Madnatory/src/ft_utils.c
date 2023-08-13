@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:32:41 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/13 10:53:35 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 13:47:04 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,6 @@ int	its_wall(t_vars *data, double x, double y)
 	f_y = floor(y / data->data.cub_size);
 	if (data->map && data->map[f_x] && data->map[f_x][f_y])
 		return (data->map[f_x][f_y] == '1');
-	if (data->map && data->map[f_x] && data->map[f_x][f_y - 1] && data->map && data->map[f_x - 1] && data->map[f_x - 1][f_y])
-		return (data->map[f_x][f_y - 1] == '1' && data->map[f_x - 1][f_y] == '1');
-	if (data->map && data->map[f_x] && data->map[f_x][f_y - 1] && data->map && data->map[f_x + 1] && data->map[f_x + 1][f_y])
-		return (data->map[f_x][f_y - 1] == '1' && data->map[f_x + 1][f_y] == '1');
-	if (data->map && data->map[f_x] && data->map[f_x][f_y + 1] && data->map && data->map[f_x + 1] && data->map[f_x + 1][f_y])
-		return (data->map[f_x][f_y + 1] == '1' && data->map[f_x + 1][f_y] == '1');
-	if (data->map && data->map[f_x - 1] && data->map[f_x - 1][f_y] && data->map && data->map[f_x] && data->map[f_x][f_y + 1])
-		return (data->map[f_x - 1][f_y] == '1' && data->map[f_x][f_y + 1] == '1');
 	return (1);
 }
 
