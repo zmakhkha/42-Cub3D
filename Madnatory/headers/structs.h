@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 19:47:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 22:25:03 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ enum
 	ON_DESTROY = 17,
 	ON_ESC = 53
 };
+
 enum
 {
 	ROWS = -10,
@@ -85,6 +86,7 @@ typedef struct s_player
 	double		rotation_speed;
 	int			turn_direction;
 	int			walk_direction;
+	double		turn;
 }				t_player;
 
 typedef struct s_data

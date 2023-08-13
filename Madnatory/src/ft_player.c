@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/13 18:39:53 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/13 22:27:23 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	ft_render_player(t_vars *data)
 	data->player.rotation_angle += data->player.turn_direction
 		* data->player.rotation_speed;
 	move_step = data->player.walk_direction * data->player.move_speed;
-	new_y = data->player.y + move_step * sin(data->player.rotation_angle);
-	new_x = data->player.x + move_step * cos(data->player.rotation_angle);
+	new_y = data->player.y + move_step * sin(data->player.rotation_angle + data->player.turn);
+	new_x = data->player.x + move_step * cos(data->player.rotation_angle + data->player.turn);
 	if (!its_wall(data, new_x, new_y) && !its_wall(data, new_x +8, new_y+8) \
 	&& !its_wall(data, new_x -8, new_y-8)
 	)
