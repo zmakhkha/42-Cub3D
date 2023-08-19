@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 20:17:56 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/13 22:38:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/15 17:44:47 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,12 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	if (x >= 0 && x <= WIDTH && y >= 0 && y <= HEIGHT)
+	{
+		dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel \
+				/ 8));
+		*(unsigned int *)dst = color;
+	}
 }
 
 int	key_hook(int keycode, t_vars *data)
@@ -41,20 +45,6 @@ int	key_hook(int keycode, t_vars *data)
 		return (destroy(data));
 	}
 	return (0);
-}
-
-char	**free_byte(char **a)
-{
-	int	i;
-
-	i = 0;
-	while (a[i])
-	{
-		free(a[i]);
-		i++;
-	}
-	free(a);
-	return (NULL);
 }
 
 int	destroy(t_vars *vars)

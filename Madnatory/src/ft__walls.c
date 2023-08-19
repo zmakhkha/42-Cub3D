@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:54:43 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/13 22:36:25 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/15 19:19:51 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,26 @@ int	load_images(t_vars *data)
 	int		h;
 	void	*xpm;
 
-	xpm = mlx_xpm_file_to_image(data->mlx, data->parse->ea, \
+	xpm = mlx_xpm_file_to_image(data->mlx, data->parse->we, \
 		&data->wall.width_we, &data->wall.hight_we);
 	if (!xpm)
-		return (printf("Error : Counld not load west texture file"));
+		ft_exit("Error : Counld not load west texture file", 1);
 	data->wall.texture_we = (int *)mlx_get_data_addr(xpm, &w, &w, &h);
 	xpm = mlx_xpm_file_to_image(data->mlx, data->parse->no, \
-		&data->wall.width_ea, &data->wall.hight_ea);
+		&data->wall.width_no, &data->wall.hight_no);
 	if (!xpm)
-		return (printf("Error : Counld not load east texture file"));
-	data->wall.texture_ea = (int *)mlx_get_data_addr(xpm, &w, &w, &h);
+		ft_exit("Error : Counld not load east texture file", 1);
+	data->wall.texture_no = (int *)mlx_get_data_addr(xpm, &w, &w, &h);
 	xpm = mlx_xpm_file_to_image(data->mlx, data->parse->so, \
 		&data->wall.width_so, &data->wall.hight_so);
 	if (!xpm)
-		return (printf("Error : Counld not load south texture file"));
+		ft_exit("Error : Counld not load south texture file", 1);
 	data->wall.texture_so = (int *)mlx_get_data_addr(xpm, &w, &w, &h);
-	xpm = mlx_xpm_file_to_image(data->mlx, data->parse->we, \
-		&data->wall.width_no, &data->wall.hight_no);
+	xpm = mlx_xpm_file_to_image(data->mlx, data->parse->ea, \
+		&data->wall.width_ea, &data->wall.hight_ea);
 	if (!xpm)
-		return (printf("Error : Counld not load north texture file"));
-	data->wall.texture_no = (int *)mlx_get_data_addr(xpm, &w, &w, &h);
+		ft_exit("Error : Counld not load north texture file", 1);
+	data->wall.texture_ea = (int *)mlx_get_data_addr(xpm, &w, &w, &h);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+         #
+#    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/08/13 21:30:57 by edraidry         ###   ########.fr        #
+#    Updated: 2023/08/19 06:51:26 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME = cub3D
 NAME_B = cub3D_bonus
 LBFT = libft/libft.a
 LIBFT_DIR = libft
-CFLAGS = -Wall -Werror -Wextra -g 
+CFLAGS = -Wall -Werror -Wextra
 MLBX = -lmlx -framework OpenGL -framework AppKit
 
 HEADERS =	Madnatory/headers/header.h\
@@ -32,6 +32,8 @@ PARSING =	Madnatory/parsing/check_f_and_c.c \
 			Madnatory/parsing/read_file.c \
 			Madnatory/parsing/get_next_line/get_next_line.c \
 			Madnatory/parsing/get_next_line/get_next_line_utils.c \
+			Madnatory/parsing/split_utils.c \
+			Madnatory/parsing/pars_utils.c \
 
 # Source files
 SRC_MN =	Madnatory/src/ft_map.c \
@@ -65,7 +67,7 @@ all: $(NAME)
 
 
 $(NAME) : $(OBJ_M) $(HEADERS) $(LBFT)
-	@$(CC) $(OBJ_M) $(LBFT) $(MLBX) -o $(NAME)  #-fsanitize=address
+	@$(CC) $(OBJ_M) $(LBFT) $(MLBX) -o $(NAME) -fsanitize=address
 	@echo "$(NAME): $(GREEN)Successfully made. ✅$(RESET)"
 
 LIB_DIR:
@@ -78,10 +80,12 @@ objs/%.o: %.c  $(HEADERS)  Makefile | LIB_DIR
 
 clean:
 	@rm -rf  objs $(OBJ_M) $(OBJ_B)
+	@make clean -C $(LIBFT_DIR)
 	@echo "$(NAME): $(RED)Objects removed successfully 🗑️$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME) $(NAME_B)
+	@make fclean -C $(LIBFT_DIR)
 	@echo "$(NAME): $(RED)Executable removed successfully 🗑️$(RESET)"
 
 re: fclean all

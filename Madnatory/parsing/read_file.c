@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:05:06 by edraidry          #+#    #+#             */
-/*   Updated: 2023/08/13 19:59:58 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:35:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/cub3d.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str && str[i] != '\0')
-		i++;
-	return (i);
-}
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
@@ -71,29 +61,6 @@ void	ft_args(int ac, char **av)
 	close(i);
 }
 
-// char	**ft_realloc(char **old, char *new)
-// {
-// 	int		i;
-// 	char	**arr;
-
-// 	i = 0;
-// 	while (old && old[i])
-// 		++i;
-// 	arr = malloc(sizeof(char*) * (i + 2));
-// 	if (!arr)
-// 		ft_error("malloc fail");
-// 	i = 0;
-// 	while (old && old[i])
-// 	{
-// 		arr[i] = old[i];
-// 		++i;
-// 	}
-// 	free(old);
-// 	arr[i] = new;
-// 	arr[i + 1] = NULL;
-// 	return (arr);
-// }
-
 char	**ft_realloc(char **old, char *new)
 {
 	int		i;
@@ -116,28 +83,6 @@ char	**ft_realloc(char **old, char *new)
 	return (arr);
 }
 
-// char	**ft_read_file(char *file)
-// {
-// 	int		fd;
-// 	char	**arr;
-// 	char	*line;
-
-// 	fd = open(file, O_RDONLY);
-// 	arr = NULL;
-// 	while (1)
-// 	{
-// 		line = get_next_line(fd);
-// 		if (!line)
-// 			break ;
-// 		if (line[ft_strlen(line) - 1] == '\n')
-// 			line[ft_strlen(line) - 1] = '\0';
-// 		arr = ft_realloc(arr, line);
-// 	}
-// 	if (!arr)
-// 		ft_error("empty file");
-// 	return (arr);
-// }
-
 char	**ft_read_file(char *file)
 {
 	int		fd;
@@ -157,7 +102,6 @@ char	**ft_read_file(char *file)
 		tmp = ft_realloc(arr, line);
 		free(arr);
 		arr = tmp;
-		// free(line);
 	}
 	if (!arr)
 		ft_error("empty file");

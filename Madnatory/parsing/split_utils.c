@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   split_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 09:40:19 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 16:26:03 by zmakhkha         ###   ########.fr       */
+/*   Created: 2023/08/14 14:59:03 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/08/14 15:36:04 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../headers/header.h"
 
-void	ft_striteri(char *s, void (*f) (unsigned int, char*))
+char	*ft_get_type(char *line)
 {
-	unsigned int	i;
+	int		i;
+	int		o;
+	char	*path;
 
-	if (s == NULL || (*f) == NULL)
-		return ;
 	i = 0;
-	while (s[i])
-	{
-		(*f)(i, &s[i]);
-		i++;
-	}
+	while (line[i] == ' ')
+		++i;
+	while (line[i] != ' ')
+		++i;
+	while (line[i] == ' ')
+		++i;
+	o = ft_strlen(line) - 1;
+	while (line[o] == ' ' && o != i)
+		--o;
+	line[o + 1] = '\0';
+	path = ft_strdup(&line[i]);
+	if (!path)
+		ft_error("malloc fail");
+	return (path);
 }

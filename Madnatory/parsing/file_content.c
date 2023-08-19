@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 20:32:24 by edraidry          #+#    #+#             */
-/*   Updated: 2023/08/13 22:41:27 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/15 19:05:46 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,6 @@ int	ft_is_type(char *line)
 	return (0);
 }
 
-char	*ft_get_type(char *line)
-{
-	int		i;
-	int		o;
-	char	*path;
-
-	i = 0;
-	while (line[i] == ' ')
-		++i;
-	while (line[i] != ' ')
-		++i;
-	while (line[i] == ' ')
-		++i;
-	o = ft_strlen(line) - 1;
-	while (line[o] == ' ' && o != i)
-		--o;
-	line[o + 1] = '\0';
-	path = ft_strdup(&line[i]);
-	if (!path)
-		ft_error("malloc fail");
-	return (path);
-}
-
 void	ft_chech_duplication(t_parse *content, int type)
 {
 	if (type == 1 && content->no)
@@ -70,9 +47,9 @@ void	ft_chech_duplication(t_parse *content, int type)
 		ft_error("south texture is duplicated");
 	else if (type == 4 && content->we)
 		ft_error("weast texture is duplicated");
-	else if (type == 5 && content->ff) 
+	else if (type == 5 && content->ff)
 		ft_error("floor is duplicated");
-	else if (type == 6 && content->cc) 
+	else if (type == 6 && content->cc)
 		ft_error("ciel is duplicated");
 }
 
@@ -86,9 +63,9 @@ void	ft_chech_missing(t_parse *content)
 		ft_error("south texture not found");
 	else if (!content->we)
 		ft_error("weast texture not found");
-	else if (!content->ff)
+	else if (content->ff < 0)
 		ft_error("floor not found");
-	else if (!content->cc)
+	else if (content->cc < 0)
 		ft_error("ciel not found");
 }
 
@@ -96,24 +73,21 @@ void	ft_set_type(t_parse *content, char *line, int index)
 {
 	int			type;
 	char		*path;
-	static int	count;
+	static int	count = 0;
 
-	count = 0;
 	type = ft_is_type(line);
 	ft_chech_duplication(content, type);
 	path = ft_get_type(line);
-	if (type == 1) 
+	if (type == 1)
 		content->no = path;
-	else if (type == 2) 
+	else if (type == 2)
 		content->ea = path;
-	else if (type == 3) 
+	else if (type == 3)
 		content->so = path;
-	else if (type == 4) 
+	else if (type == 4)
 		content->we = path;
-	else if (type == 5) 
-	{
+	else if (type == 5)
 		check_f(path, content, 5);
-	}
 	else if (type == 6)
 		check_f(path, content, 6);
 	if (type != 7)
@@ -136,6 +110,5 @@ t_parse	*ft_get_all_content(char **lines)
 		++i;
 	}
 	ft_chech_missing(&content);
-	// free_byte(lines);
 	return (&content);
 }

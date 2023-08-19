@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
+/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:57:25 by edraidry          #+#    #+#             */
-/*   Updated: 2023/08/13 20:10:17 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:47:21 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,57 +38,6 @@ int	ft_max_line(t_parse *content, char **lines)
 	return (max);
 }
 
-void	*ft_memset(void *str, int ch, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)str)[i] = (unsigned char)ch;
-		i++;
-	}
-	return (str);
-}
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t	i;
-
-	if (dest == src)
-		return (dest);
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
-	}
-	return (dest);
-}
-
-// void	ft_copy_map(t_parse	*content, char **lines)
-// {
-// 	int	start;
-// 	int	max;
-// 	char	*str;
-
-// 	max = ft_max_line(content, lines);
-// 	start = content->start;
-// 	while (lines[start])
-// 	{
-// 		if (lines[start][0] == '\0')
-// 			ft_error("empty line found in the map");
-// 		str = malloc(max + 1);
-// 		if (!str)
-// 			ft_error("malloc fail");
-// 		ft_memset(str, ' ', max);
-// 		str[max] = '\0';
-// 		ft_memcpy(str, lines[start], ft_strlen(lines[start]));
-// 		content->map = ft_realloc(content->map, str);
-// 		++start;
-// 	}
-// }
-
 void	ft_copy_map(t_parse *content, char **lines)
 {
 	int		start;
@@ -96,7 +45,6 @@ void	ft_copy_map(t_parse *content, char **lines)
 	char	*str;
 	char	**tmp;
 
-	// int i = 0;
 	max = ft_max_line(content, lines);
 	start = content->start;
 	while (lines[start])
@@ -110,98 +58,45 @@ void	ft_copy_map(t_parse *content, char **lines)
 		str[max] = '\0';
 		ft_memcpy(str, lines[start], ft_strlen(lines[start]));
 		tmp = ft_realloc(content->map, str);
-		// free(str);
 		free(content->map);
 		content->map = tmp;
 		++start;
 	}
 }
-void	ft_map_is_valid(t_parse *content)
-{
-	int		i;
-	int		o;
-	char	*str;
-
-	i = 0;
-	while (content->map[i])
-	{
-		o = 0;
-		str = content->map[i];
-		while (str[o])
-		{
-			if (str[o] != '0' && str[o] != '1' && str[o] != ' ' && str[o] != 'N'
-				&& str[o] != 'E' && str[o] != 'S' && str[o] != 'W')
-				ft_error("invalid character found in the map");
-			++o;
-		}
-		++i;
-	}
-}
-
-void	ft_check_player_exists(t_parse *content)
-{
-	int		i;
-	int		o;
-	int		count;
-	char	*str;
-
-	i = 0;
-	count = 0;
-	while (content->map[i])
-	{
-		o = 0;
-		str = content->map[i];
-		while (str[o])
-		{
-			if (str[o] == 'N' || str[o] == 'E' || str[o] == 'S'
-				|| str[o] == 'W')
-				++count;
-			++o;
-		}
-		++i;
-	}
-	if (count != 1)
-		ft_error("should have only one player in  the map");
-}
 
 void	ft_is_valid_map(t_parse *cont)
 {
-	int		cols;
-	int		rows;
-	char	*str;
+	t_mini	m;
 
-	rows = 0;
-	while (cont->map[rows])
+	m.rows = -1;
+	while (cont->map[++m.rows])
 	{
-		cols = 0;
-		str = cont->map[rows];
-		while (str[cols])
+		m.cols = -1;
+		m.str = cont->map[m.rows];
+		while (m.str[++m.cols])
 		{
-			if (rows == 0 || !cont->map[rows + 1] || cols == 0 || str[cols
-				+ 1] == 0)
+			if ((m.rows == 0 || !cont->map[m.rows + 1] || \
+			m.cols == 0 || m.str[m.cols \
+			+ 1] == 0) && m.str[m.cols] == '0')
+				ft_error("invalid map");
+			else if (m.str[m.cols] == '0' || m.str[m.cols] == 'N' \
+			|| m.str[m.cols] == 'E' || m.str[m.cols] == 'W' \
+			|| m.str[m.cols] == 'S')
 			{
-				if (str[cols] == '0')
+				if (m.str[m.cols + 1] == ' ' || m.str[m.cols - 1] == ' ')
+					ft_error("invalid map");
+				if (cont->map[m.rows + 1][m.cols] == ' ' || cont->map[m.rows
+					- 1][m.cols] == ' ')
 					ft_error("invalid map");
 			}
-			else if (str[cols] == '0' || str[cols] == 'N' || str[cols] == 'E'
-				|| str[cols] == 'W' || str[cols] == 'S')
-			{
-				if (str[cols + 1] == ' ' || str[cols - 1] == ' ')
-					ft_error("invalid map");
-				if (cont->map[rows + 1][cols] == ' ' || cont->map[rows
-					- 1][cols] == ' ')
-					ft_error("invalid map");
-			}
-			++cols;
 		}
-		++rows;
 	}
 }
 
 t_parse	*parsing_main(int ac, char **av)
 {
-	char **lines;
-	t_parse *content;
+	char	**lines;
+	t_parse	*content;
 
 	ft_args(ac, av);
 	lines = ft_read_file(av[1]);
@@ -212,6 +107,5 @@ t_parse	*parsing_main(int ac, char **av)
 	ft_check_player_exists(content);
 	ft_is_valid_map(content);
 	free_byte(lines);
-	// exit(1);
 	return (content);
 }

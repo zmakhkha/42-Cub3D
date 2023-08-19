@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/13 22:25:03 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/15 16:01:34 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,22 +201,22 @@ typedef struct s_wall
 	int			top_pixel;
 	int			bottom_pixel;
 	double		cr_dist;
-	int		*texture_so;
-	int		*texture_ea;
-	int		*texture_we;
-	int		*texture_no;
-	int 	hight_we;
-	int 	width_we;
-	int 	hight_no;
-	int 	width_no;
-	int 	hight_so;
-	int 	width_so;
-	int 	hight_ea;
-	int 	width_ea;
+	int			*texture_so;
+	int			*texture_ea;
+	int			*texture_we;
+	int			*texture_no;
+	int			hight_we;
+	int			width_we;
+	int			hight_no;
+	int			width_no;
+	int			hight_so;
+	int			width_so;
+	int			hight_ea;
+	int			width_ea;
 
-	int 	*buffer;
-	int 	hight;
-	int 	width;
+	int			*buffer;
+	int			hight;
+	int			width;
 }				t_wall;
 
 typedef struct s_vars
@@ -247,6 +247,7 @@ typedef struct s_mini
 	int			rows;
 	int			cols;
 	int			curr_cols;
+	char		*str;
 }				t_mini;
 
 #endif
