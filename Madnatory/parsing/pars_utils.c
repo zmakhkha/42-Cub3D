@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:23:01 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/14 15:34:48 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/19 08:07:22 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_map_is_valid(t_parse *content)
 		{
 			if (str[o] != '0' && str[o] != '1' && str[o] != ' ' && str[o] != 'N'
 				&& str[o] != 'E' && str[o] != 'S' && str[o] != 'W')
-				ft_error("invalid character found in the map");
+				ft_error("Error : invalid character found in the map");
 			++o;
 		}
 		++i;
@@ -57,5 +57,5 @@ void	ft_check_player_exists(t_parse *content)
 		++i;
 	}
 	if (count != 1)
-		ft_error("should have only one player in  the map");
+		ft_error("Error : should have only one player in  the map");
 }

@@ -1,15 +1,16 @@
 F    171,197,242
-C    212,204,181
-NO              textures/1a.xpm
-EA              textures/1b.xpm
+C    212,204 ,0
+
+NO              ./textures/1a.xpm
+EA              ./textures/1b.xpm
 SO              textures/1c.xpm
+
+
+
 WE              textures/1d.xpm
-
-
-
          
                             11111111                    
-                            10000001        
-                            10000001                      
-                            10S00001     
+                            101N1001        
+                            10000E01                     
+                            10000001     
                             11111111    

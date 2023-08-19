@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 18:40:09 by edraidry          #+#    #+#             */
-/*   Updated: 2023/08/14 15:31:20 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/19 08:06:25 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	check_f_(char **str)
 		while (str[i][j])
 		{
 			if (ft_isdigit(str[i][j]) == 0)
-				ft_error("not number");
+				ft_error("Error : not number");
 			j++;
 		}
 		i++;
@@ -58,7 +58,7 @@ void	check_f_(char **str)
 	while (str[i])
 	{
 		if (ft_atoi(str[i]) < 0 || ft_atoi(str[i]) > 255)
-			ft_error("argmet must be between 0 and  255");
+			ft_error("Error : argmet must be between 0 and  255");
 		i++;
 	}
 }

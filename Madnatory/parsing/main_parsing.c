@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:57:25 by edraidry          #+#    #+#             */
-/*   Updated: 2023/08/14 15:47:21 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/19 08:05:48 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,16 @@ void	ft_is_valid_map(t_parse *cont)
 			if ((m.rows == 0 || !cont->map[m.rows + 1] || \
 			m.cols == 0 || m.str[m.cols \
 			+ 1] == 0) && m.str[m.cols] == '0')
-				ft_error("invalid map");
+				ft_error("Error : invalid map");
 			else if (m.str[m.cols] == '0' || m.str[m.cols] == 'N' \
 			|| m.str[m.cols] == 'E' || m.str[m.cols] == 'W' \
 			|| m.str[m.cols] == 'S')
 			{
 				if (m.str[m.cols + 1] == ' ' || m.str[m.cols - 1] == ' ')
-					ft_error("invalid map");
+					ft_error("Error : invalid map");
 				if (cont->map[m.rows + 1][m.cols] == ' ' || cont->map[m.rows
 					- 1][m.cols] == ' ')
-					ft_error("invalid map");
+					ft_error("Error : invalid map");
 			}
 		}
 	}

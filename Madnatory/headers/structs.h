@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/15 16:01:34 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/19 07:47:27 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define MINI_CUB 10
 
 # define M_NOTIFY 6
+void	pl(char **map);
 
 enum
 {

@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 14:59:03 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/14 15:36:04 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/19 08:08:31 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ char	*ft_get_type(char *line)
 	line[o + 1] = '\0';
 	path = ft_strdup(&line[i]);
 	if (!path)
-		ft_error("malloc fail");
+		ft_error("Error : malloc fail");
 	return (path);
 }
