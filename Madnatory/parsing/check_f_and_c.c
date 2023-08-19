@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 18:40:09 by edraidry          #+#    #+#             */
-/*   Updated: 2023/08/19 08:06:25 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/19 09:14:53 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	check_f(char *line, t_parse *content, int n)
 		ft_error("found not corrcot dot ','");
 	str = ft_split(line, ',');
 	free(line);
+	if (!str[0] || !str[1] || !str[2])
+		ft_error("Error : invalid color !!");
 	check_f_(str);
 	if (n == 5)
 		content->ff = create_trgb(0, ft_atoi(str[0]), ft_atoi(str[1]), \
