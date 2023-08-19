@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/19 07:49:14 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/19 08:13:23 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	ft_spawn(t_vars *data)
 			if (data->map[i][j] == 'S' || data->map[i][j] == 'N' \
 			|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
 			{
-				printf("[%d][%d]+++++\n", i, j);
 				c = data->map[i][j];
 				data->player.x = i * data->data.cub_size + \
 				data->data.cub_size / 2;

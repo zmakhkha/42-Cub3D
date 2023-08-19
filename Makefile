@@ -6,7 +6,7 @@
 #    By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/08/19 06:51:26 by zmakhkha         ###   ########.fr        #
+#    Updated: 2023/08/19 08:18:49 by zmakhkha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ all: $(NAME)
 
 
 $(NAME) : $(OBJ_M) $(HEADERS) $(LBFT)
-	@$(CC) $(OBJ_M) $(LBFT) $(MLBX) -o $(NAME) -fsanitize=address
+	@$(CC) $(OBJ_M) $(LBFT) $(MLBX) -o $(NAME)
 	@echo "$(NAME): $(GREEN)Successfully made. ✅$(RESET)"
 
 LIB_DIR:
