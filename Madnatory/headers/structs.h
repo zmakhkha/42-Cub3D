@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:57:05 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 17:24:50 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/19 09:24:57 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define VER -2
 
 # define MINI_CUB 10
+
+# define M_NOTIFY 6
 
 enum
 {
@@ -67,6 +69,7 @@ enum
 	ON_DESTROY = 17,
 	ON_ESC = 53
 };
+
 enum
 {
 	ROWS = -10,
@@ -83,6 +86,7 @@ typedef struct s_player
 	double		rotation_speed;
 	int			turn_direction;
 	int			walk_direction;
+	double		turn;
 }				t_player;
 
 typedef struct s_data
@@ -197,22 +201,22 @@ typedef struct s_wall
 	int			top_pixel;
 	int			bottom_pixel;
 	double		cr_dist;
-	int		*texture_so;
-	int		*texture_ea;
-	int		*texture_we;
-	int		*texture_no;
-	int 	hight_we;
-	int 	width_we;
-	int 	hight_no;
-	int 	width_no;
-	int 	hight_so;
-	int 	width_so;
-	int 	hight_ea;
-	int 	width_ea;
+	int			*texture_so;
+	int			*texture_ea;
+	int			*texture_we;
+	int			*texture_no;
+	int			hight_we;
+	int			width_we;
+	int			hight_no;
+	int			width_no;
+	int			hight_so;
+	int			width_so;
+	int			hight_ea;
+	int			width_ea;
 
-	int 	*buffer;
-	int 	hight;
-	int 	width;
+	int			*buffer;
+	int			hight;
+	int			width;
 }				t_wall;
 
 typedef struct s_vars
@@ -243,6 +247,7 @@ typedef struct s_mini
 	int			rows;
 	int			cols;
 	int			curr_cols;
+	char		*str;
 }				t_mini;
 
 #endif

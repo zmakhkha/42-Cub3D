@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_utils_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 11:55:47 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 16:26:03 by zmakhkha         ###   ########.fr       */
+/*   Created: 2023/07/08 20:32:41 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/08/15 17:37:41 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../Madnatory/headers/header.h"
 
-int	ft_toupper(int c)
+int	ft_render_bonus(t_vars *data)
 {
-	if ('a' <= c && c <= 'z')
-		c = c - 32;
-	return (c);
+	my_mlx_clear_window(data);
+	ft_render_player(data);
+	ft_render_rays(data);
+	ft_bg(data);
+	ft_render_walls(data);
+	mlx_put_image_to_window(&(data->img), data->win, data->img.img, 0, 0);
+	return (0);
 }

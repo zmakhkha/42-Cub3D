@@ -6,13 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 20:32:24 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/25 15:56:55 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/19 08:07:10 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../headers/header.h"
-
-
+#include "../headers/header.h"
 
 int	ft_is_type(char *line)
 {
@@ -35,91 +33,63 @@ int	ft_is_type(char *line)
 		return (5);
 	if (!ft_strncmp(&line[i], "C ", 2))
 		return (6);
-	ft_error("invalid elements in the file");
+	ft_error("Error : invalid elements in the file");
 	return (0);
 }
 
-char	*ft_get_type(char *line)
-{
-	int		i;
-	int		o;
-	char	*path;
-
-	i = 0;
-	while (line[i] == ' ')
-		++i;
-	while (line[i] != ' ')
-		++i;
-	while (line[i] == ' ')
-		++i;
-	o = ft_strlen(line) - 1;
-	while (line[o] == ' ' && o != i)
-		--o;
-	line[o + 1] = '\0';
-	path = ft_strdup(&line[i]);
-	if (!path)
-		ft_error("malloc fail");
-	return (path);
-}
-
-
-
 void	ft_chech_duplication(t_parse *content, int type)
 {
-	if (type == 1 && content->no)//no
-		ft_error("north texture is duplicated");
-	else if (type == 2 && content->ea)//ea
-		ft_error("east texture is duplicated");
-	else if (type == 3 && content->so)//so
-		ft_error("south texture is duplicated");
-	else if (type == 4 && content->we)//we
-		ft_error("weast texture is duplicated");
-	else if (type == 5 && content->ff)//f
-		ft_error("floor is duplicated");
-	else if (type == 6 && content->cc)//c
-		ft_error("ciel is duplicated");
+	if (type == 1 && content->no)
+		ft_error("Error : north texture is duplicated");
+	else if (type == 2 && content->ea)
+		ft_error("Error : east texture is duplicated");
+	else if (type == 3 && content->so)
+		ft_error("Error : south texture is duplicated");
+	else if (type == 4 && content->we)
+		ft_error("Error : weast texture is duplicated");
+	else if (type == 5 && content->ff)
+		ft_error("Error : floor is duplicated");
+	else if (type == 6 && content->cc)
+		ft_error("Error : ciel is duplicated");
 }
 
 void	ft_chech_missing(t_parse *content)
 {
-	if (!content->no)//no
-		ft_error("north texture not found");
-	else if (!content->ea)//ea
-		ft_error("east texture not found");
-	else if (!content->so)//so
-		ft_error("south texture not found");
-	else if (!content->we)//we
-		ft_error("weast texture not found");
-	else if (!content->ff)//f
-		ft_error("floor not found");
-	else if (!content->cc)//c
-		ft_error("ciel not found");
+	if (!content->no)
+		ft_error("Error : north texture not found");
+	else if (!content->ea)
+		ft_error("Error : east texture not found");
+	else if (!content->so)
+		ft_error("Error : south texture not found");
+	else if (!content->we)
+		ft_error("Error : weast texture not found");
+	else if (content->ff < 0)
+		ft_error("Error : floor not found");
+	else if (content->cc < 0)
+		ft_error("Error : ciel not found");
 }
-
 
 void	ft_set_type(t_parse *content, char *line, int index)
 {
-	int		type;
-	char	*path;
-	static int count = 0;
-	
+	int			type;
+	char		*path;
+	static int	count = 0;
+
 	type = ft_is_type(line);
 	ft_chech_duplication(content, type);
 	path = ft_get_type(line);
-	if (type == 1)//no
+	if (type == 1)
 		content->no = path;
-	else if (type == 2)//ea
+	else if (type == 2)
 		content->ea = path;
-	else if (type == 3)//so
+	else if (type == 3)
 		content->so = path;
-	else if (type == 4)//we
+	else if (type == 4)
 		content->we = path;
-	else if (type == 5)//f
-	{
+	else if (type == 5)
 		check_f(path, content, 5);
-	}
-	else if (type == 6)//c
-		check_f(path, content, 6);//	
+	else if (type == 6)
+		check_f(path, content, 6);
 	if (type != 7)
 		++count;
 	if (count == 6)
@@ -128,7 +98,7 @@ void	ft_set_type(t_parse *content, char *line, int index)
 
 t_parse	*ft_get_all_content(char **lines)
 {
-	int	i;
+	int				i;
 	static t_parse	content;
 
 	i = 0;

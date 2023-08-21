@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:57:39 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 15:54:43 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/19 08:13:23 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_player_line(t_vars *data)
 void	ft_player_angle(t_vars *data, char c)
 {
 	if (c == 'E')
-		data->player.rotation_angle = 0;
+		data->player.rotation_angle = 2 * M_PI;
 	else if (c == 'S')
 		data->player.rotation_angle = M_PI / 2;
 	else if (c == 'W')
@@ -41,30 +41,30 @@ void	ft_player_angle(t_vars *data, char c)
 
 void	ft_spawn(t_vars *data)
 {
-	int		rows;
 	int		i;
 	int		j;
 	char	c;
 
 	c = 0;
-	rows = ft_strlen2d(data->parse->map);
 	i = -1;
-	j = 0;
-	while (++i < rows)
+	while (data->map[++i])
 	{
-		if (ft_strchr(data->map[i], 'S') || ft_strchr(data->map[i], 'N')
-			|| ft_strchr(data->map[i], 'E') || ft_strchr(data->map[i], 'W'))
+		j = -1;
+		while (data->map[i][++j])
 		{
-			j = 0;
-			while (!ft_isalpha(data->map[i][j]))
-				j++;
-			c = data->map[i][j];
-			break ;
+			if (data->map[i][j] == 'S' || data->map[i][j] == 'N' \
+			|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
+			{
+				c = data->map[i][j];
+				data->player.x = i * data->data.cub_size + \
+				data->data.cub_size / 2;
+				data->player.y = j * data->data.cub_size + \
+				data->data.cub_size / 2;
+				ft_player_angle(data, data->map[i][j]);
+				return ;
+			}
 		}
 	}
-	data->player.x = i * data->data.cub_size + data->data.cub_size / 2;
-	data->player.y = j * data->data.cub_size + data->data.cub_size / 2;
-	ft_player_angle(data, data->map[i][j]);
 }
 
 void	ft_init_player(t_vars *data)
@@ -85,9 +85,12 @@ void	ft_render_player(t_vars *data)
 	data->player.rotation_angle += data->player.turn_direction
 		* data->player.rotation_speed;
 	move_step = data->player.walk_direction * data->player.move_speed;
-	new_y = data->player.y + move_step * sin(data->player.rotation_angle);
-	new_x = data->player.x + move_step * cos(data->player.rotation_angle);
-	if (!its_wall(data, new_x, new_y))
+	new_y = data->player.y + move_step * sin(data->player.rotation_angle \
+		+ data->player.turn);
+	new_x = data->player.x + move_step * cos(data->player.rotation_angle \
+		+ data->player.turn);
+	if (!its_wall(data, new_x, new_y) && !its_wall(data, data->player.x, new_y)
+		&& !its_wall(data, new_x, data->player.y))
 	{
 		data->player.x = new_x;
 		data->player.y = new_y;

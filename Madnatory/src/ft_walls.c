@@ -6,7 +6,7 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 16:12:28 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 18:12:26 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/15 19:14:38 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 void	ft__select_texture(t_vars *data)
 {
-	if (data->rays[data->wall.i].is_left \
+	if (data->rays[data->wall.i].is_left && data->rays[data->wall.i].is_ver)
+	{
+		data->wall.hight = data->wall.hight_we;
+		data->wall.width = data->wall.width_we;
+		data->wall.buffer = data->wall.texture_we;
+	}
+	else if (data->rays[data->wall.i].is_right
 		&& data->rays[data->wall.i].is_ver)
 	{
 		data->wall.hight = data->wall.hight_ea;
 		data->wall.width = data->wall.width_ea;
 		data->wall.buffer = data->wall.texture_ea;
-	}
-	else if (data->rays[data->wall.i].is_right \
-		&& data->rays[data->wall.i].is_ver)
-	{
-		data->wall.hight = data->wall.hight_so;
-		data->wall.width = data->wall.width_so;
-		data->wall.buffer = data->wall.texture_so;
 	}
 }
 
@@ -38,12 +37,12 @@ void	ft_select_texture(t_vars *data)
 		data->wall.width = data->wall.width_no;
 		data->wall.buffer = data->wall.texture_no;
 	}
-	else if (data->rays[data->wall.i].is_down \
+	else if (data->rays[data->wall.i].is_down
 		&& !data->rays[data->wall.i].is_ver)
 	{
-		data->wall.hight = data->wall.hight_we;
-		data->wall.width = data->wall.width_we;
-		data->wall.buffer = data->wall.texture_we;
+		data->wall.hight = data->wall.hight_so;
+		data->wall.width = data->wall.width_so;
+		data->wall.buffer = data->wall.texture_so;
 	}
 	else
 		ft__select_texture(data);
@@ -55,25 +54,26 @@ void	ft_draw_wall(t_vars *data)
 	int	xp;
 	int	yp;
 
-	j = 0;
+	j = -1;
 	if (!data->rays[data->wall.i].is_ver)
 		xp = data->wall.width * fmod(data->rays[data->wall.i].wall_hit_x, \
-			TILE_SIZE) / TILE_SIZE; 
+			TILE_SIZE) / TILE_SIZE;
 	else
 		xp = data->wall.width * fmod(data->rays[data->wall.i].wall_hit_y, \
 			TILE_SIZE) / TILE_SIZE;
-	while (j < data->wall.project_wall_height)
+	while (++j < data->wall.project_wall_height && j < HEIGHT)
 	{
 		yp = (j * data->wall.hight) / data->wall.project_wall_height;
-		if (0 <= data->wall.line.ox \
-			&& data->wall.line.ox <= data->data.win_height && 0 <= (int)(j \
-				+ (HEIGHT / 2) - (data->wall.project_wall_height / 2)) \
-			&& (int)(j + (HEIGHT / 2) - (data->wall.project_wall_height \
-					/ 2)) <= data->data.win_height)
-			my_mlx_pixel_put(&data->img, data->wall.line.ox, (int)(j + (HEIGHT \
-						/ 2) - (data->wall.project_wall_height / 2)), \
+		if (data->wall.project_wall_height > HEIGHT)
+			yp = ((j + ((data->wall.project_wall_height - HEIGHT) / 2)) \
+				* data->wall.hight) / data->wall.project_wall_height;
+		if (data->wall.project_wall_height > HEIGHT)
+			my_mlx_pixel_put(&data->img, data->wall.line.ox, j,
 				data->wall.buffer[(yp * data->wall.width) + xp]);
-		j++;
+		else
+			my_mlx_pixel_put(&data->img, data->wall.line.ox, (int)(j + (HEIGHT
+						/ 2) - (data->wall.project_wall_height / 2)),
+				data->wall.buffer[(yp * data->wall.width) + xp]);
 	}
 }
 

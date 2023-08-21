@@ -6,12 +6,11 @@
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 12:50:58 by edraidry          #+#    #+#             */
-/*   Updated: 2023/07/25 15:53:15 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/14 15:36:19 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/get_next_line.h"
-
 
 int	ft_strchr_(char *str)
 {

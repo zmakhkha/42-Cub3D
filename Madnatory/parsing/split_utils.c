@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   split_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 21:43:47 by zmakhkha          #+#    #+#             */
-/*   Updated: 2023/08/12 16:26:03 by zmakhkha         ###   ########.fr       */
+/*   Created: 2023/08/14 14:59:03 by zmakhkha          #+#    #+#             */
+/*   Updated: 2023/08/19 08:08:31 by zmakhkha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../headers/header.h"
 
-int	ft_isascii(int c)
+char	*ft_get_type(char *line)
 {
-	return ((0 <= c) && (c <= 127));
+	int		i;
+	int		o;
+	char	*path;
+
+	i = 0;
+	while (line[i] == ' ')
+		++i;
+	while (line[i] != ' ')
+		++i;
+	while (line[i] == ' ')
+		++i;
+	o = ft_strlen(line) - 1;
+	while (line[o] == ' ' && o != i)
+		--o;
+	line[o + 1] = '\0';
+	path = ft_strdup(&line[i]);
+	if (!path)
+		ft_error("Error : malloc fail");
+	return (path);
 }
