@@ -6,7 +6,7 @@
 #    By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/08 19:01:56 by zmakhkha          #+#    #+#              #
-#    Updated: 2023/08/20 14:37:26 by edraidry         ###   ########.fr        #
+#    Updated: 2023/08/22 17:29:07 by edraidry         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ PARSING =	Madnatory/parsing/check_f_and_c.c \
 			Madnatory/parsing/get_next_line/get_next_line_utils.c \
 			Madnatory/parsing/split_utils.c \
 			Madnatory/parsing/pars_utils.c \
+			Madnatory/parsing/main__parsing.c \
 
 # Source files
 SRC_MN =	Madnatory/src/ft_map.c \

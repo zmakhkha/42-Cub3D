@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zmakhkha <zmakhkha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:57:43 by edraidry          #+#    #+#             */
-/*   Updated: 2023/08/15 16:02:17 by zmakhkha         ###   ########.fr       */
+/*   Updated: 2023/08/22 17:28:51 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ char		*ft_get_type(char *line);
 // Madnatory/parsing/pars_utils.c
 void		ft_check_player_exists(t_parse *content);
 void		ft_map_is_valid(t_parse *content);
+int			check_spaces(char *str);
+void		ft_get_map_index(t_parse *content, char **lines);
+int			ft_max_line(t_parse *content, char **lines);
 
 char		*ft_strdup(const char *src);
 #endif

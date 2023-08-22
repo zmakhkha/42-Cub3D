@@ -6,47 +6,11 @@
 /*   By: edraidry <edraidry@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:57:25 by edraidry          #+#    #+#             */
-/*   Updated: 2023/08/20 14:57:33 by edraidry         ###   ########.fr       */
+/*   Updated: 2023/08/22 17:28:08 by edraidry         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/header.h"
-
-int check_spaces(char *str)
-{
-	int i = 0;
-	while(str[i] && str[i] == ' ')
-	i++;
-	if(str[i] == '\0')
-		return(1);
-	return (0);
-}
-
-void	ft_get_map_index(t_parse *content, char **lines)
-{
-	int	start;
-
-	start = content->start;
-	while (lines[start] && lines[start][0] == '\0')
-		++start;
-	content->start = start;
-}
-
-int	ft_max_line(t_parse *content, char **lines)
-{
-	int	start;
-	int	max;
-
-	start = content->start;
-	max = 0;
-	while (lines[start])
-	{
-		if ((int)ft_strlen(lines[start]) > max)
-			max = ft_strlen(lines[start]);
-		++start;
-	}
-	return (max);
-}
 
 void	ft_copy_map(t_parse *content, char **lines)
 {
@@ -57,7 +21,7 @@ void	ft_copy_map(t_parse *content, char **lines)
 
 	max = ft_max_line(content, lines);
 	start = content->start;
-	if(!lines[start])
+	if (!lines[start])
 		ft_exit("Error : Map not found !!", 1);
 	while (lines[start])
 	{
@@ -76,6 +40,15 @@ void	ft_copy_map(t_parse *content, char **lines)
 	}
 }
 
+int	ft_is_valid__(t_parse *cont, t_mini	m)
+{
+	return ((m.rows == 0 || !cont->map[m.rows + 1] || \
+	m.cols == 0 || m.str[m.cols \
+	+ 1] == 0) && (m.str[m.cols] == '0' \
+	|| m.str[m.cols] == 'S' || m.str[m.cols] == 'N' \
+	|| m.str[m.cols] == 'W' || m.str[m.cols] == 'E'));
+}
+
 void	ft_is_valid_map(t_parse *cont)
 {
 	t_mini	m;
@@ -87,9 +60,7 @@ void	ft_is_valid_map(t_parse *cont)
 		m.str = cont->map[m.rows];
 		while (m.str[++m.cols])
 		{
-			if ((m.rows == 0 || !cont->map[m.rows + 1] || \
-			m.cols == 0 || m.str[m.cols \
-			+ 1] == 0) && m.str[m.cols] == '0')
+			if (ft_is_valid__(cont, m))
 				ft_error("Error : invalid map");
 			else if (m.str[m.cols] == '0' || m.str[m.cols] == 'N' \
 			|| m.str[m.cols] == 'E' || m.str[m.cols] == 'W' \
@@ -109,16 +80,17 @@ t_parse	*parsing_main(int ac, char **av)
 {
 	char	**lines;
 	t_parse	*content;
+	int		i;
 
-	 ft_args(ac, av);
-	 lines = ft_read_file(av[1]);
+	ft_args(ac, av);
+	lines = ft_read_file(av[1]);
 	content = ft_get_all_content(lines);
 	ft_get_map_index(content, lines);
 	ft_copy_map(content, lines);
-	int i = 0;
-	while(content->map[i])
-	i++;
-	if(i < 3)
+	i = 0;
+	while (content->map[i])
+		i++;
+	if (i < 3)
 		ft_error("Error :invalid mape");
 	ft_map_is_valid(content);
 	ft_check_player_exists(content);
